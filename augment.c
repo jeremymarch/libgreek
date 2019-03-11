@@ -55,8 +55,13 @@ void augmentStem(VerbFormC *vf, UCS2 *ucs2, int *len, int bufferCapacity, bool d
         }
         return;
     }
+    else if (decompose && utf8HasSuffix(vf->verb->present, "ἀποθνῄσκω") && vf->tense == PLUPERFECT)
+    {
+        splice(ucs2, len, bufferCapacity, 0, 0, (UCS2[]){DECOMPOSED_AUGMENT_CHAR,SPACE,HYPHEN,SPACE}, 4);
+        return;
+    }
     
-    if ((vf->verb->verbclass & PREFIXED) == PREFIXED)
+    if ((vf->verb->verbclass & PREFIXED) == PREFIXED && !( utf8HasSuffix(vf->verb->present, "ἀποθνῄσκω") && vf->tense == PLUPERFECT) )
     {
         UCS2 ek[] = { GREEK_SMALL_LETTER_EPSILON_WITH_PSILI, GREEK_SMALL_LETTER_KAPPA };
         UCS2 ana[] = { GREEK_SMALL_LETTER_ALPHA_WITH_PSILI, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA };
