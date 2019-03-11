@@ -1294,19 +1294,28 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
             splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_EPSILON}, 3);
             
             int j = 1;
-            //int i = 1;
             if (decompose && vf->tense != PERFECT && vf->tense != PLUPERFECT)
             {
                 j = 5;
             }
             splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, &ucs2Buffer[j], ucs2StemPlusEndingBufferLen - j - 3);
-            /*
-            for (; j < (ucs2StemPlusEndingBufferLen - 3); i++, j++)
-            {
-                ucs2Buffer[ucs2StemPlusEndingBufferLen+i-1] = ucs2Buffer[j];
-            }
-            ucs2StemPlusEndingBufferLen += (j-1);*/
         }
+    }
+    
+    //δύναμαι augment exception H&Q p. 503
+    if (ucs2StemPlusEndingBufferLen > 0 && utf8HasSuffix(vf->verb->present, "δύναμαι") && vf->mood == INDICATIVE && (vf->tense == AORIST || vf->tense == IMPERFECT || vf->tense == PLUPERFECT) )
+    {
+        
+        if (decompose)
+        {
+            splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_ETA}, 3);
+        }
+        else
+        {
+            splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_ETA_WITH_PSILI}, 3);
+        }
+        
+        splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, &ucs2Buffer[1], ucs2StemPlusEndingBufferLen - 4);
     }
     
     *bufferLen = ucs2StemPlusEndingBufferLen;
