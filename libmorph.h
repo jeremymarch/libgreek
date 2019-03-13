@@ -87,6 +87,7 @@ enum {
     PASSIVE,
     NUM_VOICES
 };
+#define MIDDLEPASSIVE 3
 
 #define NUM_MOODS  4
 
@@ -280,5 +281,8 @@ long randWithMax(unsigned int max);
 int incrementValue(int theArrayCount, int start);
 
 void tonosToOxia(UCS2 *word, int len);
+
+int getVoiceDescription1(VerbFormC *vf);
+int getVoiceDescription2(VerbFormD *vf);
 
 #endif /* defined(__morph__libmorph__) */

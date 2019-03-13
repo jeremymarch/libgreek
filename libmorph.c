@@ -1368,6 +1368,79 @@ int deponentType2(int verbid)
     return deponentType(v);
 }
 
+//this will give us whether middle/passive is correct, else the appropriate voice
+//this is only valid for forms which actually exist
+int getVoiceDescription2(VerbFormD *vf)
+{
+    VerbFormC vfc;
+    vfc.person = vf->person;
+    vfc.number = vf->number;
+    vfc.tense = vf->tense;
+    vfc.voice = vf->voice;
+    vfc.mood = vf->mood;
+    vfc.verb = &verbs[vf->verbid];
+    return getVoiceDescription1(&vfc);
+}
+
+int getVoiceDescription1(VerbFormC *vf)
+{
+    char utf8OutputBuffer[1024];
+    int bufferLen = 1024;
+    
+    if (vf->voice == ACTIVE)
+    {
+        return ACTIVE;
+    }
+    else if (vf->voice == PASSIVE)
+    {
+        if (vf->tense == FUTURE || vf->tense == AORIST)
+        {
+            return PASSIVE;
+        }
+        else
+        {
+            //see if middle form exists
+            vf->voice = MIDDLE;
+            if (getForm(vf, utf8OutputBuffer, bufferLen, true, true))
+            {
+                vf->voice = PASSIVE; //change back
+                return MIDDLEPASSIVE;
+            }
+            else
+            {
+                vf->voice = PASSIVE; //change back
+                return PASSIVE;
+            }
+        }
+    }
+    else if (vf->voice == MIDDLE)
+    {
+        if (vf->tense == FUTURE || vf->tense == AORIST)
+        {
+            return MIDDLE;
+        }
+        else
+        {
+            //see if passive form exists
+            vf->voice = PASSIVE;
+            if (getForm(vf, utf8OutputBuffer, bufferLen, true, true))
+            {
+                vf->voice = MIDDLE; //change back
+                return MIDDLEPASSIVE;
+            }
+            else
+            {
+                vf->voice = MIDDLE; //change back
+                return MIDDLE;
+            }
+        }
+    }
+    else
+    {
+        return 0; //problem
+    }
+}
+
 /*
  check deponents
  add nextSeq function to work with vseq array

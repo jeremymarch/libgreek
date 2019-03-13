@@ -59,6 +59,10 @@ int main(int argc, char **argv)
     for (int verbi = 0; verbi < numVerbs; verbi++)
     {
         vf.verb = &verbs[verbi];
+        char *voiceO;
+        char *voiceMiddlePassive = " (Middle/Passive)";
+        char *voiceNotMiddlePassive = "";
+        
         char *depo;
         char *depMid = " (Middle Deponent)";
         char *depPass = " (Passive Deponent)";
@@ -101,16 +105,25 @@ int main(int argc, char **argv)
 
                                 if (countPerSection == 0 && vf.person == FIRST && vf.number == SINGULAR) //== first item, so add label first
                                 {
+                                    int res = getVoiceDescription1(&vf);
+                                    if (res == MIDDLEPASSIVE)
+                                    {
+                                        voiceO = voiceMiddlePassive;
+                                    }
+                                    else
+                                    {
+                                        voiceO = voiceNotMiddlePassive;
+                                    }
                                     if (v == ACTIVE || g1 == AORIST || g1 == FUTURE)
                                     {
-                                        fprintf(fp, "\n%s %s %s\n", tenses[g1], voices[v], moods[m]);
+                                        fprintf(fp, "\n%s %s%s %s\n", tenses[g1], voices[v], voiceO, moods[m]);
                                     }
                                     else if (v == MIDDLE)
                                     {
                                         //FIX ME, is this right?? how do we label these?
                                         //if ( deponentType(vf.verb) == MIDDLE_DEPONENT || deponentType(vf.verb) == PASSIVE_DEPONENT)
                                         //{
-                                            fprintf(fp, "\n%s %s %s\n", tenses[g1], "Middle", moods[m]);
+                                            fprintf(fp, "\n%s %s%s %s\n", tenses[g1], "Middle", voiceO, moods[m]);
                                         //}
                                         //else
                                         //{
@@ -119,7 +132,7 @@ int main(int argc, char **argv)
                                     }
                                     else
                                     {
-                                        fprintf(fp, "\n%s %s %s\n", tenses[g1], "Passive", moods[m]);
+                                        fprintf(fp, "\n%s %s%s %s\n", tenses[g1], "Passive", voiceO, moods[m]);
                                         //yes we want to show them! //continue; //skip passive if middle+passive are the same
                                     }
                                 } //end label conditional
