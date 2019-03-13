@@ -630,15 +630,25 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             
             if ( vf->number == SINGULAR && vf->voice == ACTIVE)
             {
-                ++(*len);
-                ucs2[*len - 1] = GREEK_SMALL_LETTER_UPSILON;
+                if (!decompose)
+                {
+                    ++(*len);
+                    ucs2[*len - 1] = GREEK_SMALL_LETTER_UPSILON;
+                }
                 if (vf->person == FIRST || vf->person == SECOND)
                 {
-                    leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                    if (!decompose)
+                        leftShiftFromOffsetSteps(ending, 0, 1, &elen);
                 }
                 else if (vf->person == THIRD)
                 {
-                    elen = 0;
+                    if (!decompose)
+                        elen = 0;
+                    else
+                    {
+                        elen = 1;
+                        ending[0] = GREEK_SMALL_LETTER_EPSILON;
+                    }
                 }
             }
             else if (vf->number == PLURAL && vf->voice == ACTIVE)

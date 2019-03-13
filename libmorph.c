@@ -1489,11 +1489,7 @@ int getVoiceDescription1(VerbFormC *vf)
 /*
  check deponents
  add nextSeq function to work with vseq array
- add apothnhskw alt forms.
- fix decomposed endings for edidoyn
- add word_joiner, fix places it breaks
- check nys estimated taxes
- prepare to call about surgery bill
+ add unicode word_joiner after prefix dashes, fix places it breaks
  read: https://www.gamasutra.com/blogs/KwasiMensah/20110211/88949/Game_Loops_on_IOS.php
  install ios 12 on old devices
  
