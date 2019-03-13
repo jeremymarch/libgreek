@@ -1318,6 +1318,51 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
         splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, &ucs2Buffer[1], ucs2StemPlusEndingBufferLen - 4);
     }
     
+    if (utf8HasSuffix(vf->verb->present, "ἀποθνῄσκω") && vf->tense == PERFECT && vf->number == PLURAL)
+    {
+        if (decompose)
+        {
+            if (vf->person == FIRST)
+            {
+                splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU,SPACE,HYPHEN,SPACE, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_MU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_NU}, 13);
+            }
+            else if (vf->person == SECOND)
+            {
+                splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, SPACE,HYPHEN,SPACE,GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON}, 12);
+            }
+            else if (vf->person == THIRD)
+            {
+                splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU,SPACE,HYPHEN,SPACE, GREEK_SMALL_LETTER_ALPHA, COMBINING_MACRON, GREEK_SMALL_LETTER_SIGMA, GREEK_SMALL_LETTER_IOTA,LEFT_PARENTHESIS, GREEK_SMALL_LETTER_NU,RIGHT_PARENTHESIS}, 16);
+            }
+        }
+        else
+        {
+            if (vf->person == FIRST)
+            {
+                splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON_WITH_OXIA, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_MU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_NU}, 10);
+            }
+            else if (vf->person == SECOND)
+            {
+                splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON_WITH_OXIA, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON}, 9);
+            }
+            else if (vf->person == THIRD)
+            {
+                splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA_WITH_PERISPOMENI, GREEK_SMALL_LETTER_SIGMA, GREEK_SMALL_LETTER_IOTA,LEFT_PARENTHESIS, GREEK_SMALL_LETTER_NU,RIGHT_PARENTHESIS}, 12);
+            }
+        }
+    }
+    if (utf8HasSuffix(vf->verb->present, "ἀποθνῄσκω") && vf->tense == PLUPERFECT && vf->number == PLURAL && vf->person == THIRD)
+    {
+        if (decompose)
+        {
+            splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_EPSILON,SPACE,HYPHEN,SPACE, GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU,SPACE,HYPHEN,SPACE, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_SIGMA, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_NU}, 17);
+        }
+        else
+        {
+            splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_EPSILON_WITH_PSILI, GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON_WITH_OXIA, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_SIGMA, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_NU}, 11);
+        }
+    }
+    
     *bufferLen = ucs2StemPlusEndingBufferLen;
     if (ucs2StemPlusEndingBufferLen < 1)
         return 0;
