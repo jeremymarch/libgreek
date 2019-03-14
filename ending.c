@@ -624,9 +624,12 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
         }
         else if ( utf8HasSuffix(vf->verb->present, "δίδωμι") && vf->voice == ACTIVE)
         {
+            //H&Q page 342
             //shorten stem vowel
             if (ucs2[*len - 1] == GREEK_SMALL_LETTER_OMEGA)
+            {
                 ucs2[*len - 1] = GREEK_SMALL_LETTER_OMICRON;
+            }
             
             if ( vf->number == SINGULAR && vf->voice == ACTIVE)
             {
@@ -638,12 +641,16 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 if (vf->person == FIRST || vf->person == SECOND)
                 {
                     if (!decompose)
+                    {
                         leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                    }
                 }
                 else if (vf->person == THIRD)
                 {
                     if (!decompose)
+                    {
                         elen = 0;
+                    }
                     else
                     {
                         elen = 1;
@@ -731,6 +738,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 }
                 else
                 {
+                    //H&Q page 342, 520
                     ending[0] = GREEK_SMALL_LETTER_EPSILON;
                     ending[1] = GREEK_SMALL_LETTER_FINAL_SIGMA;
                     elen = 2;
@@ -746,6 +754,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 }
                 else
                 {
+                    //H&Q page 342, 520
                     ending[0] = GREEK_SMALL_LETTER_EPSILON;
                     elen = 1;
                 }
