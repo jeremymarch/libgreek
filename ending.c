@@ -722,16 +722,33 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             }
             else if (vf->person == SECOND && vf->number == SINGULAR)
             {
-                ++(*len);
-                ucs2[*len - 1] = GREEK_SMALL_LETTER_IOTA;
-                ending[0] = GREEK_SMALL_LETTER_FINAL_SIGMA;
-                elen = 1;
+                if (!decompose)
+                {
+                    ++(*len);
+                    ucs2[*len - 1] = GREEK_SMALL_LETTER_IOTA;
+                    ending[0] = GREEK_SMALL_LETTER_FINAL_SIGMA;
+                    elen = 1;
+                }
+                else
+                {
+                    ending[0] = GREEK_SMALL_LETTER_EPSILON;
+                    ending[1] = GREEK_SMALL_LETTER_FINAL_SIGMA;
+                    elen = 2;
+                }
             }
             else if (vf->person == THIRD && vf->number == SINGULAR)
             {
-                ++(*len);
-                ucs2[*len - 1] = GREEK_SMALL_LETTER_IOTA;
-                elen = 0;
+                if (!decompose)
+                {
+                    ++(*len);
+                    ucs2[*len - 1] = GREEK_SMALL_LETTER_IOTA;
+                    elen = 0;
+                }
+                else
+                {
+                    ending[0] = GREEK_SMALL_LETTER_EPSILON;
+                    elen = 1;
+                }
             }
         }
         else if ( utf8HasSuffix(vf->verb->present, "ῡμι") && vf->voice == ACTIVE)
