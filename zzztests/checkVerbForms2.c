@@ -240,11 +240,11 @@ int main(int argc, char **argv)
 
     if (getForm(&longestVF, buffer, bufferLen, true, false))
     {
-        fprintf(fp, "\nLongest Form: %d,%d,%d,%d,%d, v: %s, l: %d\n", longestVF.person, longestVF.number, longestVF.tense, longestVF.voice, longestVF.mood, buffer, strlen(buffer));
+        fprintf(fp, "\nLongest Form: %d,%d,%d,%d,%d, v: %s, l: %lu\n", longestVF.person, longestVF.number, longestVF.tense, longestVF.voice, longestVF.mood, buffer, strlen(buffer));
     }
     if (getForm(&longestVFDecomposed, buffer2, bufferLen, true, true))
     {
-        fprintf(fp, "\nLongest Decomposed Form: %d,%d,%d,%d,%d, v: %s, l: %d\n", longestVFDecomposed.person, longestVFDecomposed.number, longestVFDecomposed.tense, longestVFDecomposed.voice, longestVFDecomposed.mood, buffer2, strlen(buffer2));
+        fprintf(fp, "\nLongest Decomposed Form: %d,%d,%d,%d,%d, v: %s, l: %lu\n", longestVFDecomposed.person, longestVFDecomposed.number, longestVFDecomposed.tense, longestVFDecomposed.voice, longestVFDecomposed.mood, buffer2, strlen(buffer2));
     }
     return 0;
 }
