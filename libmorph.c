@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Jeremy March. All rights reserved.
 //
 
-#include <stdlib.h> // For random(), RAND_MAX
 #include <string.h>  //for strlen()
 #include <stdbool.h> //for bool type
 #include "libmorph.h"

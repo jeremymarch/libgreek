@@ -9,7 +9,6 @@
 #ifndef __morph__libmorph__
 #define __morph__libmorph__
 
-#include <stdio.h>
 #include <stdbool.h>
 #include "utilities.h"
 
