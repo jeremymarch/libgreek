@@ -901,18 +901,8 @@ void accentSyllable(UCS2 *ucs2String, int i, int *len, int accentToAdd, bool tog
     if (!makeLetter(buffer, &newLetterLen, letterCode, accentBitMask, unicodeMode))
         return;
     
-    //5. make room for letter or decrease it if it is shrinking
-    if (newLetterLen > letterLen)
-        rightShiftFromOffsetSteps(ucs2String, i, newLetterLen - letterLen, len);
-    else if (letterLen > newLetterLen)
-        leftShiftFromOffsetSteps(ucs2String, i, letterLen - newLetterLen, len);
-    
-    //6. add character to output
-    for (int j = 0; j < newLetterLen; j++)
-    {
-        ucs2String[i] = buffer[j];
-        i++;
-    }
+    //6. replace character in output
+    splice(ucs2String, len, 1024, i, letterLen, buffer, newLetterLen);
 }
 
 /*
