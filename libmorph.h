@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include "utilities.h"
 
 /* OPTIONS */
 
@@ -26,7 +27,6 @@
 #define NUM_VOWELS 14
 #define NUM_CONSONANTS 35
 
-typedef unsigned short UCS2;
 //typedef uint16_t UCS2; //UINT16_MAX
 
 #define NUM_VERBS 125

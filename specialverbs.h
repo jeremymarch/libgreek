@@ -9,7 +9,6 @@
 #ifndef specialverbs_h
 #define specialverbs_h
 
-#include <stdio.h>
 #include "libmorph.h"
 #include "GreekUnicode.h"
 

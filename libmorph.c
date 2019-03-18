@@ -9,7 +9,6 @@
 #include <stdlib.h> // For random(), RAND_MAX
 #include <string.h>  //for strlen()
 #include <stdbool.h> //for bool type
-#include "utilities.h"
 #include "libmorph.h"
 #include "GreekForms.h"
 #include "GreekUnicode.h"

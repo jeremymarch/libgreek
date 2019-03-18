@@ -9,9 +9,7 @@
 #ifndef ending_h
 #define ending_h
 
-#include <stdio.h>
 #include <stdbool.h>
-#include "utilities.h"
 #include "libmorph.h"
 #include "GreekUnicode.h"
 

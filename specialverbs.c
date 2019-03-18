@@ -7,7 +7,6 @@
 //
 #include <stdbool.h>
 #include "specialverbs.h"
-#include "utilities.h"
 
 int getEimi(VerbFormC *vf, UCS2 *buffer, int *bufferLen, int bufferCapacity)
 {

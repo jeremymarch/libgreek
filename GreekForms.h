@@ -9,7 +9,6 @@
 #ifndef __morph__GreekForms__
 #define __morph__GreekForms__
 
-#include <stdio.h>
 #include "libmorph.h"
 
 extern Verb verbs[NUM_VERBS];
