@@ -38,23 +38,33 @@ int getEsti(VerbFormC *vf, UCS2 *buffer, int *bufferLen, int bufferCapacity)
     }
 }
 
-int getExesti(VerbFormC *vf, UCS2 *buffer, int *bufferLen, int bufferCapacity)
+int getExesti(VerbFormC *vf, UCS2 *buffer, int *bufferLen, int bufferCapacity, bool decompose)
 {
     if ( vf->person == THIRD && vf->number == SINGULAR && vf->mood == INDICATIVE)
     {
         if ( vf->tense == PRESENT && vf->voice == ACTIVE)
         {
-            splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_PSILI_AND_OXIA,GREEK_SMALL_LETTER_XI,GREEK_SMALL_LETTER_EPSILON,GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_TAU,GREEK_SMALL_LETTER_IOTA}, 6);
+            if (!decompose)
+                splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_PSILI_AND_OXIA,GREEK_SMALL_LETTER_XI,GREEK_SMALL_LETTER_EPSILON,GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_TAU,GREEK_SMALL_LETTER_IOTA}, 6);
+            else
+                splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_PSILI,GREEK_SMALL_LETTER_XI,SPACE,HYPHEN,SPACE,GREEK_SMALL_LETTER_EPSILON,GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_TAU,GREEK_SMALL_LETTER_IOTA}, 9);
+                
             return 1;
         }
         else if ( vf->tense == IMPERFECT && vf->voice == ACTIVE)
         {
-            splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_PSILI,GREEK_SMALL_LETTER_XI,GREEK_SMALL_LETTER_ETA_WITH_PERISPOMENI,GREEK_SMALL_LETTER_NU}, 4);
+            if (!decompose)
+                splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_PSILI,GREEK_SMALL_LETTER_XI,GREEK_SMALL_LETTER_ETA_WITH_PERISPOMENI,GREEK_SMALL_LETTER_NU}, 4);
+            else
+                splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_PSILI,GREEK_SMALL_LETTER_XI,SPACE,HYPHEN,SPACE,GREEK_SMALL_LETTER_ETA,GREEK_SMALL_LETTER_NU}, 7);
             return 1;
         }
         else if ( vf->tense == FUTURE && vf->voice == MIDDLE)
         {
-            splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_PSILI,GREEK_SMALL_LETTER_XI,GREEK_SMALL_LETTER_EPSILON_WITH_OXIA,GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_ALPHA,GREEK_SMALL_LETTER_IOTA }, 7);
+            if (!decompose)
+                splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_PSILI,GREEK_SMALL_LETTER_XI,GREEK_SMALL_LETTER_EPSILON_WITH_OXIA,GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_ALPHA,GREEK_SMALL_LETTER_IOTA }, 7);
+            else
+                splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_PSILI,GREEK_SMALL_LETTER_XI,SPACE,HYPHEN,SPACE,GREEK_SMALL_LETTER_EPSILON,GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_EPSILON,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_ALPHA,GREEK_SMALL_LETTER_IOTA }, 11);
             return 1;
         }
         else

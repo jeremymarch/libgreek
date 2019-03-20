@@ -24496,7 +24496,7 @@ Verb 78. ἔξεστι
 Present Active Indicative
 1s: NF ; NDF
 2s: NF ; NDF
-3s: ἔξεστι ; ἔξεστι
+3s: ἔξεστι ; ἐξ ‐ εστι
 1p: NF ; NDF
 2p: NF ; NDF
 3p: NF ; NDF
@@ -24592,7 +24592,7 @@ Present Passive Imperative
 Imperfect Active Indicative
 1s: NF ; NDF
 2s: NF ; NDF
-3s: ἐξῆν ; ἐξῆν
+3s: ἐξῆν ; ἐξ ‐ ην
 1p: NF ; NDF
 2p: NF ; NDF
 3p: NF ; NDF
@@ -24632,7 +24632,7 @@ Future Active Optative
 Future Middle Indicative
 1s: NF ; NDF
 2s: NF ; NDF
-3s: ἐξέσται ; ἐξέσται
+3s: ἐξέσται ; ἐξ ‐ εσεται
 1p: NF ; NDF
 2p: NF ; NDF
 3p: NF ; NDF
