@@ -28,7 +28,7 @@
 
 //typedef uint16_t UCS2; //UINT16_MAX
 
-#define NUM_VERBS 125
+#define NUM_VERBS 127
 
 #define MAX_MULTIPLE_FORMS 5 //there are no more than 4 in H&Q, but one more for good measure.
 

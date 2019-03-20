@@ -13,6 +13,8 @@
 #include "GreekUnicode.h"
 
 int getEimi(VerbFormC *vf, UCS2 *buffer, int *bufferLen, int bufferCapacity);
+int getEsti(VerbFormC *vf, UCS2 *buffer, int *bufferLen, int bufferCapacity);
+int getExesti(VerbFormC *vf, UCS2 *buffer, int *bufferLen, int bufferCapacity);
 int getOida(VerbFormC *vf, UCS2 *buffer, int *bufferLen, int bufferCapacity, bool decompose);
 int getXrh(VerbFormC *vf, UCS2 *buffer, int *bufferLen, int bufferCapacity, bool decompose);
 int getDei(VerbFormC *vf, UCS2 *buffer, int *bufferLen, int bufferCapacity, bool decompose);

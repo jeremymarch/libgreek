@@ -820,9 +820,21 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
     }
     
     //eimi/
-    if ( vf->tense != FUTURE && utf8HasSuffix(vf->verb->present, "εἰμί"))
+    if ( vf->tense != FUTURE && utf8HasSuffix(vf->verb->present, "εἰμί") )
     {
         int ret = getEimi(vf, ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity);
+        *bufferLen = ucs2StemPlusEndingBufferLen;
+        return ret;
+    }
+    else if ( utf8HasSuffix(vf->verb->present, "ἔστι") )
+    {
+        int ret = getEsti(vf, ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity);
+        *bufferLen = ucs2StemPlusEndingBufferLen;
+        return ret;
+    }
+    else if ( utf8HasSuffix(vf->verb->present, "ἔξεστι") )
+    {
+        int ret = getExesti(vf, ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity);
         *bufferLen = ucs2StemPlusEndingBufferLen;
         return ret;
     }

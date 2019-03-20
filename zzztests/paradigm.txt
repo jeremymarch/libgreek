@@ -24177,7 +24177,635 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 77. ἕπομαι (Middle Deponent)
+Verb 77. ἔστι
+
+Present Active Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: ἔστι ; ἔστι
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Active Subjunctive
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Active Optative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Active Imperative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Middle Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Middle Subjunctive
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Middle Optative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Middle Imperative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Passive Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Passive Subjunctive
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Passive Optative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Passive Imperative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Imperfect Active Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: ἦν ; ἦν
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Imperfect Middle Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Imperfect Passive Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Future Active Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Future Active Optative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Future Middle Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: ἔσται ; ἔσται
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Future Middle Optative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Future Passive Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Future Passive Optative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Active Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Active Subjunctive
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Active Optative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Active Imperative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Middle Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Middle Subjunctive
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Middle Optative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Middle Imperative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Passive Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Passive Subjunctive
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Passive Optative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Passive Imperative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Perfect Active Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Perfect Middle Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Perfect Passive Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Pluperfect Active Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Pluperfect Middle Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Pluperfect Passive Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Verb 78. ἔξεστι
+
+Present Active Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: ἔξεστι ; ἔξεστι
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Active Subjunctive
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Active Optative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Active Imperative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Middle Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Middle Subjunctive
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Middle Optative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Middle Imperative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Passive Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Passive Subjunctive
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Passive Optative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Present Passive Imperative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Imperfect Active Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: ἐξῆν ; ἐξῆν
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Imperfect Middle Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Imperfect Passive Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Future Active Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Future Active Optative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Future Middle Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: ἐξέσται ; ἐξέσται
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Future Middle Optative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Future Passive Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Future Passive Optative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Active Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Active Subjunctive
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Active Optative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Active Imperative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Middle Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Middle Subjunctive
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Middle Optative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Middle Imperative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Passive Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Passive Subjunctive
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Passive Optative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Aorist Passive Imperative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Perfect Active Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Perfect Middle Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Perfect Passive Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Pluperfect Active Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Pluperfect Middle Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Pluperfect Passive Indicative
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
+
+Verb 79. ἕπομαι (Middle Deponent)
 
 Present Active Indicative
 1s: NF ; NDF
@@ -24491,7 +25119,7 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 78. ὁράω (Partial Deponent)
+Verb 80. ὁράω (Partial Deponent)
 
 Present Active Indicative
 1s: ὁρῶ ; ὁρα ‐ ω
@@ -24805,7 +25433,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: ἑώρᾱσθε, ὦφθε ; ε ‐ ἑωρᾱ ‐ σθε, ε ‐ ὠπ ‐ σθε
 3p: ἑώρᾱντο, — ; ε ‐ ἑωρᾱ ‐ ντο, —
 
-Verb 79. συμφέρω
+Verb 81. συμφέρω
 
 Present Active Indicative
 1s: συμφέρω ; συν ‐ φερ ‐ ω
@@ -25119,7 +25747,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: συνενήνεχθε ; συν ‐ ενηνεκ ‐ σθε
 3p: — ; —
 
-Verb 80. φέρω
+Verb 82. φέρω
 
 Present Active Indicative
 1s: φέρω ; φερ ‐ ω
@@ -25433,7 +26061,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: ἐνήνεχθε ; ἐνηνεκ ‐ σθε
 3p: — ; —
 
-Verb 81. ἀναβαίνω (Partial Deponent)
+Verb 83. ἀναβαίνω (Partial Deponent)
 
 Present Active Indicative
 1s: ἀναβαίνω ; ἀνα ‐ βαιν ‐ ω
@@ -25747,7 +26375,7 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 82. βαίνω (Partial Deponent)
+Verb 84. βαίνω (Partial Deponent)
 
 Present Active Indicative
 1s: βαίνω ; βαιν ‐ ω
@@ -26061,7 +26689,7 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 83. γιγνώσκω (Partial Deponent)
+Verb 85. γιγνώσκω (Partial Deponent)
 
 Present Active Indicative
 1s: γιγνώσκω ; γιγνωσκ ‐ ω
@@ -26375,7 +27003,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: ἔγνωσθε ; ἐγνωσ ‐ σθε
 3p: — ; —
 
-Verb 84. ἐκπῑ́πτω (Partial Deponent)
+Verb 86. ἐκπῑ́πτω (Partial Deponent)
 
 Present Active Indicative
 1s: ἐκπῑ́πτω ; ἐκ ‐ πῑπτ ‐ ω
@@ -26689,7 +27317,7 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 85. λέγω
+Verb 87. λέγω
 
 Present Active Indicative
 1s: λέγω ; λεγ ‐ ω
@@ -27003,7 +27631,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: εἴρησθε, ἐλέλεχθε ; εἰρη ‐ σθε, ε ‐ λελεγ ‐ σθε
 3p: εἴρηντο, — ; εἰρη ‐ ντο, —
 
-Verb 86. νομίζω
+Verb 88. νομίζω
 
 Present Active Indicative
 1s: νομίζω ; νομιζ ‐ ω
@@ -27317,7 +27945,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: ἐνενόμισθε ; ε ‐ νενομισ ‐ σθε
 3p: — ; —
 
-Verb 87. πῑ́πτω (Partial Deponent)
+Verb 89. πῑ́πτω (Partial Deponent)
 
 Present Active Indicative
 1s: πῑ́πτω ; πῑπτ ‐ ω
@@ -27631,7 +28259,7 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 88. προδίδωμι
+Verb 90. προδίδωμι
 
 Present Active Indicative
 1s: προδίδωμι ; προ ‐ διδω ‐ μι
@@ -27945,7 +28573,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: προεδέδοσθε, προυδέδοσθε ; προ ‐ ε ‐ δεδο ‐ σθε
 3p: προεδέδοντο, προυδέδοντο ; προ ‐ ε ‐ δεδο ‐ ντο
 
-Verb 89. φημί
+Verb 91. φημί
 
 Present Active Indicative
 1s: φημί ; φη ‐ μι
@@ -28259,7 +28887,7 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 90. ἁμαρτάνω (Partial Deponent)
+Verb 92. ἁμαρτάνω (Partial Deponent)
 
 Present Active Indicative
 1s: ἁμαρτάνω ; ἁμαρταν ‐ ω
@@ -28573,7 +29201,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: ἡμάρτησθε ; ἡμαρτη ‐ σθε
 3p: ἡμάρτηντο ; ἡμαρτη ‐ ντο
 
-Verb 91. δοκέω
+Verb 93. δοκέω
 
 Present Active Indicative
 1s: δοκῶ ; δοκε ‐ ω
@@ -28887,7 +29515,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: ἐδέδοχθε ; ε ‐ δεδοκ ‐ σθε
 3p: — ; —
 
-Verb 92. δύναμαι (Middle Deponent)
+Verb 94. δύναμαι (Middle Deponent)
 
 Present Active Indicative
 1s: NF ; NDF
@@ -29201,7 +29829,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 93. εἶμι
+Verb 95. εἶμι
 
 Present Active Indicative
 1s: εἶμι ; εἰ ‐ μι
@@ -29515,7 +30143,7 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 94. ἐλαύνω
+Verb 96. ἐλαύνω
 
 Present Active Indicative
 1s: ἐλαύνω ; ἐλαυν ‐ ω
@@ -29829,7 +30457,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: ἐλήλασθε ; ἐληλα ‐ σθε
 3p: ἐλήλαντο ; ἐληλα ‐ ντο
 
-Verb 95. ἐπίσταμαι (Middle Deponent)
+Verb 97. ἐπίσταμαι (Middle Deponent)
 
 Present Active Indicative
 1s: NF ; NDF
@@ -30143,7 +30771,7 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 96. ἔχω
+Verb 98. ἔχω
 
 Present Active Indicative
 1s: ἔχω ; ἐχ ‐ ω
@@ -30457,7 +31085,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: -ἔσχησθε ; -ἐσχη ‐ σθε
 3p: -ἔσχηντο ; -ἐσχη ‐ ντο
 
-Verb 97. ἀποθνῄσκω (Partial Deponent)
+Verb 99. ἀποθνῄσκω (Partial Deponent)
 
 Present Active Indicative
 1s: ἀποθνῄσκω ; ἀπο ‐ θνῃσκ ‐ ω
@@ -30771,7 +31399,7 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 98. ἀποκτείνω
+Verb 100. ἀποκτείνω
 
 Present Active Indicative
 1s: ἀποκτείνω ; ἀπο ‐ κτειν ‐ ω
@@ -31085,7 +31713,7 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 99. ἀφῑ́ημι
+Verb 101. ἀφῑ́ημι
 
 Present Active Indicative
 1s: ἀφῑ́ημι ; ἀπο ‐ ῑ̔η ‐ μι
@@ -31399,7 +32027,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: ἀφεῖσθε ; ἀπο ‐ ἑι ‐ σθε
 3p: ἀφεῖντο ; ἀπο ‐ ἑι ‐ ντο
 
-Verb 100. βουλεύω
+Verb 102. βουλεύω
 
 Present Active Indicative
 1s: βουλεύω ; βουλευ ‐ ω
@@ -31713,7 +32341,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: ἐβεβούλευσθε ; ε ‐ βεβουλευ ‐ σθε
 3p: ἐβεβούλευντο ; ε ‐ βεβουλευ ‐ ντο
 
-Verb 101. ἐπιβουλεύω
+Verb 103. ἐπιβουλεύω
 
 Present Active Indicative
 1s: ἐπιβουλεύω ; ἐπι ‐ βουλευ ‐ ω
@@ -32027,7 +32655,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: ἐπεβεβούλευσθε ; ἐπι ‐ ε ‐ βεβουλευ ‐ σθε
 3p: ἐπεβεβούλευντο ; ἐπι ‐ ε ‐ βεβουλευ ‐ ντο
 
-Verb 102. ζητέω
+Verb 104. ζητέω
 
 Present Active Indicative
 1s: ζητῶ ; ζητε ‐ ω
@@ -32341,7 +32969,7 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 103. ῑ̔́ημι
+Verb 105. ῑ̔́ημι
 
 Present Active Indicative
 1s: ῑ̔́ημι ; ῑ̔η ‐ μι
@@ -32655,7 +33283,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: -εἷσθε ; -εἱ ‐ σθε
 3p: -εἷντο ; -εἱ ‐ ντο
 
-Verb 104. μέλλω
+Verb 106. μέλλω
 
 Present Active Indicative
 1s: μέλλω ; μελλ ‐ ω
@@ -32969,7 +33597,7 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 105. πιστεύω
+Verb 107. πιστεύω
 
 Present Active Indicative
 1s: πιστεύω ; πιστευ ‐ ω
@@ -33283,7 +33911,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: ἐπεπίστευσθε ; ε ‐ πεπιστευ ‐ σθε
 3p: ἐπεπίστευντο ; ε ‐ πεπιστευ ‐ ντο
 
-Verb 106. συμβουλεύω
+Verb 108. συμβουλεύω
 
 Present Active Indicative
 1s: συμβουλεύω ; συν ‐ βουλευ ‐ ω
@@ -33597,7 +34225,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: συνεβεβούλευσθε ; συν ‐ ε ‐ βεβουλευ ‐ σθε
 3p: συνεβεβούλευντο ; συν ‐ ε ‐ βεβουλευ ‐ ντο
 
-Verb 107. συνῑ́ημι
+Verb 109. συνῑ́ημι
 
 Present Active Indicative
 1s: συνῑ́ημι ; συν ‐ ῑ̔η ‐ μι
@@ -33911,7 +34539,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: συνεῖσθε ; συν ‐ εἱ ‐ σθε
 3p: συνεῖντο ; συν ‐ εἱ ‐ ντο
 
-Verb 108. αἰσχῡ́νομαι (Middle Deponent)
+Verb 110. αἰσχῡ́νομαι (Middle Deponent)
 
 Present Active Indicative
 1s: NF ; NDF
@@ -34225,7 +34853,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 109. ἀποκρῑ́νομαι (Middle Deponent)
+Verb 111. ἀποκρῑ́νομαι (Middle Deponent)
 
 Present Active Indicative
 1s: NF ; NDF
@@ -34539,7 +35167,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 110. ἀπόλλῡμι (Partial Deponent)
+Verb 112. ἀπόλλῡμι (Partial Deponent)
 
 Present Active Indicative
 1s: ἀπόλλῡμι ; ἀπο ‐ ολλῡ ‐ μι
@@ -34853,7 +35481,7 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 111. ἀνερήσομαι (Partial Deponent)
+Verb 113. ἀνερήσομαι (Partial Deponent)
 
 Present Active Indicative
 1s: NF ; NDF
@@ -35167,7 +35795,7 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 112. ἐρήσομαι (Partial Deponent)
+Verb 114. ἐρήσομαι (Partial Deponent)
 
 Present Active Indicative
 1s: NF ; NDF
@@ -35481,7 +36109,7 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 113. εὑρίσκω
+Verb 115. εὑρίσκω
 
 Present Active Indicative
 1s: εὑρίσκω ; εὑρισκ ‐ ω
@@ -35795,7 +36423,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: ηὕρησθε, εὕρησθε ; ηὑρη ‐ σθε, εὑρη ‐ σθε
 3p: ηὕρηντο, εὕρηντο ; ηὑρη ‐ ντο, εὑρη ‐ ντο
 
-Verb 114. ἡγέομαι (Middle Deponent)
+Verb 116. ἡγέομαι (Middle Deponent)
 
 Present Active Indicative
 1s: NF ; NDF
@@ -36109,7 +36737,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 115. κρῑ́νω
+Verb 117. κρῑ́νω
 
 Present Active Indicative
 1s: κρῑ́νω ; κρῑν ‐ ω
@@ -36423,7 +37051,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: ἐκέκρισθε ; ε ‐ κεκρι ‐ σθε
 3p: ἐκέκριντο ; ε ‐ κεκρι ‐ ντο
 
-Verb 116. οἶδα (Partial Deponent)
+Verb 118. οἶδα (Partial Deponent)
 
 Present Active Indicative
 1s: NF ; NDF
@@ -36737,7 +37365,7 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 117. σύνοιδα (Partial Deponent)
+Verb 119. σύνοιδα (Partial Deponent)
 
 Present Active Indicative
 1s: NF ; NDF
@@ -37051,7 +37679,7 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 118. ἀφικνέομαι (Middle Deponent)
+Verb 120. ἀφικνέομαι (Middle Deponent)
 
 Present Active Indicative
 1s: NF ; NDF
@@ -37365,7 +37993,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 119. δεῖ
+Verb 121. δεῖ
 
 Present Active Indicative
 1s: NF ; NDF
@@ -37679,7 +38307,7 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 120. κεῖμαι (Partial Deponent)
+Verb 122. κεῖμαι (Partial Deponent)
 
 Present Active Indicative
 1s: NF ; NDF
@@ -37993,7 +38621,7 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 121. πυνθάνομαι (Middle Deponent)
+Verb 123. πυνθάνομαι (Middle Deponent)
 
 Present Active Indicative
 1s: NF ; NDF
@@ -38307,7 +38935,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 122. τρέπω (Partial Deponent)
+Verb 124. τρέπω (Partial Deponent)
 
 Present Active Indicative
 1s: τρέπω ; τρεπ ‐ ω
@@ -38621,7 +39249,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: ἐτέτραφθε ; ε ‐ τετραπ ‐ σθε
 3p: — ; —
 
-Verb 123. φαίνω
+Verb 125. φαίνω
 
 Present Active Indicative
 1s: φαίνω ; φαιν ‐ ω
@@ -38935,7 +39563,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: ἐπέφανθε ; ε ‐ πεφαν ‐ σθε
 3p: — ; —
 
-Verb 124. χρή
+Verb 126. χρή
 
 Present Active Indicative
 1s: NF ; NDF
@@ -39249,17 +39877,17 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Total rows including -: 21139
-Total forms including alternates, minus -: 22826
+Total rows including -: 21145
+Total forms including alternates, minus -: 22832
 
 Zero Forms: 118
-One Form: 19284
+One Form: 19290
 Two Forms: 1686
 Three Forms: 34
 Four Forms: 17
 Five Forms: 0
 More Forms: 0
-Total Forms: 22826 = 22826
+Total Forms: 22832 = 22832
 
 Longest Form: 2,1,3,0,2, v: καταστήσαιεν, καταστήσειαν, κατασταῖεν, κατασταίησαν, l: 102
 

@@ -16,7 +16,7 @@ extern char *tenses[];
 extern char *moods[];
 extern char *voices[];
 
-int numVerbs = 125;
+int numVerbs = 127;
 
 void getCurrentTime(char *buffer, int bufferLen)
 {

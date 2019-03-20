@@ -8,6 +8,66 @@
 #include <stdbool.h>
 #include "specialverbs.h"
 
+int getEsti(VerbFormC *vf, UCS2 *buffer, int *bufferLen, int bufferCapacity)
+{
+    if ( vf->person == THIRD && vf->number == SINGULAR && vf->mood == INDICATIVE)
+    {
+        if ( vf->tense == PRESENT && vf->voice == ACTIVE)
+        {
+            splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_PSILI_AND_OXIA,GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_TAU,GREEK_SMALL_LETTER_IOTA}, 4);
+            return 1;
+        }
+        else if ( vf->tense == IMPERFECT && vf->voice == ACTIVE)
+        {
+            splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_ETA_WITH_PSILI_AND_PERISPOMENI,GREEK_SMALL_LETTER_NU}, 2);
+            return 1;
+        }
+        else if ( vf->tense == FUTURE && vf->voice == MIDDLE)
+        {
+            splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_PSILI_AND_OXIA,GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_ALPHA,GREEK_SMALL_LETTER_IOTA }, 5);
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+int getExesti(VerbFormC *vf, UCS2 *buffer, int *bufferLen, int bufferCapacity)
+{
+    if ( vf->person == THIRD && vf->number == SINGULAR && vf->mood == INDICATIVE)
+    {
+        if ( vf->tense == PRESENT && vf->voice == ACTIVE)
+        {
+            splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_PSILI_AND_OXIA,GREEK_SMALL_LETTER_XI,GREEK_SMALL_LETTER_EPSILON,GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_TAU,GREEK_SMALL_LETTER_IOTA}, 6);
+            return 1;
+        }
+        else if ( vf->tense == IMPERFECT && vf->voice == ACTIVE)
+        {
+            splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_PSILI,GREEK_SMALL_LETTER_XI,GREEK_SMALL_LETTER_ETA_WITH_PERISPOMENI,GREEK_SMALL_LETTER_NU}, 4);
+            return 1;
+        }
+        else if ( vf->tense == FUTURE && vf->voice == MIDDLE)
+        {
+            splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_PSILI,GREEK_SMALL_LETTER_XI,GREEK_SMALL_LETTER_EPSILON_WITH_OXIA,GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_ALPHA,GREEK_SMALL_LETTER_IOTA }, 7);
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    else
+    {
+        return 0;
+    }
+}
+
 int getEimi(VerbFormC *vf, UCS2 *buffer, int *bufferLen, int bufferCapacity)
 {
     //only present/imperfect active for eimi/
