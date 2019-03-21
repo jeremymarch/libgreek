@@ -826,13 +826,13 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
         *bufferLen = ucs2StemPlusEndingBufferLen;
         return ret;
     }
-    else if ( utf8HasSuffix(vf->verb->present, "ἔστι") )
+    else if ( utf8HasSuffix(vf->verb->present, "ἔστι(ν)") )
     {
         int ret = getEsti(vf, ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity);
         *bufferLen = ucs2StemPlusEndingBufferLen;
         return ret;
     }
-    else if ( utf8HasSuffix(vf->verb->present, "ἔξεστι") )
+    else if ( utf8HasSuffix(vf->verb->present, "ἔξεστι(ν)") )
     {
         int ret = getExesti(vf, ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity,decompose);
         *bufferLen = ucs2StemPlusEndingBufferLen;

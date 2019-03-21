@@ -1507,7 +1507,8 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
     }
     else if (utf8HasSuffix(vf->verb->present, "εἰμί") && vf->tense == FUTURE && vf->person == THIRD && vf->number == SINGULAR && vf->mood == INDICATIVE)
     {
-        leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+        if (!decompose)
+            leftShiftFromOffsetSteps(ending, 0, 1, &elen);
     }
     else if (utf8HasSuffix(vf->verb->present, "ἔχω") && vf->number == SINGULAR && vf->tense == AORIST && vf->voice == ACTIVE && vf->mood == OPTATIVE)
     {   //h&q page 504

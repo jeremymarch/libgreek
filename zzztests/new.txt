@@ -24004,7 +24004,7 @@ Future Active Optative
 Future Middle Indicative
 1s: ἔσομαι ; ἐσ ‐ ομαι
 2s: ἔσει, ἔσῃ ; ἐσ ‐ ει, ἐσ ‐ ῃ
-3s: ἔσται ; ἐσ ‐ ται
+3s: ἔσται ; ἐσ ‐ εται
 1p: ἐσόμεθα ; ἐσ ‐ ομεθα
 2p: ἔσεσθε ; ἐσ ‐ εσθε
 3p: ἔσονται ; ἐσ ‐ ονται
@@ -24177,12 +24177,12 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 77. ἔστι
+Verb 77. ἔστι(ν)
 
 Present Active Indicative
 1s: NF ; NDF
 2s: NF ; NDF
-3s: ἔστι ; ἔστι
+3s: ἔστι(ν) ; ἔστι(ν)
 1p: NF ; NDF
 2p: NF ; NDF
 3p: NF ; NDF
@@ -24491,12 +24491,12 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Verb 78. ἔξεστι
+Verb 78. ἔξεστι(ν)
 
 Present Active Indicative
 1s: NF ; NDF
 2s: NF ; NDF
-3s: ἔξεστι ; ἐξ ‐ εστι
+3s: ἔξεστι(ν) ; ἐξ ‐ εστι(ν)
 1p: NF ; NDF
 2p: NF ; NDF
 3p: NF ; NDF

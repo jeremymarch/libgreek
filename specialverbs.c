@@ -14,7 +14,7 @@ int getEsti(VerbFormC *vf, UCS2 *buffer, int *bufferLen, int bufferCapacity)
     {
         if ( vf->tense == PRESENT && vf->voice == ACTIVE)
         {
-            splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_PSILI_AND_OXIA,GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_TAU,GREEK_SMALL_LETTER_IOTA}, 4);
+            splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_PSILI_AND_OXIA,GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_TAU,GREEK_SMALL_LETTER_IOTA,LEFT_PARENTHESIS,GREEK_SMALL_LETTER_NU,RIGHT_PARENTHESIS}, 7);
             return 1;
         }
         else if ( vf->tense == IMPERFECT && vf->voice == ACTIVE)
@@ -45,9 +45,9 @@ int getExesti(VerbFormC *vf, UCS2 *buffer, int *bufferLen, int bufferCapacity, b
         if ( vf->tense == PRESENT && vf->voice == ACTIVE)
         {
             if (!decompose)
-                splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_PSILI_AND_OXIA,GREEK_SMALL_LETTER_XI,GREEK_SMALL_LETTER_EPSILON,GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_TAU,GREEK_SMALL_LETTER_IOTA}, 6);
+                splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_PSILI_AND_OXIA,GREEK_SMALL_LETTER_XI,GREEK_SMALL_LETTER_EPSILON,GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_TAU,GREEK_SMALL_LETTER_IOTA,LEFT_PARENTHESIS,GREEK_SMALL_LETTER_NU,RIGHT_PARENTHESIS}, 9);
             else
-                splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_PSILI,GREEK_SMALL_LETTER_XI,SPACE,HYPHEN,SPACE,GREEK_SMALL_LETTER_EPSILON,GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_TAU,GREEK_SMALL_LETTER_IOTA}, 9);
+                splice(buffer, bufferLen, bufferCapacity, *bufferLen, 0, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_PSILI,GREEK_SMALL_LETTER_XI,SPACE,HYPHEN,SPACE,GREEK_SMALL_LETTER_EPSILON,GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_TAU,GREEK_SMALL_LETTER_IOTA,LEFT_PARENTHESIS,GREEK_SMALL_LETTER_NU,RIGHT_PARENTHESIS}, 12);
                 
             return 1;
         }
