@@ -1078,14 +1078,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 }
                 if (vf->mood == INDICATIVE && decompose)
                 {
-                    rightShiftFromOffsetSteps(ucs2, 2, 3, len);
-                    
-                    ucs2[2] = SPACE;
-                    ucs2[3] = HYPHEN;
-                    ucs2[4] = SPACE;
-                    ucs2[5] = GREEK_SMALL_LETTER_EPSILON_WITH_DASIA;
-                    
-                    //splice(ucs2, len, 1024/*fix me*/, 2, 1, (UCS2[]){SPACE,HYPHEN,SPACE,GREEK_SMALL_LETTER_EPSILON_WITH_DASIA }, 4);
+                    splice(ucs2, len, 1024, *len - 1, 1, (UCS2[]){SPACE,HYPHEN,SPACE,GREEK_SMALL_LETTER_EPSILON_WITH_DASIA }, 4);
                 }
                 if (vf->mood == OPTATIVE)
                 {
@@ -1180,11 +1173,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 }
                 if (vf->mood == INDICATIVE && decompose)
                 {
-                    rightShiftFromOffsetSteps(ucs2, *len - 2, 3, len);
-                    ucs2[*len - 4] = SPACE;
-                    ucs2[*len - 3] = HYPHEN;
-                    ucs2[*len - 2] = SPACE;
-                    ucs2[*len - 1] = GREEK_SMALL_LETTER_EPSILON_WITH_DASIA;
+                    splice(ucs2, len, 1024, *len - 1, 1, (UCS2[]){SPACE,HYPHEN,SPACE,GREEK_SMALL_LETTER_EPSILON_WITH_DASIA }, 4);
                 }
                 else if (vf->mood == OPTATIVE)
                 {

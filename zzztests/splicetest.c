@@ -430,6 +430,51 @@ else
     {
         printf("test passed\n");
     }
+    
+    printf("TEST 13: insert 3 replacing 1 at end\n");
+    memmove(a, clean, sizeof(UCS2)*8);
+    lenA = 5;
+    printa(a, lenA);
+    printf(" (len: %d)\n", lenA);
+    //splice(ucs2, len, BUFFER_LEN, 0, 3, (UCS2[]){GREEK_SMALL_LETTER_RHO_WITH_DASIA}, 1);
+    if (splice(a, &lenA, maxA, lenA-1, 1, (UCS2[]){6,7,8}, 3) == false)
+    {
+        printf("test failed\n");
+        exit(1);
+    }
+    printa(a, lenA);
+    printf(" (len: %d)\n", lenA);
+    if (!test(a, (UCS2[]){1,2,3,4,6,7,8}, 7) || lenA != 7)
+    {
+        printf("test failed\n");
+        exit(1);
+    }
+    else
+    {
+        printf("test passed\n");
+    }
+    
+    
+    
+    
+    /*
+    *****
+    printf("aaFAIL TEST 7: \n");
+    memmove(a, clean, sizeof(UCS2)*8);
+    lenA = 4;
+    printa(a, lenA);
+    printf(" (len: %d)\n", lenA);
+    if (splice(a, &lenA, maxA, 3, 1, (UCS2[]){5,6,7,8}, 2) == true)
+    {
+        printf("test passed\n");
+    }
+    printa(a, lenA);
+    printf(" (len: %d)\n", lenA);
+    ****
+    */
+    
+    
+    
 
     //Tests meant to fail:
     printf("\nFail tests\n\n");
@@ -492,21 +537,19 @@ else
         printf("test failed\n");
         exit(1);
     }
-        printf("test passed\n");
+    printf("test passed\n");
 
-        printf("FAIL TEST 6: insert 3 at 5, replace 1\n");
-        memmove(a, clean, sizeof(UCS2)*8);
-        lenA = 5;
-        printa(a, lenA);
-        printf(" (len: %d)\n", lenA);
-        if (splice(a, &lenA, maxA, 5, 1, (UCS2[]){5,6,7,8}, 3) == true)
-        {
-            printf("test failed\n");
-            exit(1);
-        }
-        printf("test passed\n\n");
-
-        printf("All tests passed.\n");
-
-
+    printf("FAIL TEST 6: insert 3 at 5, replace 1\n");
+    memmove(a, clean, sizeof(UCS2)*8);
+    lenA = 5;
+    printa(a, lenA);
+    printf(" (len: %d)\n", lenA);
+    if (splice(a, &lenA, maxA, 5, 1, (UCS2[]){5,6,7,8}, 3) == true)
+    {
+        printf("test failed\n");
+        exit(1);
+    }
+    printf("test passed\n\n");
+  
+    printf("All tests passed.\n");
 }
