@@ -453,28 +453,6 @@ else
     {
         printf("test passed\n");
     }
-    
-    
-    
-    
-    /*
-    *****
-    printf("aaFAIL TEST 7: \n");
-    memmove(a, clean, sizeof(UCS2)*8);
-    lenA = 4;
-    printa(a, lenA);
-    printf(" (len: %d)\n", lenA);
-    if (splice(a, &lenA, maxA, 3, 1, (UCS2[]){5,6,7,8}, 2) == true)
-    {
-        printf("test passed\n");
-    }
-    printa(a, lenA);
-    printf(" (len: %d)\n", lenA);
-    ****
-    */
-    
-    
-    
 
     //Tests meant to fail:
     printf("\nFail tests\n\n");
