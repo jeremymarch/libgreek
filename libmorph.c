@@ -52,6 +52,8 @@ char *voicesabbrev[NUM_VOICES] = { "act.", "mid.", "pass." };
 char *moods[NUM_MOODS] = { "Indicative", "Subjunctive", "Optative", "Imperative" };
 char *moodsabbrev[NUM_MOODS] = { "ind.", "subj.", "opt.", "imper." };
 
+void oxiaToTonos(UCS2 *word, int len);
+
 /*
 void endingGetDescription(int e, char *buffer, int bufferLen)
 {
@@ -963,7 +965,11 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
     utf8_to_ucs2_string((const unsigned char*)utf8Stems, ucs2Stems, &ucs2StemsLen);
     
     //convert any tonos into oxia, just in case.
+#ifdef USE_TONOS //this is defined, or not, in GreekUnicode.h
+    oxiaToTonos(ucs2Stems, ucs2StemsLen);
+#else
     tonosToOxia(ucs2Stems, ucs2StemsLen);
+#endif
     
     if (utf8HasSuffix(vf->verb->present, "προδίδωμι") && !decompose && (vf->tense == IMPERFECT || vf->tense == PLUPERFECT))
     {
@@ -1082,7 +1088,11 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
         utf8_to_ucs2_string((const unsigned char*)utf8Ending, ucs2Endings, &ucs2EndingsLen);
         
         //convert any tonos into oxia, just in case.
+#ifdef USE_TONOS //this is defined, or not, in GreekUnicode.h
+        oxiaToTonos(ucs2Endings, ucs2EndingsLen);
+#else
         tonosToOxia(ucs2Endings, ucs2EndingsLen);
+#endif
         
         //phhmi/
         if (vf->person == SECOND && vf->number == SINGULAR && vf->tense == IMPERFECT && vf->voice == ACTIVE && vf->mood == INDICATIVE && utf8HasSuffix(vf->verb->present, "φημί"))
@@ -1205,63 +1215,63 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
             UCS2 eure[] = { GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_UPSILON_WITH_DASIA, GREEK_SMALL_LETTER_RHO, GREEK_SMALL_LETTER_EPSILON } ;
             if (vf->tense == AORIST && vf->mood == IMPERATIVE && vf->number == SINGULAR && vf->voice == ACTIVE && (hasPrefix(&ucs2Buffer[stemStartInBuffer], tempStemLen, ide, 3)))
             {
-                ucs2Buffer[2] = GREEK_SMALL_LETTER_EPSILON_WITH_OXIA;
+                ucs2Buffer[2] = EPSILON_WITH_ACUTE;
             }
             else if (vf->tense == AORIST && vf->mood == IMPERATIVE && vf->number == SINGULAR && vf->voice == ACTIVE && (hasPrefix(&ucs2Buffer[stemStartInBuffer], tempStemLen, labe, 4) || hasPrefix(&ucs2Buffer[stemStartInBuffer], tempStemLen, elthe, 4) || hasPrefix(&ucs2Buffer[stemStartInBuffer], tempStemLen, eipe, 4) || hasPrefix(&ucs2Buffer[stemStartInBuffer], tempStemLen, eure, 4)))
             {
-                ucs2Buffer[3] = GREEK_SMALL_LETTER_EPSILON_WITH_OXIA;
+                ucs2Buffer[3] = EPSILON_WITH_ACUTE;
             }
             //exception h&q page 376, dos when compounded is paroxytone
             UCS2 anathes[] = { GREEK_SMALL_LETTER_ALPHA_WITH_PSILI, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_FINAL_SIGMA } ;
             if (vf->tense == AORIST && vf->mood == IMPERATIVE && vf->number == SINGULAR && vf->voice == ACTIVE && (hasPrefix(&ucs2Buffer[stemStartInBuffer], tempStemLen, anathes, 6) ))
             {
-                ucs2Buffer[2] = GREEK_SMALL_LETTER_ALPHA_WITH_OXIA;
+                ucs2Buffer[2] = ALPHA_WITH_ACUTE;
             }
             //exception h&q page 376, dos when compounded is paroxytone
             UCS2 apodos[] = { GREEK_SMALL_LETTER_ALPHA_WITH_PSILI, GREEK_SMALL_LETTER_PI, GREEK_SMALL_LETTER_OMICRON, GREEK_SMALL_LETTER_DELTA, GREEK_SMALL_LETTER_OMICRON, GREEK_SMALL_LETTER_FINAL_SIGMA } ;
             if (vf->tense == AORIST && vf->mood == IMPERATIVE && vf->number == SINGULAR && vf->voice == ACTIVE && (hasPrefix(&ucs2Buffer[stemStartInBuffer], tempStemLen, apodos, 6) ))
             {
-                ucs2Buffer[2] = GREEK_SMALL_LETTER_OMICRON_WITH_OXIA;
+                ucs2Buffer[2] = OMICRON_WITH_ACUTE;
             }
             //exception h&q page 376, dos when compounded is paroxytone
             UCS2 metados[] = { GREEK_SMALL_LETTER_MU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_DELTA, GREEK_SMALL_LETTER_OMICRON, GREEK_SMALL_LETTER_FINAL_SIGMA } ;
             if (vf->tense == AORIST && vf->mood == IMPERATIVE && vf->number == SINGULAR && vf->voice == ACTIVE && (hasPrefix(&ucs2Buffer[stemStartInBuffer], tempStemLen, metados, 7) ))
             {
-                ucs2Buffer[3] = GREEK_SMALL_LETTER_ALPHA_WITH_OXIA;
+                ucs2Buffer[3] = ALPHA_WITH_ACUTE;
             }
             //exception h&q page 376, dos when compounded is paroxytone
             UCS2 parados[] = { GREEK_SMALL_LETTER_PI, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_RHO, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_DELTA, GREEK_SMALL_LETTER_OMICRON, GREEK_SMALL_LETTER_FINAL_SIGMA } ;
             if (vf->tense == AORIST && vf->mood == IMPERATIVE && vf->number == SINGULAR && vf->voice == ACTIVE && (hasPrefix(&ucs2Buffer[stemStartInBuffer], tempStemLen, parados, 7) ))
             {
-                ucs2Buffer[3] = GREEK_SMALL_LETTER_ALPHA_WITH_OXIA;
+                ucs2Buffer[3] = ALPHA_WITH_ACUTE;
             }
             //exception h&q page 376, dou when compounded with polysyllablic prefix is paroxytone
             //Already done??
             UCS2 metadou[] = { GREEK_SMALL_LETTER_MU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_DELTA, GREEK_SMALL_LETTER_OMICRON, GREEK_SMALL_LETTER_UPSILON_WITH_PERISPOMENI } ;
             if (vf->tense == AORIST && vf->mood == IMPERATIVE && vf->number == SINGULAR && vf->voice == MIDDLE && (hasPrefix(&ucs2Buffer[stemStartInBuffer], tempStemLen, metadou, 7) ))
             {
-              ucs2Buffer[3] = GREEK_SMALL_LETTER_OMICRON_WITH_OXIA;
+              ucs2Buffer[3] = OMICRON_WITH_ACUTE;
               ucs2Buffer[6] = GREEK_SMALL_LETTER_UPSILON;
             }
             //exception h&q page 376, dou when compounded with polysyllablic prefix is paroxytone
             UCS2 apodou[] = { GREEK_SMALL_LETTER_ALPHA_WITH_PSILI, GREEK_SMALL_LETTER_PI, GREEK_SMALL_LETTER_OMICRON, GREEK_SMALL_LETTER_DELTA, GREEK_SMALL_LETTER_OMICRON, GREEK_SMALL_LETTER_UPSILON_WITH_PERISPOMENI } ;
             if (vf->tense == AORIST && vf->mood == IMPERATIVE && vf->number == SINGULAR && vf->voice == MIDDLE && (hasPrefix(&ucs2Buffer[stemStartInBuffer], tempStemLen, apodou, 6) ))
             {
-                ucs2Buffer[2] = GREEK_SMALL_LETTER_OMICRON_WITH_OXIA;
+                ucs2Buffer[2] = OMICRON_WITH_ACUTE;
                 ucs2Buffer[5] = GREEK_SMALL_LETTER_UPSILON;
             }
             //exception h&q page 376, dou when compounded with polysyllablic prefix is paroxytone
             UCS2 paradou[] = { GREEK_SMALL_LETTER_PI, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_RHO, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_DELTA, GREEK_SMALL_LETTER_OMICRON, GREEK_SMALL_LETTER_UPSILON_WITH_PERISPOMENI } ;
             if (vf->tense == AORIST && vf->mood == IMPERATIVE && vf->number == SINGULAR && vf->voice == MIDDLE && (hasPrefix(&ucs2Buffer[stemStartInBuffer], tempStemLen, paradou, 7) ))
             {
-                ucs2Buffer[3] = GREEK_SMALL_LETTER_ALPHA_WITH_OXIA;
+                ucs2Buffer[3] = ALPHA_WITH_ACUTE;
                 ucs2Buffer[6] = GREEK_SMALL_LETTER_UPSILON;
             }
             //exception h&q page 376, thou when compounded with polysyllablic prefix is paroxytone
             UCS2 anathou[] = { GREEK_SMALL_LETTER_ALPHA_WITH_PSILI, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_OMICRON, GREEK_SMALL_LETTER_UPSILON_WITH_PERISPOMENI } ;
             if (vf->tense == AORIST && vf->mood == IMPERATIVE && vf->number == SINGULAR && vf->voice == MIDDLE && (hasPrefix(&ucs2Buffer[stemStartInBuffer], tempStemLen, anathou, 6) ))
             {
-                ucs2Buffer[2] = GREEK_SMALL_LETTER_ALPHA_WITH_OXIA;
+                ucs2Buffer[2] = ALPHA_WITH_ACUTE;
                 ucs2Buffer[5] = GREEK_SMALL_LETTER_UPSILON;
             }
             
@@ -1345,11 +1355,11 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
         {
             if (vf->person == FIRST)
             {
-                splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON_WITH_OXIA, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_MU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_NU}, 10);
+                splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, EPSILON_WITH_ACUTE, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_MU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_NU}, 10);
             }
             else if (vf->person == SECOND)
             {
-                splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON_WITH_OXIA, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON}, 9);
+                splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, EPSILON_WITH_ACUTE, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON}, 9);
             }
             else if (vf->person == THIRD)
             {
@@ -1365,9 +1375,12 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
         }
         else
         {
-            splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_EPSILON_WITH_PSILI, GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON_WITH_OXIA, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_SIGMA, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_NU}, 11);
+            splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_EPSILON_WITH_PSILI, GREEK_SMALL_LETTER_TAU, EPSILON_WITH_ACUTE, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_SIGMA, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_NU}, 11);
         }
     }
+    
+    //for testing oxia to tonos:
+    //oxiaToTonos(ucs2Buffer, ucs2StemPlusEndingBufferLen);
     
     *bufferLen = ucs2StemPlusEndingBufferLen;
     if (ucs2StemPlusEndingBufferLen < 1)
