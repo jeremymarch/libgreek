@@ -68,14 +68,17 @@ int main(int argc, char **argv)
         char *depPass = " (Passive Deponent)";
         char *depPart = " (Partial Deponent)";
         char *depGig = " (Deponent gignomai)";
+        char *depHgeomai = " (Middle Deponent with 6th pp)";
         if (deponentType(vf.verb) == MIDDLE_DEPONENT)
             depo = depMid;
         else if (deponentType(vf.verb) == PASSIVE_DEPONENT)
-            depo = depMid;
+            depo = depPass;
         else if (deponentType(vf.verb) == PARTIAL_DEPONENT)
             depo = depPart;
         else if (deponentType(vf.verb) == DEPONENT_GIGNOMAI)
             depo = depGig;
+        else if (deponentType(vf.verb) == MIDDLE_DEPONENT_HGEOMAI)
+            depo = depHgeomai;
         else
             depo = NULL;
 

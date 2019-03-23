@@ -112,7 +112,8 @@ enum {
     MIDDLE_DEPONENT,
     PASSIVE_DEPONENT,
     PARTIAL_DEPONENT,
-    DEPONENT_GIGNOMAI //see H&Q page 382
+    DEPONENT_GIGNOMAI, //see H&Q page 382
+    MIDDLE_DEPONENT_HGEOMAI //middle deponent which happens to have a 6th pp
 };
 
 typedef struct v {

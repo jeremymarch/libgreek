@@ -11931,7 +11931,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: ἐβέβλησθε ; ε ‐ βεβλη ‐ σθε
 3p: ἐβέβληντο ; ε ‐ βεβλη ‐ ντο
 
-Verb 38. βούλομαι (Middle Deponent)
+Verb 38. βούλομαι (Passive Deponent)
 
 Present Active Indicative
 1s: NF ; NDF
@@ -16013,7 +16013,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: ἐπεφίλησθε ; ε ‐ πεφιλη ‐ σθε
 3p: ἐπεφίληντο ; ε ‐ πεφιλη ‐ ντο
 
-Verb 51. φοβέομαι (Middle Deponent)
+Verb 51. φοβέομαι (Passive Deponent)
 
 Present Active Indicative
 1s: NF ; NDF
@@ -29515,7 +29515,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: ἐδέδοχθε ; ε ‐ δεδοκ ‐ σθε
 3p: — ; —
 
-Verb 94. δύναμαι (Middle Deponent)
+Verb 94. δύναμαι (Passive Deponent)
 
 Present Active Indicative
 1s: NF ; NDF
@@ -30457,7 +30457,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: ἐλήλασθε ; ἐληλα ‐ σθε
 3p: ἐλήλαντο ; ἐληλα ‐ ντο
 
-Verb 97. ἐπίσταμαι (Middle Deponent)
+Verb 97. ἐπίσταμαι (Passive Deponent)
 
 Present Active Indicative
 1s: NF ; NDF
@@ -34539,7 +34539,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: συνεῖσθε ; συν ‐ εἱ ‐ σθε
 3p: συνεῖντο ; συν ‐ εἱ ‐ ντο
 
-Verb 110. αἰσχῡ́νομαι (Middle Deponent)
+Verb 110. αἰσχῡ́νομαι (Passive Deponent)
 
 Present Active Indicative
 1s: NF ; NDF
@@ -36423,7 +36423,7 @@ Pluperfect Passive (Middle/Passive) Indicative
 2p: ηὕρησθε, εὕρησθε ; ηὑρη ‐ σθε, εὑρη ‐ σθε
 3p: ηὕρηντο, εὕρηντο ; ηὑρη ‐ ντο, εὑρη ‐ ντο
 
-Verb 116. ἡγέομαι (Middle Deponent)
+Verb 116. ἡγέομαι (Middle Deponent with 6th pp)
 
 Present Active Indicative
 1s: NF ; NDF

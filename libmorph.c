@@ -804,7 +804,7 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
         return 0;
     }
     //for perfect and pluperfect we need to block passive if middle or passive deponent
-    if (vf->voice == PASSIVE && (vf->tense == PERFECT || vf->tense == PLUPERFECT) && (deponentType(vf->verb) == MIDDLE_DEPONENT || deponentType(vf->verb) == PASSIVE_DEPONENT))
+    if (vf->voice == PASSIVE && (vf->tense == PERFECT || vf->tense == PLUPERFECT) && (deponentType(vf->verb) == MIDDLE_DEPONENT || deponentType(vf->verb) == PASSIVE_DEPONENT || deponentType(vf->verb) == MIDDLE_DEPONENT_HGEOMAI))
     {
         return 0;
     }
@@ -1546,7 +1546,7 @@ int deponentType(Verb *v)
     }
     else if ( utf8HasSuffix(v->present, "ἡγέομαι") )//doesn't seem to have future passive, though?
     {
-        return PASSIVE_DEPONENT; //close enough
+        return MIDDLE_DEPONENT_HGEOMAI; //we call it a middle deponent which happens to also have a 6th pp
     }
     else if (utf8HasSuffix(v->present, "μαι") || utf8HasSuffix(v->future, "μαι") || utf8HasSuffix(v->aorist, "μην") )
     {
