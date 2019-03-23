@@ -249,14 +249,14 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             {
                 if (!decompose)
                 {
-                    splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                    splice(ending, &elen, elen, 0, 1, NULL, 0);
                 }
             }
             else if (vf->person == SECOND && vf->number == PLURAL)
             {
                 if (!decompose)
                 {
-                    splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                    splice(ending, &elen, elen, 0, 1, NULL, 0);
                 }
             }
             else if (vf->person == THIRD && vf->number == PLURAL)
@@ -273,7 +273,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             {
                 if (!decompose)
                 {
-                    splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                    splice(ending, &elen, elen, 0, 1, NULL, 0);
                 }
             }
             else if (vf->person == THIRD && vf->number == PLURAL)
@@ -323,7 +323,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 
                 if (!decompose)
                 {
-                    splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                    splice(ending, &elen, elen, 0, 1, NULL, 0);
                 }
             }
             else if (vf->person == THIRD && vf->number == PLURAL)
@@ -430,7 +430,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             }
             if ((utf8HasSuffix(vf->verb->present, "ἐπίσταμαι") || utf8HasSuffix(vf->verb->present, "δύναμαι")) && decompose)
             {
-                splice(ucs2, len, 1024, *len - 1, 1, (UCS2[]){}, 0);
+                splice(ucs2, len, 1024, *len - 1, 1, NULL, 0);
             }
             else if (( utf8HasSuffix(vf->verb->present, "στημι") || utf8HasSuffix(vf->verb->present, "αμαι") || utf8HasSuffix(vf->verb->present, "φημί")) && decompose)
             {
@@ -445,7 +445,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 if (ending[0] == GREEK_SMALL_LETTER_OMICRON && !decompose)// this is right
                     --(*len);
                 else if (ending[0] == GREEK_SMALL_LETTER_EPSILON)
-                    splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                    splice(ending, &elen, elen, 0, 1, NULL, 0);
             }
             else if (utf8HasSuffix(vf->verb->present, "εἶμι"))
             {
@@ -454,7 +454,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             }
             else
             {
-                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                splice(ending, &elen, elen, 0, 1, NULL, 0);
                 //h&q p 504
                 if (vf->person != FIRST && vf->voice != ACTIVE && !utf8HasSuffix(vf->verb->present, "ἐπίσταμαι") && !utf8HasSuffix(vf->verb->present, "δύναμαι")) //H&Q page 503, 607 and 676
                 {
@@ -478,13 +478,13 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 {
                     ucs2[0] = GREEK_SMALL_LETTER_IOTA_WITH_PSILI;
                     *len = 1;
-                    splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                    splice(ending, &elen, elen, 0, 1, NULL, 0);
                 }
                 else if (vf->person == THIRD && vf->number == SINGULAR)
                 {
                     ucs2[0] = GREEK_SMALL_LETTER_IOTA_WITH_PSILI;
                     *len = 1;
-                    splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                    splice(ending, &elen, elen, 0, 1, NULL, 0);
                 }
                 else if (vf->person == THIRD && vf->number == PLURAL)
                 {
@@ -563,7 +563,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             }
             else
             {
-                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                splice(ending, &elen, elen, 0, 1, NULL, 0);
             }
         }
     }
@@ -605,11 +605,11 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             }
             else if (vf->person == FIRST && vf->number == PLURAL)
             {
-                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                splice(ending, &elen, elen, 0, 1, NULL, 0);
             }
             else if (vf->person == SECOND && vf->number == PLURAL)
             {
-                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                splice(ending, &elen, elen, 0, 1, NULL, 0);
             }
             else if (vf->person == THIRD && vf->number == PLURAL)
             {
@@ -639,7 +639,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 {
                     if (!decompose)
                     {
-                        splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                        splice(ending, &elen, elen, 0, 1, NULL, 0);
                     }
                 }
                 else if (vf->person == THIRD)
@@ -657,7 +657,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             }
             else if (vf->number == PLURAL && vf->voice == ACTIVE)
             {
-                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                splice(ending, &elen, elen, 0, 1, NULL, 0);
                 if (vf->person == THIRD)
                 {
                     ending[0] = GREEK_SMALL_LETTER_SIGMA;
@@ -673,7 +673,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             if (vf->number == PLURAL)
                 ucs2[*len - 1] = GREEK_SMALL_LETTER_ALPHA;
             
-            splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+            splice(ending, &elen, elen, 0, 1, NULL, 0);
             if (vf->person == THIRD && vf->number == SINGULAR)
             {
                 elen -= 3;
@@ -692,7 +692,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             if (vf->number == PLURAL)
                 ucs2[*len - 1] = GREEK_SMALL_LETTER_ALPHA;
             
-            splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+            splice(ending, &elen, elen, 0, 1, NULL, 0);
             if (vf->person == THIRD && vf->number == SINGULAR)
             {
                 elen -= 3;
@@ -714,7 +714,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             
             if (vf->person == THIRD && vf->number == PLURAL)
             {
-                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                splice(ending, &elen, elen, 0, 1, NULL, 0);
                 ending[0] = GREEK_SMALL_LETTER_SIGMA;
                 ending[1] = GREEK_SMALL_LETTER_ALPHA;
                 ending[2] = GREEK_SMALL_LETTER_NU;
@@ -722,7 +722,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             }
             else if (vf->person == FIRST || vf->number == PLURAL)
             {
-                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                splice(ending, &elen, elen, 0, 1, NULL, 0);
             }
             else if (vf->person == SECOND && vf->number == SINGULAR)
             {
@@ -771,7 +771,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             }
             else if (vf->person == FIRST || vf->number == PLURAL)
             {
-                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                splice(ending, &elen, elen, 0, 1, NULL, 0);
             }
             else if (vf->person == SECOND && vf->number == SINGULAR)
             {
@@ -795,7 +795,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             else if (ucs2[*len - 1] == COMBINING_MACRON) //deiknumi
                 --(*len);
             
-            splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+            splice(ending, &elen, elen, 0, 1, NULL, 0);
             if (vf->person == SECOND && vf->number == SINGULAR)
             {
                 if (utf8HasSuffix(vf->verb->present, "δύναμαι") || utf8HasSuffix(vf->verb->present, "ἐπίσταμαι") )
@@ -934,7 +934,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                         ucs2[*len - 1] = GREEK_SMALL_LETTER_OMICRON;
                     else if (ucs2[*len - 1] == GREEK_SMALL_LETTER_ETA )
                         ucs2[*len - 1] = GREEK_SMALL_LETTER_EPSILON;
-                    splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                    splice(ending, &elen, elen, 0, 1, NULL, 0);
                 }
                 else if ( utf8HasSuffix(vf->verb->present, "ῑ̔́ημι") )
                 {
@@ -943,7 +943,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                         *len = 2;
                         //ucs2[0] = HYPHEN;
                         ucs2[1] = GREEK_SMALL_LETTER_EPSILON_WITH_DASIA;
-                        splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                        splice(ending, &elen, elen, 0, 1, NULL, 0);
                     }
                     else
                     {
@@ -961,14 +961,14 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                     {
                         (*len) -= 1;
                         ucs2[*len - 1] = GREEK_SMALL_LETTER_EPSILON_WITH_DASIA;
-                        splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                        splice(ending, &elen, elen, 0, 1, NULL, 0);
                     }
                 }
                 else if ((utf8HasSuffix(vf->verb->present, "στημι") || utf8HasSuffix(vf->verb->present, "σταμαι")) && ucs2[*len -1] == GREEK_SMALL_LETTER_ETA)
                 {
                     //root aorist
                     ucs2[*len - 1] = GREEK_SMALL_LETTER_ALPHA;
-                    splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                    splice(ending, &elen, elen, 0, 1, NULL, 0);
                 }
             }
             else if (vf->mood == IMPERATIVE)
@@ -1021,7 +1021,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                     }
                     else
                     {
-                        splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                        splice(ending, &elen, elen, 0, 1, NULL, 0);
                     }
                 }
             }
@@ -1047,7 +1047,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                     }
                     else
                     {
-                        splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                        splice(ending, &elen, elen, 0, 1, NULL, 0);
                     }
                 }
                 else if (decompose && vf->number == SINGULAR && vf->voice == ACTIVE && vf->mood == INDICATIVE)
@@ -1073,7 +1073,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 {
                     if (!decompose)
                     {
-                        splice(ucs2, len, 1024, 2, 1, (UCS2[]){}, 0);
+                        splice(ucs2, len, 1024, 2, 1, NULL, 0);
                         if (ending[0] == GREEK_SMALL_LETTER_OMICRON)
                         {
                             ucs2[1] = GREEK_SMALL_LETTER_OMICRON;
@@ -1093,7 +1093,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 {
                     if (!decompose)
                     {
-                        splice(ucs2, len, 1024, 1, 2, (UCS2[]){}, 0);
+                        splice(ucs2, len, 1024, 1, 2, NULL, 0);
                         
                         if (vf->person == FIRST)
                         {
@@ -1128,7 +1128,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                     {
                         if (!decompose)
                         {
-                            splice(ucs2, len, 1024, 1, 2, (UCS2[]){}, 0);
+                            splice(ucs2, len, 1024, 1, 2, NULL, 0);
                             splice(ending, &elen, elen+1, 0, 1, (UCS2[]){GREEK_SMALL_LETTER_OMICRON,GREEK_SMALL_LETTER_UPSILON_WITH_DASIA_AND_PERISPOMENI}, 2);
                         }
                         else
@@ -1158,16 +1158,16 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 {
                     if (!decompose)
                     {
-                        splice(ucs2, len, 1024, *len - 1, 1, (UCS2[]){}, 0);
+                        splice(ucs2, len, 1024, *len - 1, 1, NULL, 0);
                         if (ending[0] == GREEK_SMALL_LETTER_OMICRON)
                         {
                             ucs2[*len - 1] = GREEK_SMALL_LETTER_OMICRON;
                         }
-                        splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                        splice(ending, &elen, elen, 0, 1, NULL, 0);
                     }
                     else
                     {
-                        splice(ucs2, len, 1024, *len - 1, 1, (UCS2[]){}, 0);
+                        splice(ucs2, len, 1024, *len - 1, 1, NULL, 0);
                         ucs2[*len - 1] = GREEK_SMALL_LETTER_EPSILON_WITH_DASIA;
                         if (ending[0] != GREEK_SMALL_LETTER_OMICRON)
                         {
@@ -1179,7 +1179,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 {
                     if (!decompose)
                     {
-                        splice(ucs2, len, 1024, *len - 2, 2, (UCS2[]){}, 0);
+                        splice(ucs2, len, 1024, *len - 2, 2, NULL, 0);
                         
                         if (vf->person == FIRST)
                         {
@@ -1214,7 +1214,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                     {
                         if (!decompose)
                         {
-                            splice(ucs2, len, 1024, *len - 2, 2, (UCS2[]){}, 0);
+                            splice(ucs2, len, 1024, *len - 2, 2, NULL, 0);
                             ending[0] = GREEK_SMALL_LETTER_OMICRON;
                             ending[1] = GREEK_SMALL_LETTER_UPSILON_WITH_PERISPOMENI;
                             elen = 2;
@@ -1268,13 +1268,13 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                     {
                         if (!decompose)
                         {
-                            splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                            splice(ending, &elen, elen, 0, 1, NULL, 0);
                             ucs2[1] = GREEK_SMALL_LETTER_OMICRON;
                         }
                     }
                     else
                     {
-                        splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                        splice(ending, &elen, elen, 0, 1, NULL, 0);
                     }
                 }
                 else if (vf->mood == IMPERATIVE)
@@ -1334,7 +1334,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                     //Hardy caught this one: see his email from 02/22/2016
                     if (vf->person == FIRST)
                     {
-                        splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                        splice(ending, &elen, elen, 0, 1, NULL, 0);
                     }
                     else
                     {
@@ -1381,7 +1381,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
         else if (vf->mood == OPTATIVE)
         {
             ucs2[*len - 1] = GREEK_SMALL_LETTER_ALPHA;
-            splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+            splice(ending, &elen, elen, 0, 1, NULL, 0);
         }
         else if (vf->mood == IMPERATIVE)
         {
@@ -1414,7 +1414,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
         else if (vf->mood == OPTATIVE)
         {
             ucs2[*len - 1] = GREEK_SMALL_LETTER_OMICRON;
-            splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+            splice(ending, &elen, elen, 0, 1, NULL, 0);
         }
         else if (vf->mood == IMPERATIVE)
         {
@@ -1442,7 +1442,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             }
             else
             {
-                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                splice(ending, &elen, elen, 0, 1, NULL, 0);
             }
         }
     }
@@ -1455,22 +1455,22 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             ucs2[*len - 1] = GREEK_SMALL_LETTER_ALPHA;
             if (vf->person == FIRST)
             {
-                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                splice(ending, &elen, elen, 0, 1, NULL, 0);
             }
             else if (vf->person == SECOND)
             {
-                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                splice(ending, &elen, elen, 0, 1, NULL, 0);
             }
             else if (vf->person == THIRD)
             {
-                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                splice(ending, &elen, elen, 0, 1, NULL, 0);
             }
         }
     }
     else if (utf8HasSuffix(vf->verb->present, "εἰμί") && vf->tense == FUTURE && vf->person == THIRD && vf->number == SINGULAR && vf->mood == INDICATIVE)
     {
         if (!decompose)
-            splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+            splice(ending, &elen, elen, 0, 1, NULL, 0);
     }
     else if (utf8HasSuffix(vf->verb->present, "ἔχω") && vf->number == SINGULAR && vf->tense == AORIST && vf->voice == ACTIVE && vf->mood == OPTATIVE)
     {   //h&q page 504
@@ -1485,7 +1485,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
     {
         if ((vf->mood == SUBJUNCTIVE || vf->mood == OPTATIVE) && vf->tense == PRESENT)
         {
-            splice(ucs2, len, 1024, *len - 1, 1, (UCS2[]){}, 0);
+            splice(ucs2, len, 1024, *len - 1, 1, NULL, 0);
         }
         if (vf->mood == IMPERATIVE && vf->person == SECOND && vf->number == SINGULAR)
         {
