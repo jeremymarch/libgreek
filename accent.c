@@ -872,10 +872,7 @@ void accentSyllable(UCS2 *ucs2String, int i, int *len, int accentToAdd, bool tog
     }
     else if (ucs2String[i] == GREEK_SMALL_LETTER_NU && accentToAdd == SURROUNDING_PARENTHESES)
     {
-        rightShiftFromOffsetSteps(ucs2String, i, 2, len);
-        ucs2String[i] = LEFT_PARENTHESIS;
-        ucs2String[i+1] = GREEK_SMALL_LETTER_NU;
-        ucs2String[i+2] = RIGHT_PARENTHESIS;
+        splice(ucs2String, len, 1024, i, 1, (UCS2[]){LEFT_PARENTHESIS,GREEK_SMALL_LETTER_NU,RIGHT_PARENTHESIS }, 3);
         return;
     }
     

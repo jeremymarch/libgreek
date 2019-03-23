@@ -249,14 +249,14 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             {
                 if (!decompose)
                 {
-                    leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                    splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
                 }
             }
             else if (vf->person == SECOND && vf->number == PLURAL)
             {
                 if (!decompose)
                 {
-                    leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                    splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
                 }
             }
             else if (vf->person == THIRD && vf->number == PLURAL)
@@ -273,7 +273,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             {
                 if (!decompose)
                 {
-                    leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                    splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
                 }
             }
             else if (vf->person == THIRD && vf->number == PLURAL)
@@ -323,7 +323,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 
                 if (!decompose)
                 {
-                    leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                    splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
                 }
             }
             else if (vf->person == THIRD && vf->number == PLURAL)
@@ -430,7 +430,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             }
             if ((utf8HasSuffix(vf->verb->present, "ἐπίσταμαι") || utf8HasSuffix(vf->verb->present, "δύναμαι")) && decompose)
             {
-                leftShiftFromOffsetSteps(ucs2, *len - 1, 1, len);
+                splice(ucs2, len, 1024, *len - 1, 1, (UCS2[]){}, 0);
             }
             else if (( utf8HasSuffix(vf->verb->present, "στημι") || utf8HasSuffix(vf->verb->present, "αμαι") || utf8HasSuffix(vf->verb->present, "φημί")) && decompose)
             {
@@ -445,7 +445,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 if (ending[0] == GREEK_SMALL_LETTER_OMICRON && !decompose)// this is right
                     --(*len);
                 else if (ending[0] == GREEK_SMALL_LETTER_EPSILON)
-                    leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                    splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
             }
             else if (utf8HasSuffix(vf->verb->present, "εἶμι"))
             {
@@ -454,7 +454,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             }
             else
             {
-                leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
                 //h&q p 504
                 if (vf->person != FIRST && vf->voice != ACTIVE && !utf8HasSuffix(vf->verb->present, "ἐπίσταμαι") && !utf8HasSuffix(vf->verb->present, "δύναμαι")) //H&Q page 503, 607 and 676
                 {
@@ -478,13 +478,13 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 {
                     ucs2[0] = GREEK_SMALL_LETTER_IOTA_WITH_PSILI;
                     *len = 1;
-                    leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                    splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
                 }
                 else if (vf->person == THIRD && vf->number == SINGULAR)
                 {
                     ucs2[0] = GREEK_SMALL_LETTER_IOTA_WITH_PSILI;
                     *len = 1;
-                    leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                    splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
                 }
                 else if (vf->person == THIRD && vf->number == PLURAL)
                 {
@@ -563,7 +563,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             }
             else
             {
-                leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
             }
         }
     }
@@ -605,11 +605,11 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             }
             else if (vf->person == FIRST && vf->number == PLURAL)
             {
-                leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
             }
             else if (vf->person == SECOND && vf->number == PLURAL)
             {
-                leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
             }
             else if (vf->person == THIRD && vf->number == PLURAL)
             {
@@ -639,7 +639,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 {
                     if (!decompose)
                     {
-                        leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                        splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
                     }
                 }
                 else if (vf->person == THIRD)
@@ -657,7 +657,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             }
             else if (vf->number == PLURAL && vf->voice == ACTIVE)
             {
-                leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
                 if (vf->person == THIRD)
                 {
                     ending[0] = GREEK_SMALL_LETTER_SIGMA;
@@ -673,7 +673,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             if (vf->number == PLURAL)
                 ucs2[*len - 1] = GREEK_SMALL_LETTER_ALPHA;
             
-            leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+            splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
             if (vf->person == THIRD && vf->number == SINGULAR)
             {
                 elen -= 3;
@@ -692,7 +692,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             if (vf->number == PLURAL)
                 ucs2[*len - 1] = GREEK_SMALL_LETTER_ALPHA;
             
-            leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+            splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
             if (vf->person == THIRD && vf->number == SINGULAR)
             {
                 elen -= 3;
@@ -714,7 +714,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             
             if (vf->person == THIRD && vf->number == PLURAL)
             {
-                leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
                 ending[0] = GREEK_SMALL_LETTER_SIGMA;
                 ending[1] = GREEK_SMALL_LETTER_ALPHA;
                 ending[2] = GREEK_SMALL_LETTER_NU;
@@ -722,7 +722,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             }
             else if (vf->person == FIRST || vf->number == PLURAL)
             {
-                leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
             }
             else if (vf->person == SECOND && vf->number == SINGULAR)
             {
@@ -767,15 +767,11 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             
             if (vf->person == THIRD && vf->number == PLURAL)
             {
-                leftShiftFromOffsetSteps(ending, 0, 1, &elen);
-                ending[0] = GREEK_SMALL_LETTER_SIGMA;
-                ending[1] = GREEK_SMALL_LETTER_ALPHA;
-                ending[2] = GREEK_SMALL_LETTER_NU;
-                elen += 2;
+                splice(ending, &elen, elen+1/*fixme*/, 0, 1, (UCS2[]){GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_ALPHA}, 2);
             }
             else if (vf->person == FIRST || vf->number == PLURAL)
             {
-                leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
             }
             else if (vf->person == SECOND && vf->number == SINGULAR)
             {
@@ -799,7 +795,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             else if (ucs2[*len - 1] == COMBINING_MACRON) //deiknumi
                 --(*len);
             
-            leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+            splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
             if (vf->person == SECOND && vf->number == SINGULAR)
             {
                 if (utf8HasSuffix(vf->verb->present, "δύναμαι") || utf8HasSuffix(vf->verb->present, "ἐπίσταμαι") )
@@ -938,7 +934,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                         ucs2[*len - 1] = GREEK_SMALL_LETTER_OMICRON;
                     else if (ucs2[*len - 1] == GREEK_SMALL_LETTER_ETA )
                         ucs2[*len - 1] = GREEK_SMALL_LETTER_EPSILON;
-                    leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                    splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
                 }
                 else if ( utf8HasSuffix(vf->verb->present, "ῑ̔́ημι") )
                 {
@@ -947,7 +943,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                         *len = 2;
                         //ucs2[0] = HYPHEN;
                         ucs2[1] = GREEK_SMALL_LETTER_EPSILON_WITH_DASIA;
-                        leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                        splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
                     }
                     else
                     {
@@ -965,14 +961,14 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                     {
                         (*len) -= 1;
                         ucs2[*len - 1] = GREEK_SMALL_LETTER_EPSILON_WITH_DASIA;
-                        leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                        splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
                     }
                 }
                 else if ((utf8HasSuffix(vf->verb->present, "στημι") || utf8HasSuffix(vf->verb->present, "σταμαι")) && ucs2[*len -1] == GREEK_SMALL_LETTER_ETA)
                 {
                     //root aorist
                     ucs2[*len - 1] = GREEK_SMALL_LETTER_ALPHA;
-                    leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                    splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
                 }
             }
             else if (vf->mood == IMPERATIVE)
@@ -995,11 +991,10 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 }
                 else if ( utf8HasSuffix(vf->verb->present, "ῑ́ημι"))
                 {
-                    leftShiftFromOffsetSteps(ucs2, *len - 1, 1, len);
                     if (!decompose)
-                        ucs2[*len - 1] = GREEK_SMALL_LETTER_EPSILON;
+                        splice(ucs2, len, 1024, *len - 2, 2, (UCS2[]){GREEK_SMALL_LETTER_EPSILON}, 1);
                     else
-                        ucs2[*len - 1] = GREEK_SMALL_LETTER_EPSILON_WITH_DASIA;
+                        splice(ucs2, len, 1024, *len - 2, 2, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_DASIA}, 1);
                     if (0)///vf->person == SECOND && vf->number == SINGULAR)
                     {
                         ucs2[*len - 1] = GREEK_SMALL_LETTER_FINAL_SIGMA;
@@ -1007,12 +1002,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 }
                 else if ( utf8HasSuffix(vf->verb->present, "ῑ̔́ημι"))
                 {
-                    leftShiftFromOffsetSteps(ucs2, 1, 1, len);
-                    ucs2[1] = GREEK_SMALL_LETTER_EPSILON_WITH_DASIA; //1, because of hyphen
-                    if (vf->person == SECOND && vf->number == SINGULAR)
-                    {
-                        //ucs2[*len - 1] = GREEK_SMALL_LETTER_FINAL_SIGMA; //not needed, somehow
-                    }
+                    splice(ucs2, len, 1024, 1, 2, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_DASIA}, 1);
                 }
             }
             else if ( utf8HasSuffix(vf->verb->present, "τίθημι") || utf8HasSuffix(vf->verb->present, "δίδωμι"))
@@ -1031,7 +1021,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                     }
                     else
                     {
-                        leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                        splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
                     }
                 }
             }
@@ -1048,8 +1038,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                     
                     if (decompose)
                     {
-                        leftShiftFromOffsetSteps(ucs2, *len - 1, 1, len);
-                        ucs2[(*len) - 1] = GREEK_SMALL_LETTER_EPSILON_WITH_DASIA;
+                        splice(ucs2, len, 1024, *len - 2, 2, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_DASIA}, 1);
                     }
                     
                     if (vf->person == THIRD)
@@ -1058,7 +1047,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                     }
                     else
                     {
-                        leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                        splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
                     }
                 }
                 else if (decompose && vf->number == SINGULAR && vf->voice == ACTIVE && vf->mood == INDICATIVE)
@@ -1084,22 +1073,19 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 {
                     if (!decompose)
                     {
-                        leftShiftFromOffsetSteps(ucs2, 2, 1, len);
+                        splice(ucs2, len, 1024, 2, 1, (UCS2[]){}, 0);
                         if (ending[0] == GREEK_SMALL_LETTER_OMICRON)
                         {
                             ucs2[1] = GREEK_SMALL_LETTER_OMICRON;
                         }
-                        leftShiftFromOffsetSteps(ending, 0, 1, &elen);
-                        ending[0] = GREEK_SMALL_LETTER_IOTA_WITH_DASIA;
+                        splice(ending, &elen, elen, 0, 2, (UCS2[]){GREEK_SMALL_LETTER_IOTA_WITH_DASIA}, 1);
                     }
                     else
                     {
-                        leftShiftFromOffsetSteps(ucs2, 2, 1, len);
-                        ucs2[1] = GREEK_SMALL_LETTER_EPSILON_WITH_DASIA;
+                        splice(ucs2, len, 1024, 1, 2, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_DASIA}, 1);
                         if (ending[0] != GREEK_SMALL_LETTER_OMICRON)
                         {
-                            leftShiftFromOffsetSteps(ending, 0, 1, &elen);
-                            ending[0] = GREEK_SMALL_LETTER_IOTA;
+                            splice(ending, &elen, elen, 0, 2, (UCS2[]){GREEK_SMALL_LETTER_IOTA}, 1);
                         }
                     }
                 }
@@ -1107,7 +1093,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 {
                     if (!decompose)
                     {
-                        leftShiftFromOffsetSteps(ucs2, 1, 2, len);
+                        splice(ucs2, len, 1024, 1, 2, (UCS2[]){}, 0);
                         
                         if (vf->person == FIRST)
                         {
@@ -1133,8 +1119,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                     }
                     else
                     {
-                        leftShiftFromOffsetSteps(ucs2, 1, 1, len);
-                        ucs2[1] = GREEK_SMALL_LETTER_EPSILON_WITH_DASIA;
+                        splice(ucs2, len, 1024, 1, 2, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_DASIA}, 1);
                     }
                 }
                 else if (vf->mood == IMPERATIVE)
@@ -1143,24 +1128,18 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                     {
                         if (!decompose)
                         {
-                            leftShiftFromOffsetSteps(ucs2, 1, 2, len);
-                            ending[0] = GREEK_SMALL_LETTER_OMICRON;
-                            ending[1] = GREEK_SMALL_LETTER_UPSILON_WITH_DASIA_AND_PERISPOMENI;
-                            elen = 2;
+                            splice(ucs2, len, 1024, 1, 2, (UCS2[]){}, 0);
+                            splice(ending, &elen, elen+1, 0, 1, (UCS2[]){GREEK_SMALL_LETTER_OMICRON,GREEK_SMALL_LETTER_UPSILON_WITH_DASIA_AND_PERISPOMENI}, 2);
                         }
                         else
                         {
-                            leftShiftFromOffsetSteps(ucs2, 1, 1, len);
-                            ucs2[1] = GREEK_SMALL_LETTER_EPSILON_WITH_DASIA;
-                            ending[0] = GREEK_SMALL_LETTER_OMICRON;
-                            ending[1] = GREEK_SMALL_LETTER_UPSILON;
-                            elen = 2;
+                            splice(ucs2, len, 1024, 1, 2, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_DASIA}, 1);
+                            splice(ending, &elen, elen+1, 0, 1, (UCS2[]){GREEK_SMALL_LETTER_OMICRON,GREEK_SMALL_LETTER_UPSILON}, 2);
                         }
                     }
                     else
                     {
-                        leftShiftFromOffsetSteps(ucs2, 1, 1, len);
-                        ucs2[1] = GREEK_SMALL_LETTER_EPSILON_WITH_DASIA;
+                        splice(ucs2, len, 1024, 1, 2, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_DASIA}, 1);
                     }
                 }
             }
@@ -1179,21 +1158,20 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 {
                     if (!decompose)
                     {
-                        leftShiftFromOffsetSteps(ucs2, *len - 1, 1, len);
+                        splice(ucs2, len, 1024, *len - 1, 1, (UCS2[]){}, 0);
                         if (ending[0] == GREEK_SMALL_LETTER_OMICRON)
                         {
                             ucs2[*len - 1] = GREEK_SMALL_LETTER_OMICRON;
                         }
-                        leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                        splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
                     }
                     else
                     {
-                        leftShiftFromOffsetSteps(ucs2, *len - 1, 1, len);
+                        splice(ucs2, len, 1024, *len - 1, 1, (UCS2[]){}, 0);
                         ucs2[*len - 1] = GREEK_SMALL_LETTER_EPSILON_WITH_DASIA;
                         if (ending[0] != GREEK_SMALL_LETTER_OMICRON)
                         {
-                            leftShiftFromOffsetSteps(ending, 0, 1, &elen);
-                            ending[0] = GREEK_SMALL_LETTER_IOTA;
+                            splice(ending, &elen, elen, 0, 2, (UCS2[]){GREEK_SMALL_LETTER_IOTA}, 1);
                         }
                     }
                 }
@@ -1201,7 +1179,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 {
                     if (!decompose)
                     {
-                        leftShiftFromOffsetSteps(ucs2, *len - 1, 2, len);
+                        splice(ucs2, len, 1024, *len - 2, 2, (UCS2[]){}, 0);
                         
                         if (vf->person == FIRST)
                         {
@@ -1227,8 +1205,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                     }
                     else
                     {
-                        leftShiftFromOffsetSteps(ucs2, *len - 1, 1, len);
-                        ucs2[*len - 1] = GREEK_SMALL_LETTER_EPSILON_WITH_DASIA;
+                        splice(ucs2, len, 1024, *len - 2, 2, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_DASIA}, 1);
                     }
                 }
                 else if (vf->mood == IMPERATIVE)
@@ -1237,15 +1214,14 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                     {
                         if (!decompose)
                         {
-                            leftShiftFromOffsetSteps(ucs2, *len - 1, 2, len);
+                            splice(ucs2, len, 1024, *len - 2, 2, (UCS2[]){}, 0);
                             ending[0] = GREEK_SMALL_LETTER_OMICRON;
                             ending[1] = GREEK_SMALL_LETTER_UPSILON_WITH_PERISPOMENI;
                             elen = 2;
                         }
                         else
                         {
-                            leftShiftFromOffsetSteps(ucs2, *len - 1, 1, len);
-                            ucs2[*len - 1] = GREEK_SMALL_LETTER_EPSILON_WITH_DASIA;
+                            splice(ucs2, len, 1024, *len - 2, 2, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_DASIA}, 1);
                             ending[0] = GREEK_SMALL_LETTER_OMICRON;
                             ending[1] = GREEK_SMALL_LETTER_UPSILON;
                             elen = 2;
@@ -1253,11 +1229,10 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                     }
                     else
                     {
-                        leftShiftFromOffsetSteps(ucs2, *len - 1, 1, len);
                         if (decompose)
-                            ucs2[*len - 1] = GREEK_SMALL_LETTER_EPSILON_WITH_DASIA;
+                            splice(ucs2, len, 1024, *len - 2, 2, (UCS2[]){GREEK_SMALL_LETTER_EPSILON_WITH_DASIA}, 1);
                         else
-                            ucs2[*len - 1] = GREEK_SMALL_LETTER_EPSILON;
+                            splice(ucs2, len, 1024, *len - 2, 2, (UCS2[]){GREEK_SMALL_LETTER_EPSILON}, 1);
                     }
                 }
             }
@@ -1293,13 +1268,13 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                     {
                         if (!decompose)
                         {
-                            leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                            splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
                             ucs2[1] = GREEK_SMALL_LETTER_OMICRON;
                         }
                     }
                     else
                     {
-                        leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                        splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
                     }
                 }
                 else if (vf->mood == IMPERATIVE)
@@ -1355,12 +1330,15 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 }
                 else if (vf->mood == OPTATIVE)
                 {
-                    leftShiftFromOffsetSteps(ending, 0, 1, &elen);
                     //accent doesn't go past syllable with iota
                     //Hardy caught this one: see his email from 02/22/2016
-                    if (vf->person != FIRST)
+                    if (vf->person == FIRST)
                     {
-                        ending[0] = GREEK_SMALL_LETTER_IOTA_WITH_PERISPOMENI;
+                        splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
+                    }
+                    else
+                    {
+                        splice(ending, &elen, elen, 0, 2, (UCS2[]){GREEK_SMALL_LETTER_IOTA_WITH_PERISPOMENI}, 1);
                     }
                 }
                 else if (vf->mood == IMPERATIVE)
@@ -1403,7 +1381,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
         else if (vf->mood == OPTATIVE)
         {
             ucs2[*len - 1] = GREEK_SMALL_LETTER_ALPHA;
-            leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+            splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
         }
         else if (vf->mood == IMPERATIVE)
         {
@@ -1436,7 +1414,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
         else if (vf->mood == OPTATIVE)
         {
             ucs2[*len - 1] = GREEK_SMALL_LETTER_OMICRON;
-            leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+            splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
         }
         else if (vf->mood == IMPERATIVE)
         {
@@ -1459,13 +1437,12 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                 if (!decompose)
                 {
                     (*len) -= 1;
-                    leftShiftFromOffsetSteps(ending, 0, 1, &elen);
-                    ending[0] = GREEK_SMALL_LETTER_ALPHA_WITH_PERISPOMENI;
+                    splice(ending, &elen, elen, 0, 2, (UCS2[]){GREEK_SMALL_LETTER_ALPHA_WITH_PERISPOMENI}, 1);
                 }
             }
             else
             {
-                leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
             }
         }
     }
@@ -1478,26 +1455,22 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             ucs2[*len - 1] = GREEK_SMALL_LETTER_ALPHA;
             if (vf->person == FIRST)
             {
-                leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
             }
             else if (vf->person == SECOND)
             {
-                leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
             }
             else if (vf->person == THIRD)
             {
-                leftShiftFromOffsetSteps(ending, 0, 1, &elen);
-                ending[0] = GREEK_SMALL_LETTER_SIGMA;
-                ending[1] = GREEK_SMALL_LETTER_ALPHA;
-                ending[2] = GREEK_SMALL_LETTER_NU;
-                elen = 3;
+                splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
             }
         }
     }
     else if (utf8HasSuffix(vf->verb->present, "εἰμί") && vf->tense == FUTURE && vf->person == THIRD && vf->number == SINGULAR && vf->mood == INDICATIVE)
     {
         if (!decompose)
-            leftShiftFromOffsetSteps(ending, 0, 1, &elen);
+            splice(ending, &elen, elen, 0, 1, (UCS2[]){}, 0);
     }
     else if (utf8HasSuffix(vf->verb->present, "ἔχω") && vf->number == SINGULAR && vf->tense == AORIST && vf->voice == ACTIVE && vf->mood == OPTATIVE)
     {   //h&q page 504
@@ -1512,7 +1485,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
     {
         if ((vf->mood == SUBJUNCTIVE || vf->mood == OPTATIVE) && vf->tense == PRESENT)
         {
-            leftShiftFromOffsetSteps(ucs2, *len - 1, 1, len);
+            splice(ucs2, len, 1024, *len - 1, 1, (UCS2[]){}, 0);
         }
         if (vf->mood == IMPERATIVE && vf->person == SECOND && vf->number == SINGULAR)
         {
