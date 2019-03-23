@@ -19,7 +19,7 @@ void debug_msg(char *x)
     //exit(1);
 }
 
-bool rightShiftFromOffsetSteps2(UCS2 *ucs2, int offset, int steps, int *len, int buffer_capacity)
+bool rightShiftFromOffsetSteps(UCS2 *ucs2, int offset, int steps, int *len, int buffer_capacity)
 {
     if (*len + steps > buffer_capacity)
     {
@@ -43,7 +43,7 @@ bool rightShiftFromOffsetSteps2(UCS2 *ucs2, int offset, int steps, int *len, int
 }
 
 //Moves everything over to the left, eating the char at the offset index
-bool leftShiftFromOffsetSteps2(UCS2 *ucs2, int offset, int steps, int *len)
+bool leftShiftFromOffsetSteps(UCS2 *ucs2, int offset, int steps, int *len)
 {
     if (offset < 0)
     {
@@ -109,7 +109,7 @@ bool splice(UCS2 *string, int *len, int buffer_capacity, int offset, int replaci
     {
         if (offset + replacing < *len) //only call right shift if offset is before end, else rightShift will fail since nothing to move
         {
-            if (!rightShiftFromOffsetSteps2(string, offset + replacing, insert_len - replacing, len, buffer_capacity))
+            if (!rightShiftFromOffsetSteps(string, offset + replacing, insert_len - replacing, len, buffer_capacity))
             {
                 return false;
             }
@@ -121,7 +121,7 @@ bool splice(UCS2 *string, int *len, int buffer_capacity, int offset, int replaci
     }
     else if (replacing > insert_len)
     {
-        if (!leftShiftFromOffsetSteps2(string, offset + insert_len, replacing - insert_len, len))
+        if (!leftShiftFromOffsetSteps(string, offset + insert_len, replacing - insert_len, len))
         {
             return false;
         }
@@ -131,27 +131,6 @@ bool splice(UCS2 *string, int *len, int buffer_capacity, int offset, int replaci
         string[offset + i] = insert[i];
     }
     return true;
-}
-
-void rightShiftFromOffsetSteps(UCS2 *ucs2, int offset, int steps, int *len)
-{
-    int j = offset + *len - 1;
-    for ( ; j >= offset; j--)
-    {
-        ucs2[j + steps] = ucs2[j];
-    }
-    *len += steps;
-}
-
-//Moves everything over to the left, eating the first letter
-void leftShiftFromOffsetSteps(UCS2 *ucs2, int offset, int steps, int *len)
-{
-    int j = offset;
-    for ( ; j < *len - 1; j++)
-    {
-        ucs2[j] = ucs2[j + steps];
-    }
-    *len -= steps;
 }
 
 /* Input: a Unicode code point, "ucs2".
