@@ -1948,6 +1948,27 @@ void tonosToOxia(UCS2 *word, int len)
     }
 }
 
+void oxiaToTonos(UCS2 *word, int len)
+{
+    for (int i = 0; i < len; i++)
+    {
+        if (word[i] == GREEK_SMALL_LETTER_ALPHA_WITH_OXIA)
+            word[i] = GREEK_SMALL_LETTER_ALPHA_WITH_TONOS;
+        else if (word[i] == GREEK_SMALL_LETTER_EPSILON_WITH_OXIA)
+            word[i] = GREEK_SMALL_LETTER_EPSILON_WITH_TONOS;
+        else if (word[i] == GREEK_SMALL_LETTER_ETA_WITH_OXIA)
+            word[i] = GREEK_SMALL_LETTER_ETA_WITH_TONOS;
+        else if (word[i] == GREEK_SMALL_LETTER_IOTA_WITH_OXIA)
+            word[i] = GREEK_SMALL_LETTER_IOTA_WITH_TONOS;
+        else if (word[i] == GREEK_SMALL_LETTER_OMICRON_WITH_OXIA)
+            word[i] = GREEK_SMALL_LETTER_OMICRON_WITH_TONOS;
+        else if (word[i] == GREEK_SMALL_LETTER_UPSILON_WITH_OXIA)
+            word[i] = GREEK_SMALL_LETTER_UPSILON_WITH_TONOS;
+        else if (word[i] == GREEK_SMALL_LETTER_OMEGA_WITH_OXIA)
+            word[i] = GREEK_SMALL_LETTER_OMEGA_WITH_TONOS;
+    }
+}
+
 //accents should be stripped before calling this
 void stripEndingFromPrincipalPart(UCS2 *stem, int *len, unsigned char tense, unsigned char voice)
 {
