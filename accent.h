@@ -5,13 +5,17 @@
 //  Created by Jeremy March on 3/4/17.
 //  Copyright © 2017 Jeremy March. All rights reserved.
 //
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+
 
 #ifndef accent_h
 #define accent_h
 
 #include <stdbool.h> //for bool type
 #include "utilities.h"
-
 
 enum {
     NO_ACCENT = 0,
@@ -23,7 +27,8 @@ enum {
     SMOOTH_BREATHING,
     IOTA_SUBSCRIPT,
     SURROUNDING_PARENTHESES,
-    DIAERESIS
+    DIAERESIS,
+    BREVE
 };
 
 //diacriticMask bit flags
@@ -35,8 +40,8 @@ enum {
     _GRAVE      = 1 << 4,
     _CIRCUMFLEX = 1 << 5,
     _IOTA_SUB   = 1 << 6,
-    _DIAERESIS  = 1 << 7//,
-    //_BREVE      = 1 << 8
+    _DIAERESIS  = 1 << 7,
+    _BREVE      = 1 << 8
 };
 
 enum {
