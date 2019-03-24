@@ -15,6 +15,7 @@
 #include "augment.h"
 #include "ending.h"
 #include "specialverbs.h"
+#include <stdlib.h>
 
 bool onlyUseCombiningDiacritics = false; //not used yet
 
@@ -53,6 +54,9 @@ char *moods[NUM_MOODS] = { "Indicative", "Subjunctive", "Optative", "Imperative"
 char *moodsabbrev[NUM_MOODS] = { "ind.", "subj.", "opt.", "imper." };
 
 void oxiaToTonos(UCS2 *word, int len);
+//for testing
+bool hasOxia(UCS2 *word, int len);
+bool hasTonos(UCS2 *word, int len);
 
 /*
 void endingGetDescription(int e, char *buffer, int bufferLen)
@@ -1381,6 +1385,16 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
     
     //for testing oxia to tonos:
     //oxiaToTonos(ucs2Buffer, ucs2StemPlusEndingBufferLen);
+    /*
+    if ( hasOxia(ucs2Buffer, ucs2StemPlusEndingBufferLen) )
+    {
+        printf("has oxia\n");
+        exit(1);
+    }
+    else
+    {
+        printf("true\n");
+    }*/
     
     *bufferLen = ucs2StemPlusEndingBufferLen;
     if (ucs2StemPlusEndingBufferLen < 1)
@@ -1980,6 +1994,50 @@ void oxiaToTonos(UCS2 *word, int len)
         else if (word[i] == GREEK_SMALL_LETTER_OMEGA_WITH_OXIA)
             word[i] = GREEK_SMALL_LETTER_OMEGA_WITH_TONOS;
     }
+}
+
+bool hasOxia(UCS2 *word, int len)
+{
+    for (int i = 0; i < len; i++)
+    {
+        if (word[i] == GREEK_SMALL_LETTER_ALPHA_WITH_OXIA)
+            return true;
+        else if (word[i] == GREEK_SMALL_LETTER_EPSILON_WITH_OXIA)
+            return true;
+        else if (word[i] == GREEK_SMALL_LETTER_ETA_WITH_OXIA)
+            return true;
+        else if (word[i] == GREEK_SMALL_LETTER_IOTA_WITH_OXIA)
+            return true;
+        else if (word[i] == GREEK_SMALL_LETTER_OMICRON_WITH_OXIA)
+            return true;
+        else if (word[i] == GREEK_SMALL_LETTER_UPSILON_WITH_OXIA)
+            return true;
+        else if (word[i] == GREEK_SMALL_LETTER_OMEGA_WITH_OXIA)
+            return true;
+    }
+    return false;
+}
+
+bool hasTonos(UCS2 *word, int len)
+{
+    for (int i = 0; i < len; i++)
+    {
+        if (word[i] == GREEK_SMALL_LETTER_ALPHA_WITH_TONOS)
+            return true;
+        else if (word[i] == GREEK_SMALL_LETTER_EPSILON_WITH_TONOS)
+            return true;
+        else if (word[i] == GREEK_SMALL_LETTER_ETA_WITH_TONOS)
+            return true;
+        else if (word[i] == GREEK_SMALL_LETTER_IOTA_WITH_TONOS)
+            return true;
+        else if (word[i] == GREEK_SMALL_LETTER_OMICRON_WITH_TONOS)
+            return true;
+        else if (word[i] == GREEK_SMALL_LETTER_UPSILON_WITH_TONOS)
+            return true;
+        else if (word[i] == GREEK_SMALL_LETTER_OMEGA_WITH_TONOS)
+            return true;
+    }
+    return false;
 }
 
 //accents should be stripped before calling this
