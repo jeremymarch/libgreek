@@ -16,11 +16,11 @@
 #include "accent.h"
 
 #define ALLOW_PRIVATE_USE_AREA 1
-#define ALLOW_RHO_WITH_PSILI 1
+#define ALLOW_RHO_WITH_PSILI 0
 #define MAX_COMBINING 5 //macron, breathing, accent, iota subscript || diaeresis, macron, accent
 
 char unicode_mode = PRECOMPOSED_MODE; //set default
-bool addSpacingDiacriticIfNotLegal = true;
+bool addSpacingDiacriticIfNotLegal = false;
 
 void allowSpacingDiacritics(bool val)
 {
