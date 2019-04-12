@@ -1102,7 +1102,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                             if (vf->number == SINGULAR)
                                 ending[0] = GREEK_SMALL_LETTER_OMEGA_WITH_DASIA_AND_PERISPOMENI;
                             else
-                                ending[0] = GREEK_SMALL_LETTER_OMEGA_WITH_DASIA_AND_PERISPOMENI;
+                                ending[0] = GREEK_SMALL_LETTER_OMEGA_WITH_DASIA;
                         }
                         else if (vf->person == SECOND)
                         {
@@ -1188,7 +1188,7 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                             if (vf->number == SINGULAR)
                                 ending[0] = GREEK_SMALL_LETTER_OMEGA_WITH_PERISPOMENI;
                             else
-                                ending[0] = GREEK_SMALL_LETTER_OMEGA_WITH_PERISPOMENI;
+                                ending[0] = GREEK_SMALL_LETTER_OMEGA;
                         }
                         else if (vf->person == SECOND)
                         {
