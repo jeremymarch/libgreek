@@ -773,6 +773,10 @@ int getForm(VerbFormC *vf, char *utf8OutputBuffer, int bufferLen, bool includeAl
 
 int getForm2(VerbFormD *vf, char *utf8OutputBuffer, int bufferLen, bool includeAlternateForms, bool decompose)
 {
+    if(vf->verbid < 0 || vf->verbid >= NUM_VERBS)
+    {
+        return 0;
+    }
     VerbFormC vfc;
     vfc.person = vf->person;
     vfc.number = vf->number;
