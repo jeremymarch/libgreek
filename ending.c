@@ -389,6 +389,12 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
             else
                 ucs2[*len - 1] = GREEK_SMALL_LETTER_EPSILON;
         }
+        else if (vf->person == SECOND && vf->number == SINGULAR && vf->mood == INDICATIVE && vf->voice == ACTIVE &&
+                 utf8HasSuffix(vf->verb->present, "φημί") )
+        {
+            //alt ending for fhmi
+            splice(ucs2, len, ucs2Capacity, 1, 1, (UCS2[]){GREEK_SMALL_LETTER_ETA_WITH_YPOGEGRAMMENI}, 1);
+        }
         else if (utf8HasSuffix(vf->verb->present, "εἶμι"))
         {
             if (vf->person == SECOND && vf->number == SINGULAR && vf->mood == INDICATIVE)
