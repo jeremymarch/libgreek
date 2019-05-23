@@ -800,8 +800,13 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
     }
     
     int ucs2StemPlusEndingBufferLen = 0;
-    
+    //no first person imperatives
     if (vf->mood == IMPERATIVE && vf->person == FIRST)
+    {
+        return 0;
+    }
+    //no imperfects outside the indicative
+    if (vf->tense == IMPERFECT && vf->mood != INDICATIVE)
     {
         return 0;
     }
