@@ -991,8 +991,8 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
     
     if (utf8HasSuffix(vf->verb->present, "προδίδωμι") && !decompose && (vf->tense == IMPERFECT || vf->tense == PLUPERFECT))
     {
-        splice(ucs2Stems, &ucs2StemsLen, 1024, ucs2StemsLen, 0, (UCS2[]){COMMA, SPACE}, 2);
-        splice(ucs2Stems, &ucs2StemsLen, 1024, ucs2StemsLen, 0, ucs2Stems, ucs2StemsLen - 2); //-2 for the added comma + space
+        ucsplice(ucs2Stems, &ucs2StemsLen, 1024, ucs2StemsLen, 0, (UCS2[]){COMMA, SPACE}, 2);
+        ucsplice(ucs2Stems, &ucs2StemsLen, 1024, ucs2StemsLen, 0, ucs2Stems, ucs2StemsLen - 2); //-2 for the added comma + space
     }
     
     //find out how many stems, then how many endings.  loop through stems adding each ending in an inner loop.
@@ -1116,11 +1116,11 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
         if (vf->person == SECOND && vf->number == SINGULAR && vf->tense == IMPERFECT && vf->voice == ACTIVE && vf->mood == INDICATIVE && utf8HasSuffix(vf->verb->present, "φημί"))
         {
             ucs2EndingsLen = 0;
-            splice(ucs2Endings, &ucs2EndingsLen, (int)(strlen(utf8Ending) * 3) + 1, 0, 0, (UCS2[]){GREEK_SMALL_LETTER_ETA,GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_THETA,GREEK_SMALL_LETTER_ALPHA,COMMA,SPACE,GREEK_SMALL_LETTER_ETA,GREEK_SMALL_LETTER_FINAL_SIGMA}, 8);
+            ucsplice(ucs2Endings, &ucs2EndingsLen, (int)(strlen(utf8Ending) * 3) + 1, 0, 0, (UCS2[]){GREEK_SMALL_LETTER_ETA,GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_THETA,GREEK_SMALL_LETTER_ALPHA,COMMA,SPACE,GREEK_SMALL_LETTER_ETA,GREEK_SMALL_LETTER_FINAL_SIGMA}, 8);
         }
         else if (vf->person == SECOND && vf->number == SINGULAR && vf->tense == PRESENT && vf->voice == ACTIVE && vf->mood == INDICATIVE && (utf8HasSuffix(vf->verb->present, "ῑ̔́ημι") || utf8HasSuffix(vf->verb->present, "ῑ́ημι")))
         {
-            splice(ucs2Endings, &ucs2EndingsLen, (int)(strlen(utf8Ending) * 3) + 1, ucs2EndingsLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_EPSILON,GREEK_SMALL_LETTER_IOTA_WITH_PERISPOMENI,GREEK_SMALL_LETTER_FINAL_SIGMA}, 5);
+            ucsplice(ucs2Endings, &ucs2EndingsLen, (int)(strlen(utf8Ending) * 3) + 1, ucs2EndingsLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_EPSILON,GREEK_SMALL_LETTER_IOTA_WITH_PERISPOMENI,GREEK_SMALL_LETTER_FINAL_SIGMA}, 5);
         }
         else if (utf8HasSuffix(vf->verb->present, "εἶμι") && ((vf->tense == IMPERFECT && vf->number == SINGULAR && vf->person != THIRD) || (vf->tense == IMPERFECT && vf->number == PLURAL && vf->person == THIRD) || (vf->mood == OPTATIVE && vf->person == FIRST && vf->number == SINGULAR)))
         {
@@ -1128,20 +1128,20 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
             {
                 if (vf->person == FIRST)
                 {
-                    splice(ucs2Endings, &ucs2EndingsLen, (int)(strlen(utf8Ending) * 3) + 1, ucs2EndingsLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_EPSILON,GREEK_SMALL_LETTER_IOTA,GREEK_SMALL_LETTER_NU}, 5);
+                    ucsplice(ucs2Endings, &ucs2EndingsLen, (int)(strlen(utf8Ending) * 3) + 1, ucs2EndingsLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_EPSILON,GREEK_SMALL_LETTER_IOTA,GREEK_SMALL_LETTER_NU}, 5);
                 }
                 else if (vf->person == SECOND) // the epsilong character here is being overwritten by the ifrst alternate which is changed in addending at the other //heheh
                 {
-                    splice(ucs2Endings, &ucs2EndingsLen, (int)(strlen(utf8Ending) * 3) + 1, ucs2EndingsLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_EPSILON,GREEK_SMALL_LETTER_IOTA,GREEK_SMALL_LETTER_FINAL_SIGMA}, 5);
+                    ucsplice(ucs2Endings, &ucs2EndingsLen, (int)(strlen(utf8Ending) * 3) + 1, ucs2EndingsLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_EPSILON,GREEK_SMALL_LETTER_IOTA,GREEK_SMALL_LETTER_FINAL_SIGMA}, 5);
                 }
                 else if (vf->person == THIRD)
                 {
-                    splice(ucs2Endings, &ucs2EndingsLen, (int)(strlen(utf8Ending) * 3) + 1, ucs2EndingsLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_EPSILON,GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_ALPHA,GREEK_SMALL_LETTER_NU}, 6);
+                    ucsplice(ucs2Endings, &ucs2EndingsLen, (int)(strlen(utf8Ending) * 3) + 1, ucs2EndingsLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_EPSILON,GREEK_SMALL_LETTER_SIGMA,GREEK_SMALL_LETTER_ALPHA,GREEK_SMALL_LETTER_NU}, 6);
                 }
             }
             else if (vf->mood == OPTATIVE)
             {
-                splice(ucs2Endings, &ucs2EndingsLen, (int)(strlen(utf8Ending) * 3) + 1, ucs2EndingsLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_OMICRON,GREEK_SMALL_LETTER_IOTA,GREEK_SMALL_LETTER_ETA,GREEK_SMALL_LETTER_NU}, 6);
+                ucsplice(ucs2Endings, &ucs2EndingsLen, (int)(strlen(utf8Ending) * 3) + 1, ucs2EndingsLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_OMICRON,GREEK_SMALL_LETTER_IOTA,GREEK_SMALL_LETTER_ETA,GREEK_SMALL_LETTER_NU}, 6);
             }
         }
         int endingStarts[5] = { 0,0,0,0,0 };  //we leave space for up to five alternate endings
@@ -1315,7 +1315,7 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
             
             ucs2StemPlusEndingBufferLen += (tempStemLen - stemLen);
             
-            splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE}, 2);
+            ucsplice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE}, 2);
         }
     }
     ucs2StemPlusEndingBufferLen -= 2; //remove trailing comma and space.
@@ -1325,14 +1325,14 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
     {
         if ((vf->tense == AORIST || vf->tense == IMPERFECT || vf->tense == PERFECT || vf->tense == PLUPERFECT) && vf->mood == INDICATIVE)// ucs2Buffer[0] == GREEK_SMALL_LETTER_ETA)
         {
-            splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_EPSILON}, 3);
+            ucsplice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_EPSILON}, 3);
             
             int j = 1;
             if (decompose && vf->tense != PERFECT && vf->tense != PLUPERFECT)
             {
                 j = 5;
             }
-            splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, &ucs2Buffer[j], ucs2StemPlusEndingBufferLen - j - 3);
+            ucsplice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, &ucs2Buffer[j], ucs2StemPlusEndingBufferLen - j - 3);
         }
     }
     
@@ -1342,14 +1342,14 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
         
         if (decompose)
         {
-            splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_ETA}, 3);
+            ucsplice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_ETA}, 3);
         }
         else
         {
-            splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_ETA_WITH_PSILI}, 3);
+            ucsplice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_ETA_WITH_PSILI}, 3);
         }
         
-        splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, &ucs2Buffer[1], ucs2StemPlusEndingBufferLen - 4);
+        ucsplice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, &ucs2Buffer[1], ucs2StemPlusEndingBufferLen - 4);
     }
     
     if (utf8HasSuffix(vf->verb->present, "ἀποθνῄσκω") && vf->tense == PERFECT && vf->number == PLURAL)
@@ -1358,30 +1358,30 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
         {
             if (vf->person == FIRST)
             {
-                splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU,SPACE,HYPHEN,SPACE, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_MU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_NU}, 13);
+                ucsplice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU,SPACE,HYPHEN,SPACE, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_MU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_NU}, 13);
             }
             else if (vf->person == SECOND)
             {
-                splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, SPACE,HYPHEN,SPACE,GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON}, 12);
+                ucsplice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, SPACE,HYPHEN,SPACE,GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON}, 12);
             }
             else if (vf->person == THIRD)
             {
-                splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU,SPACE,HYPHEN,SPACE, GREEK_SMALL_LETTER_ALPHA, COMBINING_MACRON, GREEK_SMALL_LETTER_SIGMA, GREEK_SMALL_LETTER_IOTA,LEFT_PARENTHESIS, GREEK_SMALL_LETTER_NU,RIGHT_PARENTHESIS}, 16);
+                ucsplice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU,SPACE,HYPHEN,SPACE, GREEK_SMALL_LETTER_ALPHA, COMBINING_MACRON, GREEK_SMALL_LETTER_SIGMA, GREEK_SMALL_LETTER_IOTA,LEFT_PARENTHESIS, GREEK_SMALL_LETTER_NU,RIGHT_PARENTHESIS}, 16);
             }
         }
         else
         {
             if (vf->person == FIRST)
             {
-                splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, EPSILON_WITH_ACUTE, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_MU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_NU}, 10);
+                ucsplice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, EPSILON_WITH_ACUTE, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_MU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_NU}, 10);
             }
             else if (vf->person == SECOND)
             {
-                splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, EPSILON_WITH_ACUTE, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON}, 9);
+                ucsplice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, EPSILON_WITH_ACUTE, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON}, 9);
             }
             else if (vf->person == THIRD)
             {
-                splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA_WITH_PERISPOMENI, GREEK_SMALL_LETTER_SIGMA, GREEK_SMALL_LETTER_IOTA,LEFT_PARENTHESIS, GREEK_SMALL_LETTER_NU,RIGHT_PARENTHESIS}, 12);
+                ucsplice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA_WITH_PERISPOMENI, GREEK_SMALL_LETTER_SIGMA, GREEK_SMALL_LETTER_IOTA,LEFT_PARENTHESIS, GREEK_SMALL_LETTER_NU,RIGHT_PARENTHESIS}, 12);
             }
         }
     }
@@ -1389,11 +1389,11 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
     {
         if (decompose)
         {
-            splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_EPSILON,SPACE,HYPHEN,SPACE, GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU,SPACE,HYPHEN,SPACE, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_SIGMA, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_NU}, 17);
+            ucsplice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_EPSILON,SPACE,HYPHEN,SPACE, GREEK_SMALL_LETTER_TAU, GREEK_SMALL_LETTER_EPSILON, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU,SPACE,HYPHEN,SPACE, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_SIGMA, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_NU}, 17);
         }
         else
         {
-            splice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_EPSILON_WITH_PSILI, GREEK_SMALL_LETTER_TAU, EPSILON_WITH_ACUTE, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_SIGMA, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_NU}, 11);
+            ucsplice(ucs2Buffer, &ucs2StemPlusEndingBufferLen, bufferCapacity, ucs2StemPlusEndingBufferLen, 0, (UCS2[]){COMMA,SPACE,GREEK_SMALL_LETTER_EPSILON_WITH_PSILI, GREEK_SMALL_LETTER_TAU, EPSILON_WITH_ACUTE, GREEK_SMALL_LETTER_THETA, GREEK_SMALL_LETTER_NU, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_SIGMA, GREEK_SMALL_LETTER_ALPHA, GREEK_SMALL_LETTER_NU}, 11);
         }
     }
     
@@ -1801,7 +1801,7 @@ void stripAccent(UCS2 *word, int *len)
                 word[i] = GREEK_SMALL_LETTER_ALPHA;
                 break;
             case GREEK_SMALL_LETTER_ALPHA_WITH_PERISPOMENI:
-                splice(word, len, 1024, i, 1, (UCS2[]){GREEK_SMALL_LETTER_ALPHA,COMBINING_MACRON}, 2);
+                ucsplice(word, len, 1024, i, 1, (UCS2[]){GREEK_SMALL_LETTER_ALPHA,COMBINING_MACRON}, 2);
                 break;
             case GREEK_SMALL_LETTER_EPSILON_WITH_OXIA:
             case GREEK_SMALL_LETTER_EPSILON_WITH_TONOS:
@@ -1821,7 +1821,7 @@ void stripAccent(UCS2 *word, int *len)
             case GREEK_SMALL_LETTER_IOTA_WITH_PERISPOMENI: //to fix decomposed macron on krine
                 if (i > 0 && word[i-1] != GREEK_SMALL_LETTER_EPSILON && word[i-1] != GREEK_SMALL_LETTER_OMICRON && word[i-1] != GREEK_SMALL_LETTER_ALPHA && word[i-1] != SPACE)
                 {
-                    splice(word, len, 1024, i, 1, (UCS2[]){GREEK_SMALL_LETTER_IOTA,COMBINING_MACRON}, 2);
+                    ucsplice(word, len, 1024, i, 1, (UCS2[]){GREEK_SMALL_LETTER_IOTA,COMBINING_MACRON}, 2);
                 }
                 else
                 {
@@ -1841,7 +1841,7 @@ void stripAccent(UCS2 *word, int *len)
             case GREEK_SMALL_LETTER_UPSILON_WITH_PERISPOMENI:
                 if (i > 0 && word[i-1] != GREEK_SMALL_LETTER_EPSILON && word[i-1] != GREEK_SMALL_LETTER_OMICRON && word[i-1] != GREEK_SMALL_LETTER_ALPHA && word[i-1] != GREEK_SMALL_LETTER_ETA && word[i-1] != SPACE)
                 {
-                    splice(word, len, 1024, i, 1, (UCS2[]){GREEK_SMALL_LETTER_UPSILON,COMBINING_MACRON}, 2);
+                    ucsplice(word, len, 1024, i, 1, (UCS2[]){GREEK_SMALL_LETTER_UPSILON,COMBINING_MACRON}, 2);
                 }
                 else
                 {
@@ -1879,7 +1879,7 @@ void stripAccent(UCS2 *word, int *len)
             case GREEK_SMALL_LETTER_IOTA_WITH_DASIA_AND_PERISPOMENI:
                 if (i > 0 && word[i-1] != GREEK_SMALL_LETTER_EPSILON && word[i-1] != GREEK_SMALL_LETTER_OMICRON && word[i-1] != GREEK_SMALL_LETTER_ALPHA)
                 {
-                    splice(word, len, 1024, i, 1, (UCS2[]){GREEK_SMALL_LETTER_IOTA,COMBINING_MACRON,COMBINING_ROUGH_BREATHING}, 3);
+                    ucsplice(word, len, 1024, i, 1, (UCS2[]){GREEK_SMALL_LETTER_IOTA,COMBINING_MACRON,COMBINING_ROUGH_BREATHING}, 3);
                 }
                 else
                 {
@@ -1960,7 +1960,7 @@ void stripAccent(UCS2 *word, int *len)
             case COMBINING_ACUTE:
                 //case COMBINING_MACRON:
                 //remove combining accent, shift other characters over 1
-                splice(word, len, 1024, i, 1, NULL, 0);
+                ucsplice(word, len, 1024, i, 1, NULL, 0);
                 break;
             default:
                 break;

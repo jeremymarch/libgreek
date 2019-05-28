@@ -77,7 +77,7 @@ bool leftShiftFromOffsetSteps(UCS2 *ucs2, int offset, int steps, int *len)
  *
  * returns true, or false if error
  */
-bool splice(UCS2 *string, int *len, int buffer_capacity, int offset, int replacing, UCS2 *insert, int insert_len)
+bool ucsplice(UCS2 *string, int *len, int buffer_capacity, int offset, int replacing, UCS2 *insert, int insert_len)
 {
     if (*len + insert_len - replacing > buffer_capacity)
     {

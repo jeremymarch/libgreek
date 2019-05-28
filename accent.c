@@ -1032,7 +1032,7 @@ void accentSyllable(UCS2 *ucs2String, int i, int *len, int accentToAdd, bool tog
         ucs2String[i] = LEFT_PARENTHESIS;
         ucs2String[i+1] = GREEK_SMALL_LETTER_NU;
         ucs2String[i+2] = RIGHT_PARENTHESIS; */
-        splice(ucs2String, len, 1024, i, 1, (UCS2[]){LEFT_PARENTHESIS,GREEK_SMALL_LETTER_NU,RIGHT_PARENTHESIS }, 3);
+        ucsplice(ucs2String, len, 1024, i, 1, (UCS2[]){LEFT_PARENTHESIS,GREEK_SMALL_LETTER_NU,RIGHT_PARENTHESIS }, 3);
         return;
     }
     
@@ -1074,7 +1074,7 @@ void accentSyllable(UCS2 *ucs2String, int i, int *len, int accentToAdd, bool tog
         return;
     
     //5. make room for letter or decrease it if it is shrinking
-    splice(ucs2String, len, 1024, i, letterLen, buffer, newLetterLen);
+    ucsplice(ucs2String, len, 1024, i, letterLen, buffer, newLetterLen);
 }
 
 /*
