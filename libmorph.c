@@ -810,6 +810,11 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
     {
         return 0;
     }
+    //block future passive for passive deponents
+    if (deponentType(vf->verb) == PASSIVE_DEPONENT && vf->tense == FUTURE && vf->voice == PASSIVE)
+    {
+        return 0;
+    }
     
     //abd
     //no passive for middle deponent present or imperfect

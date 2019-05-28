@@ -12086,20 +12086,20 @@ Future Middle Optative
 3p: βουλήσοιντο ; βουλησ ‐ οιντο
 
 Future Passive Indicative
-1s: βουληθήσομαι ; βουληθ ‐ ησ ‐ ομαι
-2s: βουληθήσει, βουληθήσῃ ; βουληθ ‐ ησ ‐ ει, βουληθ ‐ ησ ‐ ῃ
-3s: βουληθήσεται ; βουληθ ‐ ησ ‐ εται
-1p: βουληθησόμεθα ; βουληθ ‐ ησ ‐ ομεθα
-2p: βουληθήσεσθε ; βουληθ ‐ ησ ‐ εσθε
-3p: βουληθήσονται ; βουληθ ‐ ησ ‐ ονται
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
 
 Future Passive Optative
-1s: βουληθησοίμην ; βουληθ ‐ ησ ‐ οιμην
-2s: βουληθήσοιο ; βουληθ ‐ ησ ‐ οιο
-3s: βουληθήσοιτο ; βουληθ ‐ ησ ‐ οιτο
-1p: βουληθησοίμεθα ; βουληθ ‐ ησ ‐ οιμεθα
-2p: βουληθήσοισθε ; βουληθ ‐ ησ ‐ οισθε
-3p: βουληθήσοιντο ; βουληθ ‐ ησ ‐ οιντο
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
 
 Aorist Active Indicative
 1s: NF ; NDF
@@ -16168,20 +16168,20 @@ Future Middle Optative
 3p: φοβήσοιντο ; φοβησ ‐ οιντο
 
 Future Passive Indicative
-1s: φοβηθήσομαι ; φοβηθ ‐ ησ ‐ ομαι
-2s: φοβηθήσει, φοβηθήσῃ ; φοβηθ ‐ ησ ‐ ει, φοβηθ ‐ ησ ‐ ῃ
-3s: φοβηθήσεται ; φοβηθ ‐ ησ ‐ εται
-1p: φοβηθησόμεθα ; φοβηθ ‐ ησ ‐ ομεθα
-2p: φοβηθήσεσθε ; φοβηθ ‐ ησ ‐ εσθε
-3p: φοβηθήσονται ; φοβηθ ‐ ησ ‐ ονται
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
 
 Future Passive Optative
-1s: φοβηθησοίμην ; φοβηθ ‐ ησ ‐ οιμην
-2s: φοβηθήσοιο ; φοβηθ ‐ ησ ‐ οιο
-3s: φοβηθήσοιτο ; φοβηθ ‐ ησ ‐ οιτο
-1p: φοβηθησοίμεθα ; φοβηθ ‐ ησ ‐ οιμεθα
-2p: φοβηθήσοισθε ; φοβηθ ‐ ησ ‐ οισθε
-3p: φοβηθήσοιντο ; φοβηθ ‐ ησ ‐ οιντο
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
 
 Aorist Active Indicative
 1s: NF ; NDF
@@ -29670,20 +29670,20 @@ Future Middle Optative
 3p: δυνήσοιντο ; δυνησ ‐ οιντο
 
 Future Passive Indicative
-1s: δυνηθήσομαι ; δυνηθ ‐ ησ ‐ ομαι
-2s: δυνηθήσει, δυνηθήσῃ ; δυνηθ ‐ ησ ‐ ει, δυνηθ ‐ ησ ‐ ῃ
-3s: δυνηθήσεται ; δυνηθ ‐ ησ ‐ εται
-1p: δυνηθησόμεθα ; δυνηθ ‐ ησ ‐ ομεθα
-2p: δυνηθήσεσθε ; δυνηθ ‐ ησ ‐ εσθε
-3p: δυνηθήσονται ; δυνηθ ‐ ησ ‐ ονται
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
 
 Future Passive Optative
-1s: δυνηθησοίμην ; δυνηθ ‐ ησ ‐ οιμην
-2s: δυνηθήσοιο ; δυνηθ ‐ ησ ‐ οιο
-3s: δυνηθήσοιτο ; δυνηθ ‐ ησ ‐ οιτο
-1p: δυνηθησοίμεθα ; δυνηθ ‐ ησ ‐ οιμεθα
-2p: δυνηθήσοισθε ; δυνηθ ‐ ησ ‐ οισθε
-3p: δυνηθήσοιντο ; δυνηθ ‐ ησ ‐ οιντο
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
 
 Aorist Active Indicative
 1s: NF ; NDF
@@ -30612,20 +30612,20 @@ Future Middle Optative
 3p: ἐπιστήσοιντο ; ἐπιστησ ‐ οιντο
 
 Future Passive Indicative
-1s: ἐπιστηθήσομαι ; ἐπιστηθ ‐ ησ ‐ ομαι
-2s: ἐπιστηθήσει, ἐπιστηθήσῃ ; ἐπιστηθ ‐ ησ ‐ ει, ἐπιστηθ ‐ ησ ‐ ῃ
-3s: ἐπιστηθήσεται ; ἐπιστηθ ‐ ησ ‐ εται
-1p: ἐπιστηθησόμεθα ; ἐπιστηθ ‐ ησ ‐ ομεθα
-2p: ἐπιστηθήσεσθε ; ἐπιστηθ ‐ ησ ‐ εσθε
-3p: ἐπιστηθήσονται ; ἐπιστηθ ‐ ησ ‐ ονται
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
 
 Future Passive Optative
-1s: ἐπιστηθησοίμην ; ἐπιστηθ ‐ ησ ‐ οιμην
-2s: ἐπιστηθήσοιο ; ἐπιστηθ ‐ ησ ‐ οιο
-3s: ἐπιστηθήσοιτο ; ἐπιστηθ ‐ ησ ‐ οιτο
-1p: ἐπιστηθησοίμεθα ; ἐπιστηθ ‐ ησ ‐ οιμεθα
-2p: ἐπιστηθήσοισθε ; ἐπιστηθ ‐ ησ ‐ οισθε
-3p: ἐπιστηθήσοιντο ; ἐπιστηθ ‐ ησ ‐ οιντο
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
 
 Aorist Active Indicative
 1s: NF ; NDF
@@ -34694,20 +34694,20 @@ Future Middle Optative
 3p: αἰσχυνοῖντο ; αἰσχυνε ‐ οιντο
 
 Future Passive Indicative
-1s: αἰσχυνθήσομαι ; αἰσχυνθ ‐ ησ ‐ ομαι
-2s: αἰσχυνθήσει, αἰσχυνθήσῃ ; αἰσχυνθ ‐ ησ ‐ ει, αἰσχυνθ ‐ ησ ‐ ῃ
-3s: αἰσχυνθήσεται ; αἰσχυνθ ‐ ησ ‐ εται
-1p: αἰσχυνθησόμεθα ; αἰσχυνθ ‐ ησ ‐ ομεθα
-2p: αἰσχυνθήσεσθε ; αἰσχυνθ ‐ ησ ‐ εσθε
-3p: αἰσχυνθήσονται ; αἰσχυνθ ‐ ησ ‐ ονται
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
 
 Future Passive Optative
-1s: αἰσχυνθησοίμην ; αἰσχυνθ ‐ ησ ‐ οιμην
-2s: αἰσχυνθήσοιο ; αἰσχυνθ ‐ ησ ‐ οιο
-3s: αἰσχυνθήσοιτο ; αἰσχυνθ ‐ ησ ‐ οιτο
-1p: αἰσχυνθησοίμεθα ; αἰσχυνθ ‐ ησ ‐ οιμεθα
-2p: αἰσχυνθήσοισθε ; αἰσχυνθ ‐ ησ ‐ οισθε
-3p: αἰσχυνθήσοιντο ; αἰσχυνθ ‐ ησ ‐ οιντο
+1s: NF ; NDF
+2s: NF ; NDF
+3s: NF ; NDF
+1p: NF ; NDF
+2p: NF ; NDF
+3p: NF ; NDF
 
 Aorist Active Indicative
 1s: NF ; NDF
@@ -39877,17 +39877,17 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Total rows including -: 21145
-Total forms including alternates, minus -: 22832
+Total rows including -: 21085
+Total forms including alternates, minus -: 22767
 
 Zero Forms: 118
-One Form: 19290
-Two Forms: 1686
+One Form: 19235
+Two Forms: 1681
 Three Forms: 34
 Four Forms: 17
 Five Forms: 0
 More Forms: 0
-Total Forms: 22832 = 22832
+Total Forms: 22767 = 22767
 
 Longest Form: 2,1,3,0,2, v: καταστήσαιεν, καταστήσειαν, κατασταῖεν, κατασταίησαν, l: 99
 
