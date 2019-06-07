@@ -798,6 +798,7 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
     {
         ucs2Buffer[i] = 0;
     }
+    *bufferLen = 0; //init
     
     int ucs2StemPlusEndingBufferLen = 0;
     //no first person imperatives
@@ -810,6 +811,13 @@ int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int buffe
     {
         return 0;
     }
+    
+    //no futures outside the indicative or optative
+    if (vf->tense == FUTURE && vf->mood != INDICATIVE && vf->mood != OPTATIVE)
+    {
+        return 0;
+    }
+    
     //block future passive for passive deponents
     if (deponentType(vf->verb) == PASSIVE_DEPONENT && vf->tense == FUTURE && vf->voice == PASSIVE)
     {
