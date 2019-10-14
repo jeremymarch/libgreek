@@ -437,6 +437,11 @@ int getOida(VerbFormC *vf, UCS2 *buffer, int *bufferLen, int bufferCapacity, boo
     
     if (vf->tense == PERFECT)
     {
+        if (vf->voice != ACTIVE)
+        {
+            return 0;
+        }
+        
         if (vf->mood == INDICATIVE)
         {
             if (vf->number == SINGULAR)
@@ -676,6 +681,15 @@ int getOida(VerbFormC *vf, UCS2 *buffer, int *bufferLen, int bufferCapacity, boo
     }
     else if (vf->tense == PLUPERFECT)
     {
+        if (vf->mood != INDICATIVE)
+        {
+            return 0;
+        }
+        if (vf->voice != ACTIVE)
+        {
+            return 0;
+        }
+        
         if (!decompose)
         {
             if (!hasPrefix && vf->number == SINGULAR)
