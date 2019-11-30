@@ -25017,7 +25017,7 @@ Aorist Middle Indicative
 
 Aorist Middle Subjunctive
 1s: σπῶμαι ; σπ ‐ ωμαι
-2s: σπῄ ; σπ ‐ ῃ
+2s: σπῇ ; σπ ‐ ῃ
 3s: σπῆται ; σπ ‐ ηται
 1p: σπώμεθα ; σπ ‐ ωμεθα
 2p: σπῆσθε ; σπ ‐ ησθε
@@ -30983,7 +30983,7 @@ Aorist Middle Indicative
 
 Aorist Middle Subjunctive
 1s: σχῶμαι ; σχ ‐ ωμαι
-2s: σχῄ ; σχ ‐ ῃ
+2s: σχῇ ; σχ ‐ ῃ
 3s: σχῆται ; σχ ‐ ηται
 1p: σχώμεθα ; σχ ‐ ωμεθα
 2p: σχῆσθε ; σχ ‐ ησθε
