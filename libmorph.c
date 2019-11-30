@@ -1747,7 +1747,14 @@ bool accentRecessive(VerbFormC *vf, UCS2 *tempUcs2String, int *len)
     }
     
     //NSLog(@"syl: %d, %d, %d", vowelsAndDiphthongs, longPenult, longUltima);
-    if (vowelsAndDiphthongs == 1)
+    if (vowelsAndDiphthongs == 1 && longUltima)
+    {
+        //circumflex on ultima for monosyllabic verbs
+        //Hardy pointed this rule out to me
+        //it seems to only apply to 2 forms in H&Q: σπῇ and σχῇ
+        accentWord(tempUcs2String, len, ULTIMA, CIRCUMFLEX);
+    }
+    else if (vowelsAndDiphthongs == 1 && !longUltima)
     {
         //acute on ultima
         accentWord(tempUcs2String, len, ULTIMA, ACUTE);
@@ -1769,6 +1776,27 @@ bool accentRecessive(VerbFormC *vf, UCS2 *tempUcs2String, int *len)
     }
 
     return true;
+}
+
+int countSyllables(UCS2 *ucs2String, int *len)
+{
+    int syllables = 0;
+    int i = 0;
+    //find which character to accent, == i
+    for ( i = *len - 1; i >= 0 ; i--)
+    {
+        if (isVowel(ucs2String[i]))
+        {
+            ++syllables;
+            //skip over next character of diphthong
+            if (isSecondVowelOfDiphthong(ucs2String, *len, i))
+            {
+                --i;
+            }
+        }
+    }
+    
+    return syllables;
 }
 
 //return false if not enough syllables
