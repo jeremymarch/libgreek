@@ -11,7 +11,7 @@
 
 #include "libmorph.h"
 
-extern Verb verbs[NUM_VERBS];
+extern const Verb verbs[NUM_VERBS];
 extern Ending endings[NUM_ENDINGS];
 
 extern char *persons[];

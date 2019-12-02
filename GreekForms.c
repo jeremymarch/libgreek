@@ -8,7 +8,7 @@
 
 #include "GreekForms.h"
 
-Verb verbs[NUM_VERBS] = {
+const Verb verbs[NUM_VERBS] = {
     { 0, 43, 0, 1, "παιδεύω", "παιδεύσω", "ἐπαίδευσα", "πεπαίδευκα", "πεπαίδευμαι", "ἐπαιδεύθην" },
     { 1, 45, CONSONANT_STEM_PERFECT_MU_PI, 1, "πέμπω", "πέμψω", "ἔπεμψα", "πέπομφα", "πέπεμμαι", "ἐπέμφθην" },
     
