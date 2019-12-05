@@ -30,7 +30,7 @@
 #define RIGHT_PARENTHESIS               0x0029
 #define SPACE                           0x0020
 #define EN_DASH                         0x2013
-#define HYPHEN                          0x2010
+#define HYPHEN                          0x2010 //0x002D might be more normal?
 #define COMMA                           0x002C
 #define NEWLINE                         0x000A
 #define WORD_JOINER                     0x2060 //to prevent word from breaking, e.g. place after dashελήλακα
