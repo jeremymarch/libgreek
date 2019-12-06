@@ -25,15 +25,20 @@
 #define COMBINING_SMOOTH_BREATHING      0x0313
 #define COMBINING_ROUGH_BREATHING       0x0314
 #define COMBINING_IOTA_SUBSCRIPT        0x0345
-#define EM_DASH                         0x2014
 #define LEFT_PARENTHESIS                0x0028
 #define RIGHT_PARENTHESIS               0x0029
 #define SPACE                           0x0020
 #define EN_DASH                         0x2013
+#define EM_DASH                         0x2014
 #define HYPHEN                          0x2010 //0x002D might be more normal?
+#define HYPHEN_MINUS                    0x002D
 #define COMMA                           0x002C
 #define NEWLINE                         0x000A
 #define WORD_JOINER                     0x2060 //to prevent word from breaking, e.g. place after dashελήλακα
+
+#define DASH_CHAR                       HYPHEN_MINUS//leading hyphens which indicate the verb needs a prefix
+#define DECOMPOSED_SEPERATOR             HYPHEN
+
 /* BASIC GREEK 0370-03FF */
 
 #define GREEK_CAPITAL_LETTER_HETA                      0x0370 // Ͱ → 2C75 Ⱶ latin capital letter half h
