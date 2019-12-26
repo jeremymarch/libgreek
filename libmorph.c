@@ -16,6 +16,7 @@
 #include "ending.h"
 #include "specialverbs.h"
 #include <stdlib.h>
+#include <assert.h>
 
 bool onlyUseCombiningDiacritics = false; //not used yet
 
@@ -226,6 +227,12 @@ void getAbbrevDescription2 (VerbFormD *vf, char *buffer, int len)
 
 void getAbbrevDescription (VerbFormC *vf, char *buffer, int len)
 {
+    assert(vf->person > -1 && vf->person < 3);
+    assert(vf->number > -1 && vf->number < 2);
+    assert(vf->tense > -1 && vf->tense < 6);
+    assert(vf->voice > -1 && vf->voice < 3);
+    assert(vf->mood > -1 && vf->mood < 4);
+
     snprintf(buffer, len, "%s %s %s %s %s", personsabbrev[vf->person], numbersabbrev[vf->number], tensesabbrev[vf->tense], voicesabbrev[vf->voice], moodsabbrev[vf->mood]);
 }
 
