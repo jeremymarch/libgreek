@@ -206,7 +206,562 @@ unsigned short letters[NUM_VOWEL_CODES][NUM_ACCENT_CODES] = {
     }
 };
 
-bool analyzePrecomposedLetter(unsigned short letter, int *l, int *a)
+#define NOCHAR -1
+short basicGreekLookUp[][2] = {
+    /* 0370 */ { NOCHAR, NOCHAR },
+    /* 0371 */ { NOCHAR, NOCHAR },
+    /* 0372 */ { NOCHAR, NOCHAR },
+    /* 0373 */ { NOCHAR, NOCHAR },
+    /* 0374 */ { NOCHAR, NOCHAR },
+    /* 0375 */ { NOCHAR, NOCHAR },
+    /* 0376 */ { NOCHAR, NOCHAR },
+    /* 0377 */ { NOCHAR, NOCHAR },
+    /* 0378 */ { NOCHAR, NOCHAR },
+    /* 0379 */ { NOCHAR, NOCHAR },
+    /* 037A */ { NOCHAR, NOCHAR },
+    /* 037B */ { NOCHAR, NOCHAR },
+    /* 037C */ { NOCHAR, NOCHAR },
+    /* 037D */ { NOCHAR, NOCHAR },
+    /* 037E */ { NOCHAR, NOCHAR },
+    /* 037F */ { NOCHAR, NOCHAR },
+    /* 0380 */ { NOCHAR, NOCHAR },
+    /* 0381 */ { NOCHAR, NOCHAR },
+    /* 0382 */ { NOCHAR, NOCHAR },
+    /* 0383 */ { NOCHAR, NOCHAR },
+    /* 0384 */ { NOCHAR, NOCHAR },
+    /* 0385 */ { NOCHAR, NOCHAR },
+    /* 0386 */ { ALPHA_CAP, _ACUTE },
+    /* 0387 */ { NOCHAR, NOCHAR },
+    /* 0388 */ { EPSILON_CAP, _ACUTE },
+    /* 0389 */ { ETA_CAP, _ACUTE },
+    /* 038A */ { IOTA_CAP, _ACUTE },
+    /* 038B */ { NOCHAR, NOCHAR },
+    /* 038C */ { OMICRON_CAP, _ACUTE },
+    /* 038D */ { NOCHAR, NOCHAR },
+    /* 038E */ { UPSILON_CAP, _ACUTE },
+    /* 038F */ { OMEGA_CAP, _ACUTE },
+    /* 0390 */ { IOTA, _ACUTE | _DIAERESIS },
+    /* 0391 */ { ALPHA_CAP, 0 },
+    /* 0392 */ { NOCHAR, NOCHAR },
+    /* 0393 */ { NOCHAR, NOCHAR },
+    /* 0394 */ { NOCHAR, NOCHAR },
+    /* 0395 */ { EPSILON_CAP, 0 },
+    /* 0396 */ { NOCHAR, NOCHAR },
+    /* 0397 */ { ETA_CAP, 0 },
+    /* 0398 */ { NOCHAR, NOCHAR },
+    /* 0399 */ { IOTA_CAP, 0 },
+    /* 039A */ { NOCHAR, NOCHAR },
+    /* 039B */ { NOCHAR, NOCHAR },
+    /* 039C */ { NOCHAR, NOCHAR },
+    /* 039D */ { NOCHAR, NOCHAR },
+    /* 039E */ { NOCHAR, NOCHAR },
+    /* 039F */ { OMICRON_CAP, 0 },
+    /* 03A0 */ { NOCHAR, NOCHAR },
+    /* 03A1 */ { NOCHAR, NOCHAR },
+    /* 03A2 */ { NOCHAR, NOCHAR },
+    /* 03A3 */ { NOCHAR, NOCHAR },
+    /* 03A4 */ { NOCHAR, NOCHAR },
+    /* 03A5 */ { UPSILON_CAP, 0 },
+    /* 03A6 */ { NOCHAR, NOCHAR },
+    /* 03A7 */ { NOCHAR, NOCHAR },
+    /* 03A8 */ { NOCHAR, NOCHAR },
+    /* 03A9 */ { OMEGA_CAP, 0 },
+    /* 03AA */ { IOTA_CAP, _DIAERESIS },
+    /* 03AB */ { UPSILON_CAP, _DIAERESIS },
+    /* 03AC */ { ALPHA, _ACUTE },
+    /* 03AD */ { EPSILON, _ACUTE },
+    /* 03AE */ { ETA, _ACUTE },
+    /* 03AF */ { IOTA, _ACUTE },
+    /* 03B0 */ { UPSILON, _ACUTE | _DIAERESIS },
+    /* 03B1 */ { ALPHA, 0 },
+    /* 03B2 */ { NOCHAR, NOCHAR },
+    /* 03B3 */ { NOCHAR, NOCHAR },
+    /* 03B4 */ { NOCHAR, NOCHAR },
+    /* 03B5 */ { EPSILON, 0 },
+    /* 03B6 */ { NOCHAR, NOCHAR },
+    /* 03B7 */ { ETA, 0 },
+    /* 03B8 */ { NOCHAR, NOCHAR },
+    /* 03B9 */ { IOTA, 0 },
+    /* 03BA */ { NOCHAR, NOCHAR },
+    /* 03BB */ { NOCHAR, NOCHAR },
+    /* 03BC */ { NOCHAR, NOCHAR },
+    /* 03BD */ { NOCHAR, NOCHAR },
+    /* 03BE */ { NOCHAR, NOCHAR },
+    /* 03BF */ { OMICRON, 0 },
+    /* 03C0 */ { NOCHAR, NOCHAR },
+    /* 03C1 */ { NOCHAR, NOCHAR },
+    /* 03C2 */ { NOCHAR, NOCHAR },
+    /* 03C3 */ { NOCHAR, NOCHAR },
+    /* 03C4 */ { NOCHAR, NOCHAR },
+    /* 03C5 */ { UPSILON, 0 },
+    /* 03C6 */ { NOCHAR, NOCHAR },
+    /* 03C7 */ { NOCHAR, NOCHAR },
+    /* 03C8 */ { NOCHAR, NOCHAR },
+    /* 03C9 */ { OMEGA, 0 },
+    /* 03CA */ { IOTA, _DIAERESIS },
+    /* 03CB */ { UPSILON, _DIAERESIS },
+    /* 03CC */ { OMICRON, _ACUTE },
+    /* 03CD */ { UPSILON, _ACUTE },
+    /* 03CE */ { OMEGA, _ACUTE },
+    /* 03CF */ { NOCHAR, NOCHAR },
+    /* 03D0 */ { NOCHAR, NOCHAR },
+    /* 03D1 */ { NOCHAR, NOCHAR },
+    /* 03D2 */ { NOCHAR, NOCHAR },
+    /* 03D3 */ { NOCHAR, NOCHAR },
+    /* 03D4 */ { NOCHAR, NOCHAR },
+    /* 03D5 */ { NOCHAR, NOCHAR },
+    /* 03D6 */ { NOCHAR, NOCHAR },
+    /* 03D7 */ { NOCHAR, NOCHAR },
+    /* 03D8 */ { NOCHAR, NOCHAR },
+    /* 03D9 */ { NOCHAR, NOCHAR },
+    /* 03DA */ { NOCHAR, NOCHAR },
+    /* 03DB */ { NOCHAR, NOCHAR },
+    /* 03DC */ { NOCHAR, NOCHAR },
+    /* 03DD */ { NOCHAR, NOCHAR },
+    /* 03DE */ { NOCHAR, NOCHAR },
+    /* 03DF */ { NOCHAR, NOCHAR },
+    /* 03E0 */ { NOCHAR, NOCHAR },
+    /* 03E1 */ { NOCHAR, NOCHAR },
+    /* 03E2 */ { NOCHAR, NOCHAR },
+    /* 03E3 */ { NOCHAR, NOCHAR },
+    /* 03E4 */ { NOCHAR, NOCHAR },
+    /* 03E5 */ { NOCHAR, NOCHAR },
+    /* 03E6 */ { NOCHAR, NOCHAR },
+    /* 03E7 */ { NOCHAR, NOCHAR },
+    /* 03E8 */ { NOCHAR, NOCHAR },
+    /* 03E9 */ { NOCHAR, NOCHAR },
+    /* 03EA */ { NOCHAR, NOCHAR },
+    /* 03EB */ { NOCHAR, NOCHAR },
+    /* 03EC */ { NOCHAR, NOCHAR },
+    /* 03ED */ { NOCHAR, NOCHAR },
+    /* 03EE */ { NOCHAR, NOCHAR },
+    /* 03EF */ { NOCHAR, NOCHAR },
+    /* 03F0 */ { NOCHAR, NOCHAR },
+    /* 03F1 */ { NOCHAR, NOCHAR },
+    /* 03F2 */ { NOCHAR, NOCHAR },
+    /* 03F3 */ { NOCHAR, NOCHAR },
+    /* 03F4 */ { NOCHAR, NOCHAR },
+    /* 03F5 */ { NOCHAR, NOCHAR },
+    /* 03F6 */ { NOCHAR, NOCHAR },
+    /* 03F7 */ { NOCHAR, NOCHAR },
+    /* 03F8 */ { NOCHAR, NOCHAR },
+    /* 03F9 */ { NOCHAR, NOCHAR },
+    /* 03FA */ { NOCHAR, NOCHAR },
+    /* 03FB */ { NOCHAR, NOCHAR },
+    /* 03FC */ { NOCHAR, NOCHAR },
+    /* 03FD */ { NOCHAR, NOCHAR },
+    /* 03FE */ { NOCHAR, NOCHAR },
+    /* 03FF */ { NOCHAR, NOCHAR }
+};
+
+short extendedGreekLookUp[][2] = {
+    /* 1F00 */ { ALPHA, _SMOOTH },
+    /* 1F01 */ { ALPHA, _ROUGH },
+    /* 1F02 */ { ALPHA, _SMOOTH | _GRAVE },
+    /* 1F03 */ { ALPHA, _ROUGH | _GRAVE },
+    /* 1F04 */ { ALPHA, _SMOOTH | _ACUTE },
+    /* 1F05 */ { ALPHA, _ROUGH | _ACUTE },
+    /* 1F06 */ { ALPHA, _SMOOTH | _CIRCUMFLEX },
+    /* 1F07 */ { ALPHA, _ROUGH | _CIRCUMFLEX },
+    /* 1F08 */ { ALPHA_CAP, _SMOOTH },
+    /* 1F09 */ { ALPHA_CAP, _ROUGH },
+    /* 1F0A */ { ALPHA_CAP, _SMOOTH | _GRAVE },
+    /* 1F0B */ { ALPHA_CAP, _ROUGH | _GRAVE },
+    /* 1F0C */ { ALPHA_CAP, _SMOOTH | _ACUTE },
+    /* 1F0D */ { ALPHA_CAP, _ROUGH | _ACUTE },
+    /* 1F0E */ { ALPHA_CAP, _SMOOTH | _CIRCUMFLEX },
+    /* 1F0F */ { ALPHA_CAP, _ROUGH | _CIRCUMFLEX },
+    /* 1F10 */ { EPSILON, _SMOOTH },
+    /* 1F11 */ { EPSILON, _ROUGH },
+    /* 1F12 */ { EPSILON, _SMOOTH | _GRAVE },
+    /* 1F13 */ { EPSILON, _ROUGH | _GRAVE },
+    /* 1F14 */ { EPSILON, _SMOOTH | _ACUTE },
+    /* 1F15 */ { EPSILON, _ROUGH | _ACUTE },
+    /* 1F16 */ { NOCHAR, NOCHAR },
+    /* 1F17 */ { NOCHAR, NOCHAR },
+    /* 1F18 */ { EPSILON_CAP, _SMOOTH },
+    /* 1F19 */ { EPSILON_CAP, _ROUGH },
+    /* 1F1A */ { EPSILON_CAP, _SMOOTH | _GRAVE },
+    /* 1F1B */ { EPSILON_CAP, _ROUGH | _GRAVE },
+    /* 1F1C */ { EPSILON_CAP, _SMOOTH | _ACUTE },
+    /* 1F1D */ { EPSILON_CAP, _ROUGH | _ACUTE },
+    /* 1F1E */ { NOCHAR, NOCHAR },
+    /* 1F1F */ { NOCHAR, NOCHAR },
+    /* 1F20 */ { ETA, _SMOOTH },
+    /* 1F21 */ { ETA, _ROUGH },
+    /* 1F22 */ { ETA, _SMOOTH | _GRAVE },
+    /* 1F23 */ { ETA, _ROUGH | _GRAVE },
+    /* 1F24 */ { ETA, _SMOOTH | _ACUTE },
+    /* 1F25 */ { ETA, _ROUGH | _ACUTE },
+    /* 1F26 */ { ETA, _SMOOTH | _CIRCUMFLEX },
+    /* 1F27 */ { ETA, _ROUGH | _CIRCUMFLEX },
+    /* 1F28 */ { ETA_CAP, _SMOOTH },
+    /* 1F29 */ { ETA_CAP, _ROUGH },
+    /* 1F2A */ { ETA_CAP, _SMOOTH | _GRAVE },
+    /* 1F2B */ { ETA_CAP, _ROUGH | _GRAVE },
+    /* 1F2C */ { ETA_CAP, _SMOOTH | _ACUTE },
+    /* 1F2D */ { ETA_CAP, _ROUGH | _ACUTE },
+    /* 1F2E */ { ETA_CAP, _SMOOTH | _CIRCUMFLEX },
+    /* 1F2F */ { ETA_CAP, _ROUGH | _CIRCUMFLEX },
+    /* 1F30 */ { IOTA, _SMOOTH },
+    /* 1F31 */ { IOTA, _ROUGH },
+    /* 1F32 */ { IOTA, _SMOOTH | _GRAVE },
+    /* 1F33 */ { IOTA, _ROUGH | _GRAVE },
+    /* 1F34 */ { IOTA, _SMOOTH | _ACUTE },
+    /* 1F35 */ { IOTA, _ROUGH | _ACUTE },
+    /* 1F36 */ { IOTA, _SMOOTH | _CIRCUMFLEX },
+    /* 1F37 */ { IOTA, _ROUGH | _CIRCUMFLEX },
+    /* 1F38 */ { IOTA_CAP, _SMOOTH },
+    /* 1F39 */ { IOTA_CAP, _ROUGH },
+    /* 1F3A */ { IOTA_CAP, _SMOOTH | _GRAVE },
+    /* 1F3B */ { IOTA_CAP, _ROUGH | _GRAVE },
+    /* 1F3C */ { IOTA_CAP, _SMOOTH | _ACUTE },
+    /* 1F3D */ { IOTA_CAP, _ROUGH | _ACUTE },
+    /* 1F3E */ { IOTA_CAP, _SMOOTH | _CIRCUMFLEX },
+    /* 1F3F */ { IOTA_CAP, _ROUGH | _CIRCUMFLEX },
+    /* 1F40 */ { OMICRON, _SMOOTH },
+    /* 1F41 */ { OMICRON, _ROUGH },
+    /* 1F42 */ { OMICRON, _SMOOTH | _GRAVE },
+    /* 1F43 */ { OMICRON, _ROUGH | _GRAVE },
+    /* 1F44 */ { OMICRON, _SMOOTH | _ACUTE },
+    /* 1F45 */ { OMICRON, _ROUGH | _ACUTE },
+    /* 1F46 */ { NOCHAR, NOCHAR },
+    /* 1F47 */ { NOCHAR, NOCHAR },
+    /* 1F48 */ { OMICRON_CAP, _SMOOTH },
+    /* 1F49 */ { OMICRON_CAP, _ROUGH },
+    /* 1F4A */ { OMICRON_CAP, _SMOOTH | _GRAVE },
+    /* 1F4B */ { OMICRON_CAP, _ROUGH | _GRAVE },
+    /* 1F4C */ { OMICRON_CAP, _SMOOTH | _ACUTE },
+    /* 1F4D */ { OMICRON_CAP, _ROUGH | _ACUTE },
+    /* 1F4E */ { NOCHAR, NOCHAR },
+    /* 1F4F */ { NOCHAR, NOCHAR },
+    /* 1F50 */ { UPSILON, _SMOOTH },
+    /* 1F51 */ { UPSILON, _ROUGH },
+    /* 1F52 */ { UPSILON, _SMOOTH | _GRAVE },
+    /* 1F53 */ { UPSILON, _ROUGH | _GRAVE },
+    /* 1F54 */ { UPSILON, _SMOOTH | _ACUTE },
+    /* 1F55 */ { UPSILON, _ROUGH | _ACUTE },
+    /* 1F56 */ { UPSILON, _SMOOTH | _CIRCUMFLEX },
+    /* 1F57 */ { UPSILON, _ROUGH | _CIRCUMFLEX },
+    /* 1F58 */ { NOCHAR, NOCHAR },
+    /* 1F59 */ { UPSILON_CAP, _ROUGH },
+    /* 1F5A */ { NOCHAR, NOCHAR },
+    /* 1F5B */ { UPSILON_CAP, _ROUGH | _GRAVE },
+    /* 1F5C */ { NOCHAR, NOCHAR },
+    /* 1F5D */ { UPSILON_CAP, _ROUGH | _ACUTE },
+    /* 1F5E */ { NOCHAR, NOCHAR },
+    /* 1F5F */ { UPSILON_CAP, _ROUGH | _CIRCUMFLEX },
+    /* 1F60 */ { OMEGA, _SMOOTH },
+    /* 1F61 */ { OMEGA, _ROUGH },
+    /* 1F62 */ { OMEGA, _SMOOTH | _GRAVE },
+    /* 1F63 */ { OMEGA, _ROUGH | _GRAVE },
+    /* 1F64 */ { OMEGA, _SMOOTH | _ACUTE },
+    /* 1F65 */ { OMEGA, _ROUGH | _ACUTE },
+    /* 1F66 */ { OMEGA, _SMOOTH | _CIRCUMFLEX },
+    /* 1F67 */ { OMEGA, _ROUGH | _CIRCUMFLEX },
+    /* 1F68 */ { OMEGA_CAP, _SMOOTH },
+    /* 1F69 */ { OMEGA_CAP, _ROUGH },
+    /* 1F6A */ { OMEGA_CAP, _SMOOTH | _GRAVE },
+    /* 1F6B */ { OMEGA_CAP, _ROUGH | _GRAVE },
+    /* 1F6C */ { OMEGA_CAP, _SMOOTH | _ACUTE },
+    /* 1F6D */ { OMEGA_CAP, _ROUGH | _ACUTE },
+    /* 1F6E */ { OMEGA_CAP, _SMOOTH | _CIRCUMFLEX },
+    /* 1F6F */ { OMEGA_CAP, _ROUGH | _CIRCUMFLEX },
+    /* 1F70 */ { ALPHA, _GRAVE },
+    /* 1F71 */ { ALPHA, _ACUTE },
+    /* 1F72 */ { EPSILON, _GRAVE },
+    /* 1F73 */ { EPSILON, _ACUTE },
+    /* 1F74 */ { ETA, _GRAVE },
+    /* 1F75 */ { ETA, _ACUTE },
+    /* 1F76 */ { IOTA, _GRAVE },
+    /* 1F77 */ { IOTA, _ACUTE },
+    /* 1F78 */ { OMICRON, _GRAVE },
+    /* 1F79 */ { OMICRON, _ACUTE },
+    /* 1F7A */ { UPSILON, _GRAVE },
+    /* 1F7B */ { UPSILON, _ACUTE },
+    /* 1F7C */ { OMEGA, _GRAVE },
+    /* 1F7D */ { OMEGA, _ACUTE },
+    /* 1F7E */ { NOCHAR, NOCHAR },
+    /* 1F7F */ { NOCHAR, NOCHAR },
+    /* 1F80 */ { ALPHA, _SMOOTH | _IOTA_SUB },
+    /* 1F81 */ { ALPHA, _ROUGH | _IOTA_SUB },
+    /* 1F82 */ { ALPHA, _SMOOTH | _GRAVE | _IOTA_SUB },
+    /* 1F83 */ { ALPHA, _ROUGH | _GRAVE | _IOTA_SUB },
+    /* 1F84 */ { ALPHA, _SMOOTH | _ACUTE | _IOTA_SUB },
+    /* 1F85 */ { ALPHA, _ROUGH | _ACUTE | _IOTA_SUB },
+    /* 1F86 */ { ALPHA, _SMOOTH | _CIRCUMFLEX | _IOTA_SUB },
+    /* 1F87 */ { ALPHA, _ROUGH | _CIRCUMFLEX | _IOTA_SUB },
+    /* 1F88 */ { ALPHA_CAP, _SMOOTH | _IOTA_SUB },
+    /* 1F89 */ { ALPHA_CAP, _ROUGH | _IOTA_SUB },
+    /* 1F8A */ { ALPHA_CAP, _SMOOTH | _GRAVE | _IOTA_SUB },
+    /* 1F8B */ { ALPHA_CAP, _ROUGH | _GRAVE | _IOTA_SUB },
+    /* 1F8C */ { ALPHA_CAP, _SMOOTH | _ACUTE | _IOTA_SUB },
+    /* 1F8D */ { ALPHA_CAP, _ROUGH | _ACUTE | _IOTA_SUB },
+    /* 1F8E */ { ALPHA_CAP, _SMOOTH | _CIRCUMFLEX | _IOTA_SUB },
+    /* 1F8F */ { ALPHA_CAP, _ROUGH | _CIRCUMFLEX | _IOTA_SUB },
+    /* 1F90 */ { ETA, _SMOOTH | _IOTA_SUB },
+    /* 1F91 */ { ETA, _ROUGH | _IOTA_SUB },
+    /* 1F92 */ { ETA, _SMOOTH | _GRAVE | _IOTA_SUB },
+    /* 1F93 */ { ETA, _ROUGH | _GRAVE | _IOTA_SUB },
+    /* 1F94 */ { ETA, _SMOOTH | _ACUTE | _IOTA_SUB },
+    /* 1F95 */ { ETA, _ROUGH | _ACUTE | _IOTA_SUB },
+    /* 1F96 */ { ETA, _SMOOTH | _CIRCUMFLEX | _IOTA_SUB },
+    /* 1F97 */ { ETA, _ROUGH | _CIRCUMFLEX | _IOTA_SUB },
+    /* 1F98 */ { ETA_CAP, _SMOOTH | _IOTA_SUB },
+    /* 1F99 */ { ETA_CAP, _ROUGH | _IOTA_SUB },
+    /* 1F9A */ { ETA_CAP, _SMOOTH | _GRAVE | _IOTA_SUB },
+    /* 1F9B */ { ETA_CAP, _ROUGH | _GRAVE | _IOTA_SUB },
+    /* 1F9C */ { ETA_CAP, _SMOOTH | _ACUTE | _IOTA_SUB },
+    /* 1F9D */ { ETA_CAP, _ROUGH | _ACUTE | _IOTA_SUB },
+    /* 1F9E */ { ETA_CAP, _SMOOTH | _CIRCUMFLEX | _IOTA_SUB },
+    /* 1F9F */ { ETA_CAP, _ROUGH | _CIRCUMFLEX | _IOTA_SUB },
+    /* 1FA0 */ { OMEGA, _SMOOTH | _IOTA_SUB },
+    /* 1FA1 */ { OMEGA, _ROUGH | _IOTA_SUB },
+    /* 1FA2 */ { OMEGA, _SMOOTH | _GRAVE | _IOTA_SUB },
+    /* 1FA3 */ { OMEGA, _ROUGH | _GRAVE | _IOTA_SUB },
+    /* 1FA4 */ { OMEGA, _SMOOTH | _ACUTE | _IOTA_SUB },
+    /* 1FA5 */ { OMEGA, _ROUGH | _ACUTE | _IOTA_SUB },
+    /* 1FA6 */ { OMEGA, _SMOOTH | _CIRCUMFLEX | _IOTA_SUB },
+    /* 1FA7 */ { OMEGA, _ROUGH | _CIRCUMFLEX | _IOTA_SUB },
+    /* 1FA8 */ { OMEGA_CAP, _SMOOTH | _IOTA_SUB },
+    /* 1FA9 */ { OMEGA_CAP, _ROUGH | _IOTA_SUB },
+    /* 1FAA */ { OMEGA_CAP, _SMOOTH | _GRAVE | _IOTA_SUB },
+    /* 1FAB */ { OMEGA_CAP, _ROUGH | _GRAVE | _IOTA_SUB },
+    /* 1FAC */ { OMEGA_CAP, _SMOOTH | _ACUTE | _IOTA_SUB },
+    /* 1FAD */ { OMEGA_CAP, _ROUGH | _ACUTE | _IOTA_SUB },
+    /* 1FAE */ { OMEGA_CAP, _SMOOTH | _CIRCUMFLEX | _IOTA_SUB },
+    /* 1FAF */ { OMEGA_CAP, _ROUGH | _CIRCUMFLEX | _IOTA_SUB },
+    /* 1FB0 */ { NOCHAR, NOCHAR },
+    /* 1FB1 */ { ALPHA, _MACRON },
+    /* 1FB2 */ { ALPHA, _GRAVE | _IOTA_SUB },
+    /* 1FB3 */ { ALPHA, _IOTA_SUB },
+    /* 1FB4 */ { ALPHA, _ACUTE | _IOTA_SUB },
+    /* 1FB5 */ { NOCHAR, NOCHAR },
+    /* 1FB6 */ { ALPHA, _CIRCUMFLEX },
+    /* 1FB7 */ { ALPHA, _CIRCUMFLEX | _IOTA_SUB },
+    /* 1FB8 */ { NOCHAR, NOCHAR },
+    /* 1FB9 */ { ALPHA_CAP, _MACRON },
+    /* 1FBA */ { ALPHA_CAP, _GRAVE },
+    /* 1FBB */ { ALPHA_CAP, _ACUTE },
+    /* 1FBC */ { ALPHA_CAP, _IOTA_SUB },
+    /* 1FBD */ { NOCHAR, NOCHAR },
+    /* 1FBE */ { NOCHAR, NOCHAR },
+    /* 1FBF */ { NOCHAR, NOCHAR },
+    /* 1FC0 */ { NOCHAR, NOCHAR },
+    /* 1FC1 */ { NOCHAR, NOCHAR },
+    /* 1FC2 */ { ETA, _GRAVE | _IOTA_SUB },
+    /* 1FC3 */ { ETA, _IOTA_SUB },
+    /* 1FC4 */ { ETA, _ACUTE | _IOTA_SUB },
+    /* 1FC5 */ { NOCHAR, NOCHAR },
+    /* 1FC6 */ { ETA, _CIRCUMFLEX },
+    /* 1FC7 */ { ETA, _CIRCUMFLEX | _IOTA_SUB },
+    /* 1FC8 */ { EPSILON_CAP, _GRAVE },
+    /* 1FC9 */ { EPSILON_CAP, _ACUTE },
+    /* 1FCA */ { ETA_CAP, _GRAVE },
+    /* 1FCB */ { ETA_CAP, _ACUTE },
+    /* 1FCC */ { ETA_CAP, _IOTA_SUB },
+    /* 1FCD */ { NOCHAR, NOCHAR },
+    /* 1FCE */ { NOCHAR, NOCHAR },
+    /* 1FCF */ { NOCHAR, NOCHAR },
+    /* 1FD0 */ { NOCHAR, NOCHAR },
+    /* 1FD1 */ { IOTA, _MACRON },
+    /* 1FD2 */ { IOTA, _DIAERESIS | _GRAVE },
+    /* 1FD3 */ { IOTA, _DIAERESIS | _ACUTE },
+    /* 1FD4 */ { NOCHAR, NOCHAR },
+    /* 1FD5 */ { NOCHAR, NOCHAR },
+    /* 1FD6 */ { IOTA, _CIRCUMFLEX },
+    /* 1FD7 */ { IOTA, _DIAERESIS | _CIRCUMFLEX },
+    /* 1FD8 */ { NOCHAR, NOCHAR },
+    /* 1FD9 */ { IOTA_CAP, _MACRON },
+    /* 1FDA */ { IOTA_CAP, _GRAVE },
+    /* 1FDB */ { IOTA_CAP, _ACUTE },
+    /* 1FDC */ { NOCHAR, NOCHAR },
+    /* 1FDD */ { NOCHAR, NOCHAR },
+    /* 1FDE */ { NOCHAR, NOCHAR },
+    /* 1FDF */ { NOCHAR, NOCHAR },
+    /* 1FE0 */ { NOCHAR, NOCHAR },
+    /* 1FE1 */ { UPSILON, _MACRON },
+    /* 1FE2 */ { UPSILON, _DIAERESIS | _GRAVE },
+    /* 1FE3 */ { UPSILON, _DIAERESIS | _ACUTE },
+    /* 1FE4 */ { NOCHAR, NOCHAR },
+    /* 1FE5 */ { NOCHAR, NOCHAR },
+    /* 1FE6 */ { UPSILON, _CIRCUMFLEX },
+    /* 1FE7 */ { UPSILON, _DIAERESIS | _CIRCUMFLEX },
+    /* 1FE8 */ { NOCHAR, NOCHAR },
+    /* 1FE9 */ { UPSILON_CAP, _MACRON },
+    /* 1FEA */ { UPSILON_CAP, _GRAVE },
+    /* 1FEB */ { UPSILON_CAP, _ACUTE },
+    /* 1FEC */ { NOCHAR, NOCHAR },
+    /* 1FED */ { NOCHAR, NOCHAR },
+    /* 1FEE */ { NOCHAR, NOCHAR },
+    /* 1FEF */ { NOCHAR, NOCHAR },
+    /* 1FF0 */ { NOCHAR, NOCHAR },
+    /* 1FF1 */ { NOCHAR, NOCHAR },
+    /* 1FF2 */ { OMEGA, _GRAVE | _IOTA_SUB },
+    /* 1FF3 */ { OMEGA, _IOTA_SUB },
+    /* 1FF4 */ { OMEGA, _ACUTE | _IOTA_SUB },
+    /* 1FF5 */ { NOCHAR, NOCHAR },
+    /* 1FF6 */ { OMEGA, _CIRCUMFLEX },
+    /* 1FF7 */ { OMEGA, _CIRCUMFLEX | _IOTA_SUB },
+    /* 1FF8 */ { OMICRON_CAP, _GRAVE },
+    /* 1FF9 */ { OMICRON_CAP, _ACUTE },
+    /* 1FFA */ { OMEGA_CAP, _GRAVE },
+    /* 1FFB */ { OMEGA_CAP, _ACUTE },
+    /* 1FFC */ { OMEGA_CAP, _IOTA_SUB },
+    /* 1FFD */ { NOCHAR, NOCHAR },
+    /* 1FFE */ { NOCHAR, NOCHAR },
+    /* 1FFF */ { NOCHAR, NOCHAR }
+};
+
+short puaGreekLookUp[][2] = {
+    /* EAF0 */ { ALPHA, _MACRON | _GRAVE },
+    /* EAF1 */ { NOCHAR, NOCHAR },
+    /* EAF2 */ { NOCHAR, NOCHAR },
+    /* EAF3 */ { ALPHA, _MACRON | _SMOOTH | _GRAVE },
+    /* EAF4 */ { ALPHA, _MACRON | _ROUGH | _GRAVE },
+    /* EAF5 */ { NOCHAR, NOCHAR },
+    /* EAF6 */ { NOCHAR, NOCHAR },
+    /* EAF7 */ { NOCHAR, NOCHAR },
+    /* EAF8 */ { NOCHAR, NOCHAR },
+    /* EAF9 */ { NOCHAR, NOCHAR },
+    /* EAFA */ { NOCHAR, NOCHAR },
+    /* EAFB */ { NOCHAR, NOCHAR },
+    /* EAFC */ { NOCHAR, NOCHAR },
+    /* EAFD */ { NOCHAR, NOCHAR },
+    /* EAFE */ { NOCHAR, NOCHAR },
+    /* EAFF */ { NOCHAR, NOCHAR },
+    /* EB00 */ { ALPHA, _MACRON | _ACUTE },
+    /* EB01 */ { NOCHAR, NOCHAR },
+    /* EB02 */ { NOCHAR, NOCHAR },
+    /* EB03 */ { NOCHAR, NOCHAR },
+    /* EB04 */ { ALPHA, _MACRON | _SMOOTH },
+    /* EB05 */ { ALPHA, _MACRON | _ROUGH },
+    /* EB06 */ { NOCHAR, NOCHAR },
+    /* EB07 */ { ALPHA, _MACRON | _SMOOTH | _ACUTE },
+    /* EB08 */ { NOCHAR, NOCHAR },
+    /* EB09 */ { ALPHA, _MACRON | _ROUGH | _ACUTE },
+    /* EB0A */ { NOCHAR, NOCHAR },
+    /* EB0B */ { NOCHAR, NOCHAR },
+    /* EB0C */ { NOCHAR, NOCHAR },
+    /* EB0D */ { NOCHAR, NOCHAR },
+    /* EB0E */ { NOCHAR, NOCHAR },
+    /* EB0F */ { NOCHAR, NOCHAR },
+    /* EB10 */ { NOCHAR, NOCHAR },
+    /* EB11 */ { NOCHAR, NOCHAR },
+    /* EB12 */ { NOCHAR, NOCHAR },
+    /* EB13 */ { NOCHAR, NOCHAR },
+    /* EB14 */ { NOCHAR, NOCHAR },
+    /* EB15 */ { NOCHAR, NOCHAR },
+    /* EB16 */ { NOCHAR, NOCHAR },
+    /* EB17 */ { NOCHAR, NOCHAR },
+    /* EB18 */ { NOCHAR, NOCHAR },
+    /* EB19 */ { NOCHAR, NOCHAR },
+    /* EB1A */ { NOCHAR, NOCHAR },
+    /* EB1B */ { NOCHAR, NOCHAR },
+    /* EB1C */ { NOCHAR, NOCHAR },
+    /* EB1D */ { NOCHAR, NOCHAR },
+    /* EB1E */ { NOCHAR, NOCHAR },
+    /* EB1F */ { NOCHAR, NOCHAR },
+    /* EB20 */ { NOCHAR, NOCHAR },
+    /* EB21 */ { NOCHAR, NOCHAR },
+    /* EB22 */ { NOCHAR, NOCHAR },
+    /* EB23 */ { NOCHAR, NOCHAR },
+    /* EB24 */ { NOCHAR, NOCHAR },
+    /* EB25 */ { NOCHAR, NOCHAR },
+    /* EB26 */ { NOCHAR, NOCHAR },
+    /* EB27 */ { NOCHAR, NOCHAR },
+    /* EB28 */ { NOCHAR, NOCHAR },
+    /* EB29 */ { NOCHAR, NOCHAR },
+    /* EB2A */ { NOCHAR, NOCHAR },
+    /* EB2B */ { NOCHAR, NOCHAR },
+    /* EB2C */ { NOCHAR, NOCHAR },
+    /* EB2D */ { NOCHAR, NOCHAR },
+    /* EB2E */ { NOCHAR, NOCHAR },
+    /* EB2F */ { NOCHAR, NOCHAR },
+    /* EB30 */ { NOCHAR, NOCHAR },
+    /* EB31 */ { NOCHAR, NOCHAR },
+    /* EB32 */ { NOCHAR, NOCHAR },
+    /* EB33 */ { NOCHAR, NOCHAR },
+    /* EB34 */ { NOCHAR, NOCHAR },
+    /* EB35 */ { NOCHAR, NOCHAR },
+    /* EB36 */ { NOCHAR, NOCHAR },
+    /* EB37 */ { NOCHAR, NOCHAR },
+    /* EB38 */ { IOTA, _MACRON | _GRAVE },
+    /* EB39 */ { IOTA, _MACRON | _ACUTE },
+    /* EB3A */ { NOCHAR, NOCHAR },
+    /* EB3B */ { NOCHAR, NOCHAR },
+    /* EB3C */ { IOTA, _MACRON | _SMOOTH },
+    /* EB3D */ { IOTA, _MACRON | _SMOOTH | _ACUTE },
+    /* EB3E */ { IOTA, _MACRON | _ROUGH },
+    /* EB3F */ { IOTA, _MACRON | _ROUGH | _ACUTE },
+    /* EB40 */ { NOCHAR, NOCHAR },
+    /* EB41 */ { NOCHAR, NOCHAR },
+    /* EB42 */ { NOCHAR, NOCHAR },
+    /* EB43 */ { NOCHAR, NOCHAR },
+    /* EB44 */ { NOCHAR, NOCHAR },
+    /* EB45 */ { NOCHAR, NOCHAR },
+    /* EB46 */ { NOCHAR, NOCHAR },
+    /* EB47 */ { NOCHAR, NOCHAR },
+    /* EB48 */ { NOCHAR, NOCHAR },
+    /* EB49 */ { NOCHAR, NOCHAR },
+    /* EB4A */ { NOCHAR, NOCHAR },
+    /* EB4B */ { NOCHAR, NOCHAR },
+    /* EB4C */ { NOCHAR, NOCHAR },
+    /* EB4D */ { NOCHAR, NOCHAR },
+    /* EB4E */ { NOCHAR, NOCHAR },
+    /* EB4F */ { NOCHAR, NOCHAR },
+    /* EB50 */ { NOCHAR, NOCHAR },
+    /* EB51 */ { NOCHAR, NOCHAR },
+    /* EB52 */ { NOCHAR, NOCHAR },
+    /* EB53 */ { NOCHAR, NOCHAR },
+    /* EB54 */ { IOTA, _MACRON | _SMOOTH | _GRAVE },
+    /* EB55 */ { IOTA, _MACRON | _ROUGH | _GRAVE },
+    /* EB56 */ { NOCHAR, NOCHAR },
+    /* EB57 */ { NOCHAR, NOCHAR },
+    /* EB58 */ { NOCHAR, NOCHAR },
+    /* EB59 */ { NOCHAR, NOCHAR },
+    /* EB5A */ { NOCHAR, NOCHAR },
+    /* EB5B */ { NOCHAR, NOCHAR },
+    /* EB5C */ { NOCHAR, NOCHAR },
+    /* EB5D */ { NOCHAR, NOCHAR },
+    /* EB5E */ { NOCHAR, NOCHAR },
+    /* EB5F */ { NOCHAR, NOCHAR },
+    /* EB60 */ { NOCHAR, NOCHAR },
+    /* EB61 */ { NOCHAR, NOCHAR },
+    /* EB62 */ { NOCHAR, NOCHAR },
+    /* EB63 */ { NOCHAR, NOCHAR },
+    /* EB64 */ { NOCHAR, NOCHAR },
+    /* EB65 */ { NOCHAR, NOCHAR },
+    /* EB66 */ { NOCHAR, NOCHAR },
+    /* EB67 */ { NOCHAR, NOCHAR },
+    /* EB68 */ { NOCHAR, NOCHAR },
+    /* EB69 */ { NOCHAR, NOCHAR },
+    /* EB6A */ { NOCHAR, NOCHAR },
+    /* EB6B */ { NOCHAR, NOCHAR },
+    /* EB6C */ { NOCHAR, NOCHAR },
+    /* EB6D */ { NOCHAR, NOCHAR },
+    /* EB6E */ { NOCHAR, NOCHAR },
+    /* EB6F */ { UPSILON, _MACRON | _GRAVE },
+    /* EB70 */ { NOCHAR, NOCHAR },
+    /* EB71 */ { UPSILON, _MACRON | _SMOOTH | _GRAVE },
+    /* EB72 */ { NOCHAR, NOCHAR },
+    /* EB73 */ { NOCHAR, NOCHAR },
+    /* EB74 */ { NOCHAR, NOCHAR },
+    /* EB75 */ { UPSILON, _MACRON | _ROUGH | _GRAVE },
+    /* EB76 */ { NOCHAR, NOCHAR },
+    /* EB77 */ { NOCHAR, NOCHAR },
+    /* EB78 */ { NOCHAR, NOCHAR },
+    /* EB79 */ { NOCHAR, NOCHAR },
+    /* EB7A */ { UPSILON, _MACRON | _ACUTE },
+    /* EB7B */ { NOCHAR, NOCHAR },
+    /* EB7C */ { NOCHAR, NOCHAR },
+    /* EB7D */ { UPSILON, _MACRON | _SMOOTH },
+    /* EB7E */ { UPSILON, _MACRON | _ROUGH },
+    /* EB7F */ { UPSILON, _MACRON | _SMOOTH | _ACUTE },
+    /* EB80 */ { UPSILON, _MACRON | _ROUGH | _ACUTE }
+};
+/*
+bool analyzePrecomposedLetterOLD(unsigned short letter, int *l, int *a)
 {
     for (*l = 0; *l < NUM_VOWEL_CODES; (*l)++)
     {
@@ -221,145 +776,47 @@ bool analyzePrecomposedLetter(unsigned short letter, int *l, int *a)
     }
     return false;
 }
-
-int precomposedIndexToBitMask(int precomposedIndex, int diacriticMask)
+*/
+bool analyzePrecomposedLetter(unsigned short letter, int *l, int *a)
 {
-    //don't initialize to false here because diacriticMask could have combining accents already set to true
-    //make sure this is in order of enum so compiler can optimize switch
-    switch (precomposedIndex)
+    int offset = 0;
+    if (letter >= 0x0370 && letter <= 0x03FF)
     {
-        case PSILI:
-            diacriticMask |= _SMOOTH;
-            break;
-        case DASIA:
-            diacriticMask |= _ROUGH;
-            break;
-        case OXIA: //both point to acute
-        case TONOS:
-            diacriticMask |= _ACUTE;
-            break;
-        case PSILI_AND_OXIA:
-            diacriticMask |= (_SMOOTH | _ACUTE);
-            break;
-        case DASIA_AND_OXIA:
-            diacriticMask |= (_ROUGH | _ACUTE);
-            break;
-        case VARIA:
-            diacriticMask |= _GRAVE;
-            break;
-        case PSILI_AND_VARIA:
-            diacriticMask |= (_SMOOTH | _GRAVE);
-            break;
-        case DASIA_AND_VARIA:
-            diacriticMask |= (_ROUGH | _GRAVE);
-            break;
-        case PERISPOMENI:
-            diacriticMask |= _CIRCUMFLEX;
-            break;
-        case PSILI_AND_PERISPOMENI:
-            diacriticMask |= (_SMOOTH | _CIRCUMFLEX);
-            break;
-        case DASIA_AND_PERISPOMENI:
-            diacriticMask |= (_ROUGH | _CIRCUMFLEX);
-            break;
-        case YPOGEGRAMMENI:
-            diacriticMask |= _IOTA_SUB;
-            break;
-        case PSILI_AND_YPOGEGRAMMENI:
-            diacriticMask |= (_SMOOTH | _IOTA_SUB);
-            break;
-        case DASIA_AND_YPOGEGRAMMENI:
-            diacriticMask |= (_ROUGH | _IOTA_SUB);
-            break;
-        case OXIA_AND_YPOGEGRAMMENI:
-            diacriticMask |= (_ACUTE | _IOTA_SUB);
-            break;
-        case PSILI_AND_OXIA_AND_YPOGEGRAMMENI:
-            diacriticMask |= (_SMOOTH | _ACUTE | _IOTA_SUB);
-            break;
-        case DASIA_AND_OXIA_AND_YPOGEGRAMMENI:
-            diacriticMask |= (_ROUGH | _ACUTE | _IOTA_SUB);
-            break;
-        case VARIA_AND_YPOGEGRAMMENI:
-            diacriticMask |= (_GRAVE | _IOTA_SUB);
-            break;
-        case PSILI_AND_VARIA_AND_YPOGEGRAMMENI:
-            diacriticMask |= (_SMOOTH | _GRAVE | _IOTA_SUB);
-            break;
-        case DASIA_AND_VARIA_AND_YPOGEGRAMMENI:
-            diacriticMask |= (_ROUGH | _GRAVE | _IOTA_SUB);
-            break;
-        case PERISPOMENI_AND_YPOGEGRAMMENI:
-            diacriticMask |= (_CIRCUMFLEX | _IOTA_SUB);
-            break;
-        case PSILI_AND_PERISPOMENI_AND_YPOGEGRAMMENI:
-            diacriticMask |= (_SMOOTH | _CIRCUMFLEX | _IOTA_SUB);
-            break;
-        case DASIA_AND_PERISPOMENI_AND_YPOGEGRAMMENI:
-            diacriticMask |= (_ROUGH | _CIRCUMFLEX | _IOTA_SUB);
-            break;
-        case DIALYTIKA:
-            diacriticMask |= _DIAERESIS;
-            break;
-        case DIALYTIKA_AND_TONOS: //for both
-        case DIALYTIKA_AND_OXIA:
-            diacriticMask |= (_DIAERESIS | _ACUTE);
-            break;
-        case DIALYTIKA_AND_VARIA:
-            diacriticMask |= (_DIAERESIS | _GRAVE);
-            break;
-        case DIALYTIKA_AND_PERISPOMENON:
-            diacriticMask |= (_DIAERESIS | _CIRCUMFLEX);
-            break;
-        case MACRON_PRECOMPOSED:
-            diacriticMask |= _MACRON;
-            break;
-#ifdef ALLOW_PRIVATE_USE_AREA
-        case MACRON_AND_SMOOTH:
-            diacriticMask |= (_MACRON | _SMOOTH);
-            break;
-        case MACRON_AND_SMOOTH_AND_ACUTE:
-            diacriticMask |= (_MACRON | _SMOOTH | _ACUTE);
-            break;
-        case MACRON_AND_SMOOTH_AND_GRAVE:
-            diacriticMask |= (_MACRON | _SMOOTH | _GRAVE);
-            break;
-        case MACRON_AND_ROUGH:
-            diacriticMask |= (_MACRON | _ROUGH);
-            break;
-        case MACRON_AND_ROUGH_AND_ACUTE:
-            diacriticMask |= (_MACRON | _ROUGH | _ACUTE);
-            break;
-        case MACRON_AND_ROUGH_AND_GRAVE:
-            diacriticMask |= (_MACRON | _ROUGH | _GRAVE);
-            break;
-        case MACRON_AND_ACUTE:
-            diacriticMask |= (_MACRON | _ACUTE);
-            break;
-        case MACRON_AND_GRAVE:
-            diacriticMask |= (_MACRON | _GRAVE);
-            break;
-#endif
+        offset = letter - 0x0370;
+        *l = basicGreekLookUp[offset][0];
+        if (*l != NOCHAR)
+        {
+            *a |= basicGreekLookUp[offset][1];
+            //fprintf(stderr, "basic letter: %d, accent: %d", *l, *a);
+            return true;
+        }
     }
-    return diacriticMask;
+    else if (letter >= 0x1F00 && letter <= 0x1FFF)
+    {
+        offset = letter - 0x1F00;
+        *l = extendedGreekLookUp[offset][0];
+        if (*l != NOCHAR) //this is broken, alpha and none both == 0
+        {
+            *a |= extendedGreekLookUp[offset][1];
+            //fprintf(stderr, "extended letter: %d, accent: %d", *l, *a);
+            return true;
+        }
+    }
+    else if (letter >= 0xEAF0 && letter <= 0xEB80)
+    {
+        offset = letter - 0xEAF0;
+        *l = puaGreekLookUp[offset][0];
+        if (*l != NOCHAR) //this is broken, alpha and none both == 0
+        {
+            *a |= puaGreekLookUp[offset][1];
+            //fprintf(stderr, "pua letter: %d, accent: %d", *l, *a);
+            return true;
+        }
+    }
+ 
+    return false;
 }
-/*
- //for testing
- //http://stackoverflow.com/questions/111928/is-there-a-printf-converter-to-print-in-binary-format
- const char *byte_to_binary(int x)
- {
- static char b[9];
- b[0] = '\0';
- 
- int z;
- for (z = 128; z > 0; z >>= 1)
- {
- strcat(b, ((x & z) == z) ? "1" : "0");
- }
- 
- return b;
- }
- */
+
 //return 0 for invalid letter
 unsigned short getPrecomposedLetter(int letterIndex, int diacriticMask)
 {
@@ -729,7 +1186,6 @@ int updateDiacritics(int letterCode, int accentToAdd, int accentBitMask, bool to
 int analyzeLetter(UCS2 *ucs2String, int i, int len, int *letterCode, int *accentBitMask)
 {
     unsigned char letterLen = 1;
-    int precomposedIndex = 0;
     
     //this needs some fixing
     if (len > 1 )
@@ -788,11 +1244,11 @@ int analyzeLetter(UCS2 *ucs2String, int i, int len, int *letterCode, int *accent
         }
     }
     
-    if (!analyzePrecomposedLetter(ucs2String[i], letterCode, &precomposedIndex))
+    if (!analyzePrecomposedLetter(ucs2String[i], letterCode, accentBitMask))
     {
         return -1;
     }
-    *accentBitMask = precomposedIndexToBitMask(precomposedIndex, *accentBitMask);
+    //*accentBitMask = precomposedIndexToBitMask(precomposedIndex, *accentBitMask);
     
     return letterLen;
 }
@@ -1029,9 +1485,9 @@ void accentSyllable(UCS2 *ucs2String, int i, int *len, int accentToAdd, bool tog
     else if (ucs2String[i] == GREEK_SMALL_LETTER_NU && accentToAdd == SURROUNDING_PARENTHESES)
     {
         /*rightShiftFromOffsetSteps(ucs2String, i, 2, len);
-        ucs2String[i] = LEFT_PARENTHESIS;
-        ucs2String[i+1] = GREEK_SMALL_LETTER_NU;
-        ucs2String[i+2] = RIGHT_PARENTHESIS; */
+         ucs2String[i] = LEFT_PARENTHESIS;
+         ucs2String[i+1] = GREEK_SMALL_LETTER_NU;
+         ucs2String[i+2] = RIGHT_PARENTHESIS; */
         ucsplice(ucs2String, len, 1024, i, 1, (UCS2[]){LEFT_PARENTHESIS,GREEK_SMALL_LETTER_NU,RIGHT_PARENTHESIS }, 3);
         return;
     }
@@ -1076,6 +1532,20 @@ void accentSyllable(UCS2 *ucs2String, int i, int *len, int accentToAdd, bool tog
     //5. make room for letter or decrease it if it is shrinking
     ucsplice(ucs2String, len, 1024, i, letterLen, buffer, newLetterLen);
 }
+/*
+int compare(char *s1, char *s2)
+{
+    UCS2 us1[strlen(s1)*2];
+    UCS2 us2[strlen(s2)*2];
+    int us1len = 0;
+    utf8_to_ucs2_string(s1, us1, &us1len);
+    int us2len = 0;
+    utf8_to_ucs2_string(s2, us2, &us2len);
+    //stripaccent
+    
+    return 0;
+}
+*/
 
 /*
  void accentSyllableUtf8(char *utf8, int accent, bool toggleOff)
@@ -1098,6 +1568,3 @@ void accentSyllable(UCS2 *ucs2String, int i, int *len, int accentToAdd, bool tog
  accentSyllable2((UCS2*)ucs2String, i, len, accent, toggleOff, mode);
  }
  */
-
-
-
