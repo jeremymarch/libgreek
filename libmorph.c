@@ -204,6 +204,56 @@ bool compareWord(UCS2 *w1, int w1len, UCS2 *w2, int w2len)
     return true;
 }
 
+int compareWord2(UCS2 *w1, int w1len, UCS2 *w2, int w2len)
+{
+    /*
+     //for testing
+    for (int i = 0; i < w1len; i++)
+    {
+        fprintf(stderr, "%04X ", w1[i]);
+    }
+    fprintf(stderr, "\n");
+    
+    for (int i = 0; i < w2len; i++)
+    {
+        fprintf(stderr, "%04X ", w2[i]);
+    }
+    fprintf(stderr, "\n");
+    */
+    
+    //if (w1len != w2len)
+    //    return false;
+    
+    /*
+     get base letter
+     do they sort higher lower equal
+     do they have same diacritics
+     
+     0. base letter
+     1. first no breathing, then smooth, then rought
+     2. accent
+     */
+    
+    int letterCode1 = 0;
+    int accentBitMask1 = 0;
+    int letterLen1 = 0;
+    int letterCode2 = 0;
+    int accentBitMask2 = 0;
+    int letterLen2 = 0;
+    
+    for (int i = 0; i < w1len; i++)
+    {
+        //if (w1[i] != w2[i])
+        //    return false;
+        
+        //this will be -1 on error
+        letterLen1 = analyzeLetter(w1, i, w1len, &letterCode1, &accentBitMask1);
+        letterLen2 = analyzeLetter(w2, i, w2len, &letterCode2, &accentBitMask2);
+        
+    }
+    return true;
+}
+
 void getPrincipalParts(Verb *v, char *buffer, int len)
 {
     snprintf(buffer, len, "%s; %s; %s; %s; %s; %s", v->present, v->future, v->aorist, v->perf, v->perfmid, v->aoristpass);
