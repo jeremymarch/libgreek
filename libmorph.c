@@ -30,7 +30,6 @@ bool onlyUseCombiningDiacritics = false; //not used yet
  include dual
  ask principal parts
  ask verb endings
- white on black color scheme
  
  *remember, don't copy and paste unicode files into android studio, copy and paste file in finder
 
@@ -250,6 +249,8 @@ int compareWord2(UCS2 *w1, int w1len, UCS2 *w2, int w2len)
         letterLen1 = analyzeLetter(w1, i, w1len, &letterCode1, &accentBitMask1);
         letterLen2 = analyzeLetter(w2, i, w2len, &letterCode2, &accentBitMask2);
         
+        //if case insensitive change to lowercase
+        //if diacritic sensitive first compare base letters, then bitmasks
     }
     return true;
 }
@@ -277,12 +278,12 @@ void getAbbrevDescription2 (VerbFormD *vf, char *buffer, int len)
 
 void getAbbrevDescription (VerbFormC *vf, char *buffer, int len)
 {
-    assert(vf->person > -1 && vf->person < 3);
-    assert(vf->number > -1 && vf->number < 2);
-    assert(vf->tense > -1 && vf->tense < 6);
-    assert(vf->voice > -1 && vf->voice < 3);
-    assert(vf->mood > -1 && vf->mood < 4);
-
+    assert(vf->person >= 0 && vf->person < NUM_PERSONS);
+    assert(vf->number >= 0 && vf->number < NUM_NUMBERS);
+    assert(vf->tense >= 0 && vf->tense < NUM_TENSES);
+    assert(vf->voice >= 0 && vf->voice < NUM_VOICES);
+    assert(vf->mood >= 0 && vf->mood < NUM_MOODS);
+    
     snprintf(buffer, len, "%s %s %s %s %s", personsabbrev[vf->person], numbersabbrev[vf->number], tensesabbrev[vf->tense], voicesabbrev[vf->voice], moodsabbrev[vf->mood]);
 }
 
@@ -850,6 +851,12 @@ int getForm2(VerbFormD *vf, char *utf8OutputBuffer, int bufferLen, bool includeA
  */
 int getFormUCS2(VerbFormC *vf, UCS2 *ucs2Buffer, int *bufferLen, const int bufferCapacity, bool includeAlternateForms, bool decompose)
 {
+    assert(vf->person >= 0 && vf->person < NUM_PERSONS);
+    assert(vf->number >= 0 && vf->number < NUM_NUMBERS);
+    assert(vf->tense >= 0 && vf->tense < NUM_TENSES);
+    assert(vf->voice >= 0 && vf->voice < NUM_VOICES);
+    assert(vf->mood >= 0 && vf->mood < NUM_MOODS);
+
     //clear buffer
     for (int i = 0; i < bufferCapacity; i++)
     {
@@ -2407,3 +2414,23 @@ bool hasPrefix(UCS2 *stem, int len, UCS2 *prefix, int preflen)
     return true;
 }
 
+bool isValidGreekChar(UCS2 c)
+{
+    //check char in arrays used by analyzePrecomposedCharacter()
+    //then check for combining accents
+    //if (c < 0300)
+    return true;
+}
+
+bool validateString(UCS2 *s, int slen)
+{
+    for (int i = 0; i < slen; i++)
+    {
+        if ( !isValidGreekChar(s[i]) )
+        {
+            return false;
+        }
+    }
+    
+    return true;
+}
