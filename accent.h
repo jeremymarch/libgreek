@@ -55,8 +55,8 @@ void allowSpacingDiacritics(bool val);
 
 void accentSyllable(UCS2 *ucs2String, int i, int *len, int accentToAdd, bool toggleOff, int unicodeMode);
 
-int analyzeLetter(UCS2 *ucs2String, int i, int len, int *letterCode, int *accentBitMask);
+int analyzeLetter(UCS2 *ucs2String, int i, int len, UCS2 *letterCode, int *accentBitMask);
 
-bool makeLetter(UCS2 *ucs2String, int *newLetterLen, int letterCode, int accentBitMask, int unicodeMode);
+bool makeLetter(UCS2 *ucs2String, int *newLetterLen, UCS2 letterCode, int accentBitMask, int unicodeMode);
 
 #endif /* accent_h */

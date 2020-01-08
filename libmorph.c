@@ -233,10 +233,10 @@ int compareWord2(UCS2 *w1, int w1len, UCS2 *w2, int w2len)
      2. accent
      */
     
-    int letterCode1 = 0;
+    UCS2 letter1 = 0;
     int accentBitMask1 = 0;
     int letterLen1 = 0;
-    int letterCode2 = 0;
+    UCS2 letter2 = 0;
     int accentBitMask2 = 0;
     int letterLen2 = 0;
     
@@ -246,8 +246,8 @@ int compareWord2(UCS2 *w1, int w1len, UCS2 *w2, int w2len)
         //    return false;
         
         //this will be -1 on error
-        letterLen1 = analyzeLetter(w1, i, w1len, &letterCode1, &accentBitMask1);
-        letterLen2 = analyzeLetter(w2, i, w2len, &letterCode2, &accentBitMask2);
+        letterLen1 = analyzeLetter(w1, i, w1len, &letter1, &accentBitMask1);
+        letterLen2 = analyzeLetter(w2, i, w2len, &letter2, &accentBitMask2);
         
         //if case insensitive change to lowercase
         //if diacritic sensitive first compare base letters, then bitmasks
