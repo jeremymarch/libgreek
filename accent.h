@@ -65,5 +65,6 @@ bool isCombiningDiacritic(UCS2 l);
 
 int compareSort(int len_a, const unsigned char *a, int len_b, const unsigned char *b);
 int hccontainsPUA(const unsigned char *utf8);
+int hcucHex(const unsigned char *utf8, int bufferLen, char *buffer);
 
 #endif /* accent_h */
