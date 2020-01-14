@@ -2413,12 +2413,24 @@ bool hasPrefix(UCS2 *stem, int len, UCS2 *prefix, int preflen)
     
     return true;
 }
-
+/*
 bool isValidGreekChar(UCS2 c)
 {
     //check char in arrays used by analyzePrecomposedCharacter()
     //then check for combining accents
     //if (c < 0300)
+    if ( isCombiningDiacritic(c) )
+    {
+        return true;
+    }
+    UCS2 l;
+    int a;
+    int ab = analyzePrecomposedLetter(c, &l, &a);
+    if ( ab == NOCHAR )
+    {
+        return false;
+    }
+    
     return true;
 }
 
@@ -2434,3 +2446,4 @@ bool validateString(UCS2 *s, int slen)
     
     return true;
 }
+*/
