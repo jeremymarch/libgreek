@@ -933,10 +933,49 @@ int scanLetter(UCS2 *ucs2String, int len, UCS2 *letterCode, int *accentBitMask, 
 }
 */
 
+//this function takes a utf8 string argument a and fills
+//buffer with a string representing the hex codepoints of
+//each character up to bufferLen - 1.
+int hcucHex(const unsigned char *a, int bufferLen, char *buffer)
+{
+    int uc_a = 0;
+    char *p = buffer;
+    int len = 0;
+    for( ; *a ; )
+    {
+        uc_a = utf8_to_ucs2 (a, &a);
+        if (uc_a == -1)
+        {
+            assert(uc_a > -1);
+            return -1; //error
+        }
+        else
+        {
+        //https://stackoverflow.com/questions/11718573/snprintf-in-a-loop-does-not-work-on-linux
+            int res = snprintf(p+len, bufferLen - len, "%04X ", uc_a);
+            if (res < 0) // -1 on error
+            {
+                break;
+            }
+            else //else # chars written
+            {
+                len += res;
+                if (len >= bufferLen)
+                {
+                    break;
+                }
+            }
+        }
+    }
+    return 1;
+}
+
+//this function returns 1 if the utf8 string a contains
+//any private-use area characters, 0 otherwise
 int hccontainsPUA(const unsigned char *a)
 {
     int uc_a = 0;
-    for( ; a ; )
+    for( ; *a ; )
     {
         uc_a = utf8_to_ucs2 (a, &a);
         if (uc_a == -1)
