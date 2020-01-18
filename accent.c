@@ -1003,6 +1003,19 @@ int hccontainsPUA(const unsigned char *a)
 //returns -1 if a is before b, 0 if equal, 1 if b is before a
 int compareSort(int len_a, const unsigned char *a, int len_b, const unsigned char *b)
 {
+    if (len_a < 1 && len_b < 1)
+    {
+        return 0;
+    }
+    else if (len_a < 1)
+    {
+        return -1;
+    }
+    else if (len_b < 1)
+    {
+        return 1;
+    }
+    
     const unsigned char *aa = a; //for debugging
     const unsigned char *bb = b; //for debugging
     
