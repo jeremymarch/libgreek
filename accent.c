@@ -999,8 +999,9 @@ int hccontainsPUA(const unsigned char *a)
     return 0;
 }
 
-//this should consider space or comma the end of the word
+
 //returns -1 if a is before b, 0 if equal, 1 if b is before a
+//skip everything until real greek char, then stop at first non-greek or end
 int compareSort(int len_a, const unsigned char *a, int len_b, const unsigned char *b)
 {
     if (len_a < 1 && len_b < 1)
@@ -1031,6 +1032,8 @@ int compareSort(int len_a, const unsigned char *a, int len_b, const unsigned cha
     int idx_b = 0;
     const unsigned char *end_a;
     const unsigned char *end_b;
+    bool seenOne_a = false;
+    bool seenOne_b = false;
     
     for( ; idx_a < len_a ; )
     {
@@ -1040,18 +1043,68 @@ int compareSort(int len_a, const unsigned char *a, int len_b, const unsigned cha
         if (uc_a == -1)
         {
             assert(uc_a > -1);
-            return -1; //error
+            //return -1; //error
+            //continue;
+            idx_a = len_a;
+            break;
         }
         else
         {
+            /*
             if (uc_a == 0x0020 || uc_a == 0x002C || uc_a == 0x2014 || uc_a == 0x002D || uc_a == 0x002E)
             {
                 continue;
-            }
+            }*/
             if (isCombiningDiacritic(uc_a))
             {
                 continue;
             }
+            
+            base_a = 0; //reset for debugging
+            type_a = analyzePrecomposedLetter(uc_a, &base_a, &diacritics_a);
+            if (type_a == NOCHAR)
+            {
+                fprintf(stderr, "AA1 s: B %.*s AA %04X -> %04X\n", len_a, aa, uc_a, base_a);
+                if (!seenOne_a)
+                {
+                    continue;
+                }
+                else
+                {
+                    //stop, is end
+                    idx_a = len_a;
+                    break;
+                }
+            }
+            else if (!seenOne_a)
+            {
+                seenOne_a = true;
+            }
+            //get sort order for base characters
+            int sort_a = 0;
+            int sort_b = 0;
+            if (base_a >= 0x0370 && base_a <= 0x03FF)
+            {
+                sort_a = basicGreekLookUp[base_a - 0x0370][2];
+                if (sort_a < 1)
+                {
+                    continue;
+                }
+            }
+            else
+            {
+                if (!seenOne_a)
+                {
+                    continue;
+                }
+                else
+                {
+                    //stop, is end
+                    idx_a = len_a;
+                    break;
+                }
+            }
+            
             for( ; idx_b < len_b ; )
             {
                 uc_b = utf8_to_ucs2 (b, &end_b);
@@ -1061,10 +1114,14 @@ int compareSort(int len_a, const unsigned char *a, int len_b, const unsigned cha
                 if (uc_b == -1)
                 {
                     assert(uc_b > -1);
-                    return -1; //error
+                    //return -1; //error
+                    //continue;
+                    idx_b = len_b;
+                    break;
                 }
                 else
                 {
+                    /*
                     if (uc_b == 0x0020 || uc_b == 0x002C || uc_b == 0x2014 || uc_b == 0x002D || uc_b == 0x002E)
                     {
                         if (idx_b == len_b )
@@ -1075,35 +1132,81 @@ int compareSort(int len_a, const unsigned char *a, int len_b, const unsigned cha
                         {
                             continue;
                         }
-                    }
-                    if (!isCombiningDiacritic(uc_b))
+                    }*/
+                    if (isCombiningDiacritic(uc_b))
                     {
-                        break;
+                        continue;
+                    }
+                    
+                    base_b = 0; //reset for debugging
+                    type_b = analyzePrecomposedLetter(uc_b, &base_b, &diacritics_b);
+                    if (type_b == NOCHAR)
+                    {
+                        fprintf(stderr, "AA2 s: B %.*s AA %04X -> %04X\n", len_b, bb, uc_b, base_b);
+                        if (!seenOne_b)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            //stop is end
+                            idx_b = len_b;
+                            break;
+                        }
+                    }
+                    else if (!seenOne_b)
+                    {
+                        seenOne_b = true;
+                    }
+                    
+                    //get sort order for base characters
+                    sort_b = 0;
+                    if (base_b >= 0x0370 && base_b <= 0x03FF)
+                    {
+                        sort_b = basicGreekLookUp[base_b - 0x0370][2];
+                        if (sort_b > 0)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            //stop, is end
+                            idx_b = len_b;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (!seenOne_b)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            //stop, is end
+                            idx_b = len_b;
+                            break;
+                        }
                     }
                 }
             }
-            
-            base_a = 0; //reset for debugging
-            base_b = 0; //reset for debugging
-            
-            //check valid chars and get base chars if accented
-            type_a = analyzePrecomposedLetter(uc_a, &base_a, &diacritics_a);
-            type_b = analyzePrecomposedLetter(uc_b, &base_b, &diacritics_b);
-            if (type_a == NOCHAR || type_b == NOCHAR)
+            /*
+            if (sort_a < 1 || sort_b < 1 || idx_b >= len_b || idx_a >= len_a)
             {
-                fprintf(stderr, "s: %.*s B %.*s %04X %04X %04X %04X\n", len_a, aa, len_b, bb, uc_a, uc_b, base_a, base_b);
-                assert(type_a != NOCHAR && type_b != NOCHAR);
-                return -1;//error
+                if ((idx_a == len_a ) && (idx_b == len_b ))
+                {
+                    return 0;
+                }
+                else if (idx_a == len_a )
+                {
+                    return -1;
+                }
+                else if (idx_b == len_b )
+                {
+                    return 1;
+                }
             }
-        
-            //get sort order for base characters
-            int sort_a = 0;
-            int sort_b = 0;
-            if (base_a >= 0x0370 && base_a <= 0x03FF && base_b >= 0x0370 && base_b <= 0x03FF)
-            {
-                sort_a = basicGreekLookUp[base_a - 0x0370][2];
-                sort_b = basicGreekLookUp[base_b - 0x0370][2];
-            }
+        */
             //compare here
             if (sort_a > sort_b)
             {
