@@ -970,6 +970,40 @@ int hcucHex(const unsigned char *a, int bufferLen, char *buffer)
     return 1;
 }
 
+int stripAccentSQL(const unsigned char *a, int bufferLen, char *buffer)
+{
+    int uc_a = 0;
+    char *p = buffer;
+    int len = 0;
+    for( ; *a ; )
+    {
+        uc_a = utf8_to_ucs2 (a, &a);
+        if (uc_a == -1)
+        {
+            assert(uc_a > -1);
+            return -1; //error
+        }
+        else
+        {
+        //https://stackoverflow.com/questions/11718573/snprintf-in-a-loop-does-not-work-on-linux
+            int res = snprintf(p+len, bufferLen - len, "%04X ", uc_a);
+            if (res < 0) // -1 on error
+            {
+                break;
+            }
+            else //else # chars written
+            {
+                len += res;
+                if (len >= bufferLen)
+                {
+                    break;
+                }
+            }
+        }
+    }
+    return 1;
+}
+
 //this function returns 1 if the utf8 string a contains
 //any private-use area characters, 0 otherwise
 int hccontainsPUA(const unsigned char *a)
@@ -1000,10 +1034,21 @@ int hccontainsPUA(const unsigned char *a)
 }
 
 
+/*
+ get a char or aend
+    get b char or bend
+    if both not at end compare, if same and not at end continue, else return
+ if one or both at end, equal if both, else compare return
+ 
+ if we get to the end of a, we still need to go through b one more time to see if they are the same length
+ 
+*/
 //returns -1 if a is before b, 0 if equal, 1 if b is before a
 //skip everything until real greek char, then stop at first non-greek or end
+//maybe only comma should cause end of lemma?
 int compareSort(int len_a, const unsigned char *a, int len_b, const unsigned char *b)
 {
+    //take care of zero length arguments
     if (len_a < 1 && len_b < 1)
     {
         return 0;
@@ -1016,9 +1061,6 @@ int compareSort(int len_a, const unsigned char *a, int len_b, const unsigned cha
     {
         return 1;
     }
-    
-    const unsigned char *aa = a; //for debugging
-    const unsigned char *bb = b; //for debugging
     
     int uc_a = 0; //int because UCS2 is unsigned
     int uc_b = 0; //int because UCS2 is unsigned
@@ -1034,7 +1076,7 @@ int compareSort(int len_a, const unsigned char *a, int len_b, const unsigned cha
     const unsigned char *end_b;
     bool seenOne_a = false;
     bool seenOne_b = false;
-    
+
     for( ; idx_a < len_a ; )
     {
         uc_a = utf8_to_ucs2 (a, &end_a);
@@ -1042,7 +1084,7 @@ int compareSort(int len_a, const unsigned char *a, int len_b, const unsigned cha
         a = end_a;
         if (uc_a == -1)
         {
-            assert(uc_a > -1);
+            assert(uc_a > -1); //bad utf8
             //return -1; //error
             //continue;
             idx_a = len_a;
@@ -1057,14 +1099,23 @@ int compareSort(int len_a, const unsigned char *a, int len_b, const unsigned cha
             }*/
             if (isCombiningDiacritic(uc_a))
             {
-                continue;
+                if (idx_a >= len_a)
+                {
+                    goto FALLTHROUGH; //
+                }
+                else
+                {
+                    continue;
+                }
+                //fallThrough = true;
+                
             }
             
             base_a = 0; //reset for debugging
             type_a = analyzePrecomposedLetter(uc_a, &base_a, &diacritics_a);
             if (type_a == NOCHAR)
             {
-                fprintf(stderr, "AA1 s: B %.*s AA %04X -> %04X\n", len_a, aa, uc_a, base_a);
+                //fprintf(stderr, "CompA: %.*s AA %04X -> %04X\n", len_a, aa, uc_a, base_a);
                 if (!seenOne_a)
                 {
                     continue;
@@ -1073,41 +1124,45 @@ int compareSort(int len_a, const unsigned char *a, int len_b, const unsigned cha
                 {
                     //stop, is end
                     idx_a = len_a;
-                    break;
                 }
             }
             else if (!seenOne_a)
             {
                 seenOne_a = true;
             }
+            
             //get sort order for base characters
             int sort_a = 0;
             int sort_b = 0;
-            if (base_a >= 0x0370 && base_a <= 0x03FF)
+            if (type_a != NOCHAR)
             {
-                sort_a = basicGreekLookUp[base_a - 0x0370][2];
-                if (sort_a < 1)
+                if (base_a >= 0x0370 && base_a <= 0x03FF)
                 {
-                    continue;
-                }
-            }
-            else
-            {
-                if (!seenOne_a)
-                {
-                    continue;
+                    sort_a = basicGreekLookUp[base_a - 0x0370][2];
+                    if (sort_a < 1)
+                    {
+                        continue;
+                    }
                 }
                 else
                 {
-                    //stop, is end
-                    idx_a = len_a;
-                    break;
+                    if (!seenOne_a)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        //stop, is end
+                        idx_a = len_a;
+                        break;
+                    }
                 }
             }
-            
+        FALLTHROUGH:
             for( ; idx_b < len_b ; )
             {
                 uc_b = utf8_to_ucs2 (b, &end_b);
+                //printf("1 index %d, %d, %04X\n", idx_b, len_b, uc_b);
                 idx_b += (end_b - b);
                 //printf("AAA: %d\n", (bp - b));
                 b = end_b;
@@ -1142,7 +1197,7 @@ int compareSort(int len_a, const unsigned char *a, int len_b, const unsigned cha
                     type_b = analyzePrecomposedLetter(uc_b, &base_b, &diacritics_b);
                     if (type_b == NOCHAR)
                     {
-                        fprintf(stderr, "AA2 s: B %.*s AA %04X -> %04X\n", len_b, bb, uc_b, base_b);
+                        //fprintf(stderr, "CompB %.*s AA %04X -> %04X\n", len_b, bb, uc_b, base_b);
                         if (!seenOne_b)
                         {
                             continue;
@@ -1166,12 +1221,14 @@ int compareSort(int len_a, const unsigned char *a, int len_b, const unsigned cha
                         sort_b = basicGreekLookUp[base_b - 0x0370][2];
                         if (sort_b > 0)
                         {
+                            //printf("B1: %04x\n", base_b);
                             break;
                         }
                         else
                         {
                             //stop, is end
                             idx_b = len_b;
+                            //printf("B2: %04x\n", base_b);
                             break;
                         }
                     }
@@ -1188,6 +1245,7 @@ int compareSort(int len_a, const unsigned char *a, int len_b, const unsigned cha
                             break;
                         }
                     }
+                    
                 }
             }
             /*
@@ -1218,27 +1276,73 @@ int compareSort(int len_a, const unsigned char *a, int len_b, const unsigned cha
             }
             else
             {
+                continue;
+                /*
                 if ((idx_a == len_a ) && (idx_b == len_b ))
                 {
+                    printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3\n");
                     return 0;
                 }
                 else if (idx_a == len_a )
                 {
+                    printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX4\n");
                     return -1;
                 }
                 else if (idx_b == len_b )
                 {
+                    printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX5\n");
                     return 1;
                 }
                 else
                 {
+                    printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX6\n");
                     continue;
-                }
+                }*/
             }
         }
     }
-
-    if ((idx_a == len_a) && (idx_b == len_b))
+    
+    //we need to be sure b does not have any testable chars left; what if it has combining at end.
+    bool bHasMore = false;
+    for( ; idx_b < len_b ; )
+    {
+        uc_b = utf8_to_ucs2 (b, &end_b);
+        //printf("2 index %d, %d, %04X\n", idx_b, len_b, uc_b);
+        idx_b += (end_b - b);
+        //printf("AAA: %d\n", (bp - b));
+        b = end_b;
+        if (uc_b == -1)
+        {
+            assert(uc_b > -1);
+            //return -1; //error
+            //continue;
+            idx_b = len_b;
+            break;
+        }
+        else
+        {
+            if (isCombiningDiacritic(uc_b))
+            {
+                continue;
+            }
+            
+            base_b = 0; //reset for debugging
+            type_b = analyzePrecomposedLetter(uc_b, &base_b, &diacritics_b);
+            if (type_b != NOCHAR)
+            {
+                bHasMore = true;
+                break;
+            }
+            else
+            {
+                bHasMore = false;
+                 break;
+            }
+        }
+    }
+    
+    
+    if ((idx_a == len_a) && !bHasMore)
     {
         return 0;
     }
@@ -1246,7 +1350,7 @@ int compareSort(int len_a, const unsigned char *a, int len_b, const unsigned cha
     {
         return -1;
     }
-    else if (idx_b == len_b)
+    else if (!bHasMore)
     {
         return 1;
     }
