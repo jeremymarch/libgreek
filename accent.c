@@ -970,6 +970,13 @@ int hcucHex(const unsigned char *a, int bufferLen, char *buffer)
     return 1;
 }
 
+//strip diacritics and other chars
+int toAlphaSort(char *str, char *buffer, int bufferLen)
+{
+    
+    return 1;
+}
+
 int stripAccentSQL(const unsigned char *a, int bufferLen, char *buffer)
 {
     int uc_a = 0;
