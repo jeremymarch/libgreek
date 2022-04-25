@@ -1276,8 +1276,9 @@ void addEnding(VerbFormC *vf, UCS2 *ucs2, int *len, const int ucs2Capacity, UCS2
                     {
                         if (!decompose)
                         {
-                            ucsplice(ending, &elen, ENDING_CAPACITY, 0, 1, NULL, 0);
-                            ucs2[1] = GREEK_SMALL_LETTER_OMICRON;
+                            //ucsplice(ending, &elen, ENDING_CAPACITY, 0, 1, NULL, 0);
+                            //ucs2[1] = GREEK_SMALL_LETTER_OMICRON;
+                            (*len) -= 1; //fix for anathoito, etc.
                         }
                     }
                     else
