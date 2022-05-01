@@ -37325,6 +37325,30 @@ Perfect Active Indicative
 2p: ἴστε ; ἰσ ‐ τε
 3p: ἴσᾱσι(ν) ; ἰσ ‐ ᾱσι(ν)
 
+Perfect Active Subjunctive
+1s: εἰδῶ ; εἰδε ‐ ω
+2s: εἰδῇς ; εἰδε ‐ ῃς
+3s: εἰδῇ ; εἰδε ‐ ῃ
+1p: εἰδῶμεν ; εἰδε ‐ ωμεν
+2p: εἰδῆτε ; εἰδε ‐ ητε
+3p: εἰδῶσι(ν) ; εἰδε ‐ ωσι(ν)
+
+Perfect Active Optative
+1s: εἰδείην ; εἰδ ‐ ειην
+2s: εἰδείης ; εἰδ ‐ ειης
+3s: εἰδείη ; εἰδ ‐ ειη
+1p: εἰδεῖμεν, εἰδείημεν ; εἰδ ‐ ειμεν, εἰδ ‐ ειημεν
+2p: εἰδεῖτε, εἰδείητε ; εἰδ ‐ ειτε, εἰδ ‐ ειητε
+3p: εἰδεῖεν, εἰδείησαν ; εἰδ ‐ ειεν, εἰδ ‐ ειησαν
+
+Perfect Active Imperative
+1s: NF ; NDF
+2s: ἴσθι ; ἰσ ‐ θι
+3s: ἴστω ; ἰσ ‐ τω
+1p: NF ; NDF
+2p: ἴστε ; ἰσ ‐ τε
+3p: ἴστων ; ἰσ ‐ των
+
 Perfect Middle Indicative
 1s: NF ; NDF
 2s: NF ; NDF
@@ -37638,6 +37662,30 @@ Perfect Active Indicative
 1p: σύνισμεν ; συν ‐ ἰσ ‐ μεν
 2p: σύνιστε ; συν ‐ ἰσ ‐ τε
 3p: συνίσᾱσι(ν) ; συν ‐ ἰσ ‐ ᾱσι(ν)
+
+Perfect Active Subjunctive
+1s: συνειδῶ ; συν ‐ εἰδε ‐ ω
+2s: συνειδῇς ; συν ‐ εἰδε ‐ ῃς
+3s: συνειδῇ ; συν ‐ εἰδε ‐ ῃ
+1p: συνειδῶμεν ; συν ‐ εἰδε ‐ ωμεν
+2p: συνειδῆτε ; συν ‐ εἰδε ‐ ητε
+3p: συνειδῶσι(ν) ; συν ‐ εἰδε ‐ ωσι(ν)
+
+Perfect Active Optative
+1s: συνειδείην ; συν ‐ εἰδ ‐ ειην
+2s: συνειδείης ; συν ‐ εἰδ ‐ ειης
+3s: συνειδείη ; συν ‐ εἰδ ‐ ειη
+1p: συνειδεῖμεν, συνειδείημεν ; συν ‐ εἰδ ‐ ειμεν, συν ‐ εἰδ ‐ ειημεν
+2p: συνειδεῖτε, συνειδείητε ; συν ‐ εἰδ ‐ ειτε, συν ‐ εἰδ ‐ ειητε
+3p: συνειδεῖεν, συνειδείησαν ; συν ‐ εἰδ ‐ ειεν, συν ‐ εἰδ ‐ ειησαν
+
+Perfect Active Imperative
+1s: NF ; NDF
+2s: σύνισθι ; συν ‐ ἰσ ‐ θι
+3s: συνίστω ; συν ‐ ἰσ ‐ τω
+1p: NF ; NDF
+2p: σύνιστε ; συν ‐ ἰσ ‐ τε
+3p: συνίστων ; συν ‐ ἰσ ‐ των
 
 Perfect Middle Indicative
 1s: NF ; NDF
@@ -39877,17 +39925,17 @@ Pluperfect Passive Indicative
 2p: NF ; NDF
 3p: NF ; NDF
 
-Total rows including -: 21085
-Total forms including alternates, minus -: 22767
+Total rows including -: 21117
+Total forms including alternates, minus -: 22805
 
 Zero Forms: 118
-One Form: 19235
-Two Forms: 1681
+One Form: 19261
+Two Forms: 1687
 Three Forms: 34
 Four Forms: 17
 Five Forms: 0
 More Forms: 0
-Total Forms: 22767 = 22767
+Total Forms: 22805 = 22805
 
 Longest Form: 2,1,3,0,2, v: καταστήσαιεν, καταστήσειαν, κατασταῖεν, κατασταίησαν, l: 99
 

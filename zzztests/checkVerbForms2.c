@@ -56,8 +56,15 @@ int main(int argc, char **argv)
     char *noDCFormLabel = "NDF";
 
 //numVerbs = 1;
+ bool isOida = false;
     for (int verbi = 0; verbi < numVerbs; verbi++)
     {
+        if (verbi == 118 || verbi == 119) {
+            isOida = true;
+        }
+        else {
+            isOida = false;
+        }
         vf.verb = &verbs[verbi];
         char *voiceO;
         char *voiceMiddlePassive = " (Middle/Passive)";
@@ -90,9 +97,15 @@ int main(int argc, char **argv)
             {
                 for (int m = 0; m < NUM_MOODS; m++)
                 {
-                    //add exception for oida here
-                    if (m != INDICATIVE && (g1 == PERFECT || g1 == PLUPERFECT || g1 == IMPERFECT || (g1 == FUTURE && m != OPTATIVE)))
-                        continue;
+                    if (m != INDICATIVE && (g1 == PERFECT || g1 == PLUPERFECT || g1 == IMPERFECT || (g1 == FUTURE && m != OPTATIVE))) {
+                        
+                        if (isOida && g1 == PERFECT && v == ACTIVE) {
+                            //exception for oida here: don't skip
+                        }
+                        else {
+                            continue;
+                        }
+                    }
 
                     vf.voice = v;
                     int countPerSection = 0;
@@ -106,39 +119,39 @@ int main(int argc, char **argv)
                             bool hasComposed = getForm(&vf, buffer, bufferLen, true, false);
                             bool hasDecomposed = getForm(&vf, buffer2, bufferLen2, true, true);
 
-                                if (countPerSection == 0 && vf.person == FIRST && vf.number == SINGULAR) //== first item, so add label first
+                            if (countPerSection == 0 && vf.person == FIRST && vf.number == SINGULAR) //== first item, so add label first
+                            {
+                                int res = getVoiceDescription1(&vf);
+                                if (res == MIDDLEPASSIVE)
                                 {
-                                    int res = getVoiceDescription1(&vf);
-                                    if (res == MIDDLEPASSIVE)
-                                    {
-                                        voiceO = voiceMiddlePassive;
-                                    }
-                                    else
-                                    {
-                                        voiceO = voiceNotMiddlePassive;
-                                    }
-                                    if (v == ACTIVE || g1 == AORIST || g1 == FUTURE)
-                                    {
-                                        fprintf(fp, "\n%s %s%s %s\n", tenses[g1], voices[v], voiceO, moods[m]);
-                                    }
-                                    else if (v == MIDDLE)
-                                    {
-                                        //FIX ME, is this right?? how do we label these?
-                                        //if ( deponentType(vf.verb) == MIDDLE_DEPONENT || deponentType(vf.verb) == PASSIVE_DEPONENT)
-                                        //{
-                                            fprintf(fp, "\n%s %s%s %s\n", tenses[g1], "Middle", voiceO, moods[m]);
-                                        //}
-                                        //else
-                                        //{
-                                        //    fprintf(fp, "\n%s %s %s\n", tenses[g1], "Middle/Passive", moods[m]);
-                                        //}
-                                    }
-                                    else
-                                    {
-                                        fprintf(fp, "\n%s %s%s %s\n", tenses[g1], "Passive", voiceO, moods[m]);
-                                        //yes we want to show them! //continue; //skip passive if middle+passive are the same
-                                    }
-                                } //end label conditional
+                                    voiceO = voiceMiddlePassive;
+                                }
+                                else
+                                {
+                                    voiceO = voiceNotMiddlePassive;
+                                }
+                                if (v == ACTIVE || g1 == AORIST || g1 == FUTURE)
+                                {
+                                    fprintf(fp, "\n%s %s%s %s\n", tenses[g1], voices[v], voiceO, moods[m]);
+                                }
+                                else if (v == MIDDLE)
+                                {
+                                    //FIX ME, is this right?? how do we label these?
+                                    //if ( deponentType(vf.verb) == MIDDLE_DEPONENT || deponentType(vf.verb) == PASSIVE_DEPONENT)
+                                    //{
+                                        fprintf(fp, "\n%s %s%s %s\n", tenses[g1], "Middle", voiceO, moods[m]);
+                                    //}
+                                    //else
+                                    //{
+                                    //    fprintf(fp, "\n%s %s %s\n", tenses[g1], "Middle/Passive", moods[m]);
+                                    //}
+                                }
+                                else
+                                {
+                                    fprintf(fp, "\n%s %s%s %s\n", tenses[g1], "Passive", voiceO, moods[m]);
+                                    //yes we want to show them! //continue; //skip passive if middle+passive are the same
+                                }
+                            } //end label conditional
 
                             if (!hasComposed)
                             {
