@@ -262,7 +262,7 @@ void getPrincipalParts(Verb *v, char *buffer, int len)
 
 void getFullDescription (VerbFormC *vf, char *buffer, int len)
 {
-    snprintf(buffer, len, "%s %s %s %s %s", persons[vf->person], numbers[vf->number], tenses[vf->tense], voices[vf->voice], moods[vf->mood]);
+    snprintf(buffer, len, "%s %s %s %s %s", persons[vf->person], numbers[vf->number], tenses[vf->tense], moods[vf->mood], voices[vf->voice]);
 }
 
 void getAbbrevDescription2 (VerbFormD *vf, char *buffer, int len)
@@ -284,7 +284,7 @@ void getAbbrevDescription (VerbFormC *vf, char *buffer, int len)
     assert(vf->voice >= 0 && vf->voice < NUM_VOICES);
     assert(vf->mood >= 0 && vf->mood < NUM_MOODS);
     
-    snprintf(buffer, len, "%s %s %s %s %s", personsabbrev[vf->person], numbersabbrev[vf->number], tensesabbrev[vf->tense], voicesabbrev[vf->voice], moodsabbrev[vf->mood]);
+    snprintf(buffer, len, "%s %s %s %s %s", personsabbrev[vf->person], numbersabbrev[vf->number], tensesabbrev[vf->tense], moodsabbrev[vf->mood], voicesabbrev[vf->voice]);
 }
 
 bool wordIsAccented(UCS2 *letter, int len)
